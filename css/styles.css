@@ -203,11 +203,11 @@ p { margin: 0; }
    Sterling en tiffany.com — mismo espíritu editorial, gesto distinto. */
 .logo-mark {
   font-family: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
-  font-style: italic; font-weight: 400; font-size: clamp(1.4rem, 1.08rem + 1.15vw, 2rem);
-  letter-spacing: .09em; margin-right: -.09em; white-space: nowrap;
+  font-style: italic; font-weight: 400; font-size: clamp(2.1rem, 1.3rem + 3.4vw, 3.75rem);
+  letter-spacing: .07em; margin-right: -.07em; white-space: nowrap;
 }
 .logo-mark .amp { font-style: italic; font-weight: 400; letter-spacing: .06em; font-size: .9em; }
-.logo-sub { font-family: var(--f-body); font-size: .56rem; letter-spacing: .38em; text-transform: uppercase; color: var(--muted); margin-top: 7px; margin-right: -.38em; }
+.logo-sub { font-family: var(--f-body); font-size: .68rem; letter-spacing: .34em; text-transform: uppercase; color: var(--muted); margin-top: 10px; margin-right: -.34em; }
 
 .lang { gap: 2px; margin-left: 8px; font-size: var(--t-label); letter-spacing: .12em; }
 .lang button { padding: 6px 6px; color: var(--muted); }
