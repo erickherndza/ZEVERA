@@ -40,7 +40,7 @@
 
   // Escenas de campaña (portada, mega menú, colecciones, editorial)
   const SCENES = {
-    hero:     { file: "hero-arms-black.jpg", pos: "78% 32%" },
+    hero:     { file: "hero-pearl-necklace.jpg", pos: "56% 55%" },
     brisa:    { file: "necklace-worn.jpg",   pos: "center 22%" },
     ambar:    { file: "ring-worn-rose.jpg",  pos: "center 38%" },
     esencial: { file: "flatlay-chain.jpg",   pos: "center 42%" }

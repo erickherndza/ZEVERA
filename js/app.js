@@ -187,7 +187,7 @@
           <span class="label">${t.heroEyebrow}</span>
           <h1>${t.heroTitle}</h1>
           <p>${t.heroText}</p>
-          <a class="btn btn-light" href="#coleccion-brisa">${t.shop}</a>
+          <a class="btn btn-light" href="#coleccion-esencial">${t.shop}</a>
         </div>
       </section>
 

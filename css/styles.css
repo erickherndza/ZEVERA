@@ -249,15 +249,21 @@ p { margin: 0; }
 .hero { position: relative; }
 .hero-media { aspect-ratio: 4 / 5; max-height: 78vh; width: 100%; background: #2A2622; }
 .hero-media .art { height: 100%; background: transparent; }
+/* Velo oscuro inferior: garantiza que el texto blanco se lea sin importar
+   qué tan clara sea la foto que se use (la pieza real la elige la clienta). */
+.hero::before {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(to top, rgba(15,13,11,.62) 0%, rgba(15,13,11,.2) 40%, rgba(15,13,11,0) 65%);
+}
 .hero-copy {
-  position: absolute; inset: auto 0 0 0;
+  position: absolute; inset: auto 0 0 0; z-index: 2;
   padding: 0 var(--gutter) clamp(32px, 6vw, 72px);
   color: var(--white); display: grid; gap: 16px; justify-items: start;
   max-width: calc(var(--maxw)); margin-inline: auto;
 }
 .hero-copy h1 { max-width: 14ch; }
 .hero-copy p { max-width: 40ch; opacity: .9; }
-.hero .art-tag { color: rgba(255,255,255,.6); left: auto; right: var(--gutter); }
+.hero .art-tag { color: rgba(255,255,255,.6); left: auto; right: var(--gutter); z-index: 2; }
 @media (min-width: 760px) { .hero-media { aspect-ratio: 16 / 7; max-height: 720px; } }
 
 /* ---------- Tarjeta de producto ---------- */
