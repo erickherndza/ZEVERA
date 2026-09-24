@@ -107,6 +107,17 @@ assets/img/         fotos de banco (provisionales)
   clásica de `padding-top` en vez de `aspect-ratio` porque en un momento
   `aspect-ratio` dentro de ese grid no pintaba la imagen. Si se toca ese
   CSS, mantener el `padding-top`.
+- **Caché vieja de `app.js` tras borrar un elemento del DOM**: si se quita
+  un `id="..."` del `index.html` pero `js/app.js` todavía trae una línea
+  vieja como `$("#ese-id").textContent = ...`, revienta con
+  `TypeError: Cannot set properties of null` dentro de `renderChrome()` y
+  deja de pintar todo lo que viene después (menú, footer, etc.) — pasa
+  sobre todo en el sitio en vivo (GitHub Pages) cuando el navegador del
+  visitante cacheó un `app.js` viejo aunque el `index.html` ya se actualizó.
+  El código en el repo puede estar perfecto y aun así verse roto en el
+  navegador. Si algo se ve incompleto justo después de un push, pedir un
+  hard reload (`cmd+shift+r`) antes de asumir que el código está mal —
+  pasó al quitar `#logo-sub` (ver sesión de rebranding a ZEVERA).
 
 ## Qué se hizo en esta sesión (orden cronológico)
 
@@ -127,14 +138,33 @@ assets/img/         fotos de banco (provisionales)
    con velo degradado nuevo para que el titular blanco siga siendo legible
    sobre cualquier foto, y se reescribió el copy del hero para que hable de
    perlas.
+9. **Rebranding: "ZB Concep" → "ZEVERA"** (la clienta corrigió el nombre
+   del proyecto). Se renombró el repo en GitHub (`zbcocep` → `ZEVERA`,
+   GitHub Pages pasó a `https://erickherndza.github.io/ZEVERA/`) y la
+   carpeta local (`zb-concep-demo` → `ZEVERA-demo`), se actualizó el
+   remoto git, y se reemplazó "ZB CONCEP"/"ZB Concep" por "ZEVERA" en todo
+   el sitio: logo (header, footer, menú móvil), `<title>`, aria-labels,
+   mensaje de WhatsApp, "La experiencia ZEVERA", prefijo de referencia de
+   producto (`ZEVERA-XXXXX`), copyright del footer, comentarios de código,
+   `README.md` y este archivo.
+10. Se quitó el subtítulo "Joyería · Santo Domingo" que iba debajo del
+    logo en el header (markup en `index.html`, lógica en `js/app.js`,
+    CSS `.logo-sub` en `css/styles.css`) — la clienta pidió que el logo
+    quede solo con el nombre de marca, sin línea debajo.
 
 ## Pendiente / para la próxima sesión
 
+- **Confirmar con la clienta** si la línea del footer "Joyería fina hecha
+  en Santo Domingo. Oro, plata y ámbar dominicano." (`f.brand` en
+  `js/data.js`, ES y EN) también debe cambiarse o quitarse — es copy
+  descriptivo del negocio (no repite el nombre viejo de marca), distinto
+  del subtítulo que ya se quitó del header, así que se dejó tal cual hasta
+  que ella confirme.
 - Esperando más feedback de la clienta sobre el resto del sitio (ficha de
   producto, página de colección, menú móvil, footer) — todavía no se ha
   revisado con ella en detalle más allá del home.
-- El logo sigue siendo provisional (marca tipográfica). Reemplazar por el
-  logo oficial en cuanto la clienta lo entregue (`.logo-mark` en
+- El logo sigue siendo provisional (marca tipográfica "ZEVERA"). Reemplazar
+  por el logo oficial en cuanto la clienta lo entregue (`.logo-mark` en
   `css/styles.css` + markup en `index.html`).
 - Las fotos siguen siendo de banco. Reemplazar por el catálogo real cuando
   la clienta lo entregue (mapeo en `js/art.js`).
