@@ -74,6 +74,20 @@
     </article>`;
   }
 
+  /* Tarjeta del carrusel de portada: calco de tiffany.com (una sola foto fija,
+     sin precio ni favorito; el nombre de colección va en serif, el de la
+     pieza en texto simple debajo — ahí no hay caja ni "ver todo"). */
+  function railCard(p) {
+    const coll = L(ZB.collections[p.coll]).name;
+    return `<article class="rail-card">
+      <a class="card-media" href="#producto-${p.id}" aria-label="${esc(L(p).name)}">${ZB.art.product(p, "main")}</a>
+      <div class="rail-card-body">
+        <span class="rail-card-coll">${esc(coll)}</span>
+        <a class="rail-card-name link-draw" href="#producto-${p.id}">${esc(L(p).name)}</a>
+      </div>
+    </article>`;
+  }
+
   function langToggle() {
     return ["es", "en"].map(l => `<button data-lang="${l}" aria-pressed="${state.lang === l}">${l.toUpperCase()}</button>`).join("<span aria-hidden=\"true\">/</span>");
   }
@@ -178,17 +192,13 @@
         </div>
       </section>
 
-      <section class="section">
-        <div class="wrap section-head">
-          <div><h2>${t.newTitle}</h2><p class="muted">${t.newText}</p></div>
-          <a class="link-line label" href="#coleccion-nuevo">${t.viewAll}</a>
-        </div>
+      <section class="section rail-section">
         <div class="rail-wrap">
-          <div class="rail" id="rail">${news.map(card).join("")}</div>
+          <div class="rail" id="rail">${news.map(railCard).join("")}</div>
           <div class="rail-nav">
             <button class="chev" data-rail="-1" aria-label="${t.back}">${ICON.left}</button>
             <div class="rail-track"><span class="rail-thumb" id="rail-thumb"></span></div>
-            <button class="chev" data-rail="1" aria-label="${t.viewAll}">${ICON.right}</button>
+            <button class="chev" data-rail="1" aria-label="${t.next}">${ICON.right}</button>
           </div>
         </div>
       </section>
