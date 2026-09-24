@@ -159,11 +159,7 @@ p { margin: 0; }
 .btn-light:hover { background: var(--white); color: var(--ink); }
 .btn-block { width: 100%; }
 
-/* ---------- Cinta del demo + barra de anuncios ---------- */
-.demo-ribbon {
-  background: var(--surface-2); color: var(--ink-2);
-  font-size: .75rem; text-align: center; padding: 6px 16px; letter-spacing: .02em;
-}
+/* ---------- Barra de anuncios ---------- */
 .announce {
   background: var(--accent); color: var(--on-accent);
   text-align: center; padding: 10px 16px;

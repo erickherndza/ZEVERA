@@ -112,7 +112,6 @@ ZB.pairs = {
 
 ZB.i18n = {
   es: {
-    ribbon: "Demo de diseño para ZB Concep RD · fotos, logo y productos son provisionales",
     announce: "Envío gratis en Santo Domingo · Grabado personalizado en 48 horas",
     nav: { joyeria: "Joyería", colecciones: "Colecciones", compromiso: "Compromiso", regalos: "Regalos", historia: "Nuestra historia", citas: "Agendar cita" },
     mega: { cat: "Por categoría", coll: "Por colección", feat: "Destacados", all: "Ver toda la joyería", nuevo: "Novedades", grabar: "Para personalizar", regalo: "Regalos bajo RD$ 15,000", featTitle: "Colección Ámbar", featText: "Ámbar dominicano en plata y oro.", discover: "Descubrir" },
@@ -203,7 +202,6 @@ ZB.i18n = {
     style: { btn: "Estilo del demo", title: "Prueba el estilo", intro: "Cambia la tipografía y el color de firma para ver cómo se siente la tienda. La elección se aplica a todas las páginas.", type: "Tipografía", color: "Color de firma", done: "Listo" }
   },
   en: {
-    ribbon: "Design demo for ZB Concep RD · photos, logo and products are placeholders",
     announce: "Free delivery in Santo Domingo · Personalized engraving in 48 hours",
     nav: { joyeria: "Jewelry", colecciones: "Collections", compromiso: "Engagement", regalos: "Gifts", historia: "Our story", citas: "Book a visit" },
     mega: { cat: "By category", coll: "By collection", feat: "Featured", all: "Shop all jewelry", nuevo: "New arrivals", grabar: "To personalize", regalo: "Gifts under RD$ 15,000", featTitle: "Ámbar Collection", featText: "Dominican amber in silver and gold.", discover: "Discover" },

@@ -97,7 +97,6 @@
   /* ---------- Chrome: cinta, anuncio, menú, pie, panel ---------- */
   function renderChrome() {
     const t = T();
-    $("#demo-ribbon").textContent = t.ribbon;
     $("#announce").textContent = t.announce;
     $("#logo-sub").textContent = state.lang === "es" ? "Joyería · Santo Domingo" : "Fine jewelry · Santo Domingo";
     $("#lang-desktop").innerHTML = langToggle();
