@@ -203,7 +203,6 @@ p { margin: 0; }
   letter-spacing: .07em; margin-right: -.07em; white-space: nowrap;
 }
 .logo-mark .amp { font-style: italic; font-weight: 400; letter-spacing: .06em; font-size: .9em; }
-.logo-sub { font-family: var(--f-body); font-size: .68rem; letter-spacing: .34em; text-transform: uppercase; color: var(--muted); margin-top: 10px; margin-right: -.34em; }
 
 .lang { gap: 2px; margin-left: 8px; font-size: var(--t-label); letter-spacing: .12em; }
 .lang button { padding: 6px 6px; color: var(--muted); }

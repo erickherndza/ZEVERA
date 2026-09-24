@@ -98,7 +98,6 @@
   function renderChrome() {
     const t = T();
     $("#announce").textContent = t.announce;
-    $("#logo-sub").textContent = state.lang === "es" ? "Joyería · Santo Domingo" : "Fine jewelry · Santo Domingo";
     $("#lang-desktop").innerHTML = langToggle();
     $("#search-btn").setAttribute("aria-label", state.lang === "es" ? "Buscar" : "Search");
 
