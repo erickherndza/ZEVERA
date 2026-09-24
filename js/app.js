@@ -147,7 +147,7 @@
       <div class="type-opts" role="group" aria-label="${s.type}">
         <span class="label muted">${s.type}</span>
         ${ZB.typePairs.map(tp => `<button class="type-opt" data-type="${tp.id}" aria-pressed="${state.type === tp.id}">
-            <span class="sample" style="font-family:${tp.display}">Anillo Solitario Brisa</span>
+            <span class="sample" style="font-family:${tp.display};font-style:${tp.ital ? "italic" : "normal"}">Anillo Solitario Brisa</span>
             <span class="names">${tp.label} · ${tp.names}</span></button>`).join("")}
       </div>
       <div role="group" aria-label="${s.color}">
@@ -181,19 +181,20 @@
       <section class="section">
         <div class="wrap section-head">
           <div><h2>${t.newTitle}</h2><p class="muted">${t.newText}</p></div>
-          <div style="display:flex;gap:20px;align-items:center">
-            <div class="rail-controls">
-              <button class="round-btn" data-rail="-1" aria-label="${t.back}">${ICON.left}</button>
-              <button class="round-btn" data-rail="1" aria-label="${t.viewAll}">${ICON.right}</button>
-            </div>
-            <a class="link-line label" href="#coleccion-nuevo">${t.viewAll}</a>
+          <a class="link-line label" href="#coleccion-nuevo">${t.viewAll}</a>
+        </div>
+        <div class="rail-wrap">
+          <div class="rail" id="rail">${news.map(card).join("")}</div>
+          <div class="rail-nav">
+            <button class="chev" data-rail="-1" aria-label="${t.back}">${ICON.left}</button>
+            <div class="rail-track"><span class="rail-thumb" id="rail-thumb"></span></div>
+            <button class="chev" data-rail="1" aria-label="${t.viewAll}">${ICON.right}</button>
           </div>
         </div>
-        <div class="rail-wrap"><div class="rail" id="rail">${news.map(card).join("")}</div></div>
       </section>
 
       <section class="section wrap">
-        <div class="section-head"><h2>${t.catTitle}</h2></div>
+        <div class="section-head center"><h2>${t.catTitle}</h2></div>
         <div class="cats">
           ${Object.keys(ZB.types).map(k => `
             <a class="cat" href="#coleccion-${k}">
@@ -204,25 +205,25 @@
       </section>
 
       ${["brisa", "ambar"].map((k, i) => `
-      <section class="section wrap">
-        <div class="feature ${i ? "reverse" : ""}">
+      <section class="section">
+        <div class="feature-full ${i ? "reverse" : ""}">
           <div class="feature-media">${ZB.art.scene(k, false, "", ph)}</div>
-          <div class="feature-copy">
+          <div class="feature-copy-wrap"><div class="feature-copy">
             <span class="label muted">${state.lang === "es" ? "Colección" : "Collection"}</span>
             <h2>${L(ZB.collections[k]).name}</h2>
             <p>${L(ZB.collections[k]).lead}</p>
-            <a class="btn btn-secondary" href="#coleccion-${k}">${t.discoverColl}</a>
-          </div>
+            <a class="link-line label" href="#coleccion-${k}">${t.discoverColl}</a>
+          </div></div>
         </div>
       </section>`).join("")}
 
       <section class="experience">
         <div class="wrap">
-          <div class="section-head"><h2>${t.expTitle}</h2></div>
+          <div class="section-head center"><h2>${t.expTitle}</h2></div>
           <div class="exp-grid">
             ${t.exp.map((e, i) => `<div class="exp">${[ICON.cal, ICON.pen, ICON.gift][i]}<h3>${e.t}</h3><p>${e.d}</p></div>`).join("")}
           </div>
-          <div style="margin-top:44px"><a class="btn btn-primary" target="_blank" rel="noopener" href="${waLink(state.lang === "es" ? "Hola, quiero agendar una cita en ZB Concep." : "Hi, I'd like to book a visit at ZB Concep.")}">${t.book}</a></div>
+          <div style="margin-top:44px;text-align:center"><a class="btn btn-primary" target="_blank" rel="noopener" href="${waLink(state.lang === "es" ? "Hola, quiero agendar una cita en ZB Concep." : "Hi, I'd like to book a visit at ZB Concep.")}">${t.book}</a></div>
         </div>
       </section>
 
@@ -637,6 +638,7 @@
 
     route.lastPlp = null;
     app.innerHTML = viewHome();
+    bindRail();
     if (hash === "historia") requestAnimationFrame(() => $("#historia-sec")?.scrollIntoView({ behavior: "smooth" }));
   }
 
@@ -646,6 +648,22 @@
       const i = Math.round(track.scrollLeft / track.clientWidth);
       $$("#dots span").forEach((d, k) => d.dataset.on = String(k === i));
     }, { passive: true });
+  }
+
+  function bindRail() {
+    const r = $("#rail"), track = $(".rail-track"), thumb = $("#rail-thumb");
+    if (!r || !track || !thumb) return;
+    const update = () => {
+      const max = r.scrollWidth - r.clientWidth;
+      const trackW = track.clientWidth;
+      const thumbW = Math.max(24, (r.clientWidth / r.scrollWidth) * trackW);
+      const left = max > 0 ? (r.scrollLeft / max) * (trackW - thumbW) : 0;
+      thumb.style.width = thumbW + "px";
+      thumb.style.left = left + "px";
+    };
+    r.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update, { passive: true });
+    update();
   }
 
   /* ---------- Eventos (delegados) ---------- */

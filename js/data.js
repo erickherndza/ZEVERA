@@ -294,9 +294,9 @@ ZB.i18n = {
 };
 
 ZB.typePairs = [
-  { id: "a", label: "A · Editorial clásica", names: "Cormorant Garamond + Jost", display: "'Cormorant Garamond', serif" },
-  { id: "b", label: "B · Grabado", names: "Marcellus + Figtree", display: "'Marcellus', serif" },
-  { id: "c", label: "C · Moderna sobria", names: "EB Garamond + Montserrat", display: "'EB Garamond', serif" }
+  { id: "a", label: "A · Editorial clásica", names: "Cormorant Garamond + Jost", display: "'Cormorant Garamond', serif", ital: true },
+  { id: "b", label: "B · Grabado", names: "Marcellus + Figtree", display: "'Marcellus', serif", ital: false },
+  { id: "c", label: "C · Moderna sobria", names: "EB Garamond + Montserrat", display: "'EB Garamond', serif", ital: true }
 ];
 
 ZB.accents = [

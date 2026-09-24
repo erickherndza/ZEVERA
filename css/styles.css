@@ -20,12 +20,20 @@
   --accent: #1F3D36;
   --on-accent: #FFFFFF;
 
-  /* Tipografía — combinación A por defecto */
+  /* Tipografía — combinación A por defecto
+     Trazado sobre tiffany.com [Observado, DevTools, 2026-09-24]: los titulares (Sterling)
+     usan tracking NEGATIVO (-1.28px en h1 de 40px ⇒ ~-0.03em), no positivo; el peso sube
+     con el tamaño (h1 500 / h2 325) en vez de bajar. Replicamos el patrón —tracking ajustado,
+     h1 más firme que h2— con tipografías propias (Sterling no tiene licencia pública). */
   --f-display: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
   --f-body: "Jost", "Helvetica Neue", Arial, sans-serif;
   --display-weight: 400;
-  --display-track: 0;
+  --display-style: italic;
+  --display-track: -.015em;
   --display-scale: 1.12;
+  --w-h1: 400;
+  --w-h2: 300;
+  --label-track: .1em;
 
   /* Escala */
   --t-h1: calc(clamp(2rem, 1.2rem + 3.2vw, 3.5rem) * var(--display-scale));
@@ -47,15 +55,21 @@ html[data-type="b"] {
   --f-display: "Marcellus", "Trajan Pro", Georgia, serif;
   --f-body: "Figtree", "Helvetica Neue", Arial, sans-serif;
   --display-weight: 400;
-  --display-track: .01em;
+  --display-style: normal; /* Marcellus no tiene corte cursivo: se queda recta, grabada */
+  --display-track: .006em;
   --display-scale: .92;
+  --w-h1: 400;
+  --w-h2: 400; /* Marcellus es de un solo peso; el contraste viene del tamaño */
 }
 html[data-type="c"] {
   --f-display: "EB Garamond", Garamond, Georgia, serif;
   --f-body: "Montserrat", "Helvetica Neue", Arial, sans-serif;
   --display-weight: 400;
-  --display-track: -.005em;
+  --display-style: italic;
+  --display-track: -.018em;
   --display-scale: 1;
+  --w-h1: 400; /* la cursiva de EB Garamond solo viene en 400 */
+  --w-h2: 400;
 }
 
 /* ---------- Base ---------- */
@@ -82,19 +96,20 @@ main:focus { outline: none; }
 h1, h2, h3, .display {
   font-family: var(--f-display);
   font-weight: var(--display-weight);
+  font-style: var(--display-style);
   letter-spacing: var(--display-track);
   line-height: 1.12;
   margin: 0;
   text-wrap: balance;
 }
-h1 { font-size: var(--t-h1); }
-h2 { font-size: var(--t-h2); }
+h1 { font-size: var(--t-h1); font-weight: var(--w-h1); }
+h2 { font-size: var(--t-h2); font-weight: var(--w-h2); }
 h3 { font-size: var(--t-h3); line-height: 1.2; }
 p { margin: 0; }
 
 .label {
   font-size: var(--t-label);
-  letter-spacing: .16em;
+  letter-spacing: var(--label-track);
   text-transform: uppercase;
   font-weight: 500;
 }
@@ -103,6 +118,9 @@ p { margin: 0; }
 .section { padding-block: var(--section) 0; }
 .section-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: clamp(24px, 3vw, 40px); flex-wrap: wrap; }
 .section-head p { max-width: 52ch; margin-top: 10px; }
+/* Encabezado editorial centrado, sin "ver todo" — patrón tiffany.com ("Shop by Category") */
+.section-head.center { display: block; text-align: center; margin-bottom: clamp(32px, 4vw, 56px); }
+.section-head.center p { margin-inline: auto; }
 
 .only-mobile { display: inline-flex; }
 .only-desktop { display: none !important; }
@@ -129,7 +147,7 @@ p { margin: 0; }
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 10px;
   min-height: 50px; padding: 0 28px;
-  font-size: var(--t-label); font-weight: 500; letter-spacing: .16em; text-transform: uppercase;
+  font-size: var(--t-label); font-weight: 500; letter-spacing: var(--label-track); text-transform: uppercase;
   border: 1px solid var(--ink); border-radius: 0;
   transition: background-color .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease);
 }
@@ -149,7 +167,7 @@ p { margin: 0; }
 .announce {
   background: var(--accent); color: var(--on-accent);
   text-align: center; padding: 10px 16px;
-  font-size: var(--t-label); letter-spacing: .14em; text-transform: uppercase;
+  font-size: var(--t-label); letter-spacing: var(--label-track); text-transform: uppercase;
   transition: background-color .4s var(--ease);
 }
 
@@ -180,11 +198,13 @@ p { margin: 0; }
 
 .logo { display: flex; flex-direction: column; align-items: center; line-height: 1; padding-block: 8px; }
 /* Logotipo provisional: marca tipográfica fija (no cambia con el selector de fuentes).
-   Se reemplaza por el logo oficial cuando la clienta lo entregue. */
+   Se reemplaza por el logo oficial cuando la clienta lo entregue.
+   Cursiva a propósito: es la firma de personalidad frente a la caja recta de
+   Sterling en tiffany.com — mismo espíritu editorial, gesto distinto. */
 .logo-mark {
   font-family: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
-  font-weight: 500; font-size: clamp(1.35rem, 1.05rem + 1.1vw, 1.9rem);
-  letter-spacing: .2em; margin-right: -.2em; white-space: nowrap;
+  font-style: italic; font-weight: 400; font-size: clamp(1.4rem, 1.08rem + 1.15vw, 2rem);
+  letter-spacing: .09em; margin-right: -.09em; white-space: nowrap;
 }
 .logo-mark .amp { font-style: italic; font-weight: 400; letter-spacing: .06em; font-size: .9em; }
 .logo-sub { font-family: var(--f-body); font-size: .56rem; letter-spacing: .38em; text-transform: uppercase; color: var(--muted); margin-top: 7px; margin-right: -.38em; }
@@ -198,7 +218,7 @@ p { margin: 0; }
 .nav-item { position: static; }
 .nav-link {
   display: inline-block; padding: 10px 0 14px;
-  font-size: var(--t-label); letter-spacing: .16em; text-transform: uppercase; font-weight: 400;
+  font-size: var(--t-label); letter-spacing: var(--label-track); text-transform: uppercase; font-weight: 400;
   border-bottom: 1px solid transparent; transition: border-color .3s var(--ease);
 }
 .nav-item:hover .nav-link, .nav-item:focus-within .nav-link, .nav-link[aria-current="page"] { border-color: var(--ink); }
@@ -213,19 +233,20 @@ p { margin: 0; }
   max-width: var(--maxw); margin-inline: auto; padding: 36px var(--gutter) 44px;
   display: grid; grid-template-columns: repeat(3, 1fr) 1.4fr; gap: 40px;
 }
-.mega h4 { margin: 0 0 16px; font-weight: 500; font-size: var(--t-label); letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+.mega h4 { margin: 0 0 16px; font-weight: 500; font-size: var(--t-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--muted); }
 .mega ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
 .mega li a { font-size: .95rem; }
 .mega-feature { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: end; }
 .mega-feature .art { aspect-ratio: 4 / 5; }
 .mega-feature p { font-size: var(--t-small); color: var(--muted); margin: 8px 0 14px; }
 
-/* ---------- Arte de producto (marcadores) ---------- */
+/* ---------- Arte de producto: fotos de banco (provisionales) ---------- */
 .art { position: relative; background: var(--surface); overflow: hidden; max-width: 100%; }
 .art svg { width: 100%; height: 100%; }
+.art img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .art-tag {
   position: absolute; left: 12px; bottom: 10px;
-  font-size: .625rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+  font-size: .625rem; letter-spacing: var(--label-track); text-transform: uppercase; color: var(--muted);
 }
 
 /* ---------- Hero ---------- */
@@ -264,11 +285,13 @@ p { margin: 0; }
   .card:hover .fav, .fav:focus-visible, .fav[aria-pressed="true"] { opacity: .85; }
 }
 .card-body { display: grid; gap: 3px; }
-.card-coll { font-size: .6875rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.card-coll { font-size: .6875rem; letter-spacing: var(--label-track); text-transform: uppercase; color: var(--muted); }
 .card-name { font-size: .9rem; line-height: 1.4; }
 .card-price { font-size: .9rem; color: var(--ink-2); font-variant-numeric: tabular-nums; }
 
-/* Carrusel horizontal */
+/* Carrusel horizontal — tratamiento tipo tiffany.com: sin caja, texto centrado
+   bajo la foto, nombre en serif editorial; ver referencia en la sección de
+   "Shop the Collection" bajo el hero. */
 .rail {
   display: grid; grid-auto-flow: column; grid-auto-columns: 68%; gap: 12px;
   overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
@@ -276,39 +299,52 @@ p { margin: 0; }
 }
 .rail::-webkit-scrollbar { display: none; }
 .rail > * { scroll-snap-align: start; }
-@media (min-width: 760px) { .rail { grid-auto-columns: calc((100% - 2 * var(--gutter) - 60px) / 3.4); gap: 20px; } }
-@media (min-width: 1100px) { .rail { grid-auto-columns: calc((100% - 2 * var(--gutter) - 60px) / 4); } }
+@media (min-width: 760px) { .rail { grid-auto-columns: calc((100% - 2 * var(--gutter) - 84px) / 3.4); gap: 28px; } }
+@media (min-width: 1100px) { .rail { grid-auto-columns: calc((100% - 2 * var(--gutter) - 84px) / 4); } }
 .rail-wrap { max-width: calc(var(--maxw) + 0px); margin-inline: auto; }
-.rail-controls { display: none; gap: 6px; }
-@media (min-width: 960px) { .rail-controls { display: flex; } }
-.round-btn { width: 44px; height: 44px; border: 1px solid var(--line); display: inline-flex; align-items: center; justify-content: center; transition: border-color .3s var(--ease); }
-.round-btn:hover { border-color: var(--ink); }
-.round-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.3; }
+.rail .card-body { text-align: center; justify-items: center; margin-top: 2px; }
+.rail .card-coll { color: var(--muted); }
+.rail .card-name { font-family: var(--f-display); font-size: 1.15rem; line-height: 1.3; }
+.rail .card-price { font-size: var(--t-small); }
+
+/* Flechas + barra de progreso bajo el carrusel, centradas (patrón tiffany.com) */
+.rail-nav { display: none; }
+@media (min-width: 960px) {
+  .rail-nav { display: flex; align-items: center; gap: 22px; max-width: 460px; margin: 36px auto 0; padding-inline: var(--gutter); }
+}
+.chev { flex: none; width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; color: var(--ink-2); transition: color .2s var(--ease); }
+.chev:hover { color: var(--ink); }
+.chev svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.2; }
+.rail-track { flex: 1; height: 1px; background: var(--line); position: relative; }
+.rail-thumb { position: absolute; top: 0; left: 0; height: 1px; width: 25%; background: var(--ink); transition: left .2s var(--ease); }
 
 /* ---------- Categorías ---------- */
 .cats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 @media (min-width: 900px) { .cats { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; } }
-.cat { display: grid; gap: 14px; }
+.cat { display: grid; gap: 20px; justify-items: center; text-align: center; }
 .cat .art { aspect-ratio: 4 / 5; transition: transform .8s var(--ease); }
-.cat-media { overflow: hidden; }
+.cat-media { overflow: hidden; width: 100%; }
 @media (hover: hover) { .cat:hover .art { transform: scale(1.03); } }
-.cat-name { font-family: var(--f-display); font-size: var(--t-h3); }
+.cat-name { font-size: var(--t-label); letter-spacing: var(--label-track); text-transform: uppercase; font-weight: 500; }
 
-/* ---------- Bloque de colección ---------- */
-.feature { display: grid; gap: 28px; align-items: center; }
-.feature .art { aspect-ratio: 4 / 5; }
-.feature-copy { display: grid; gap: 18px; justify-items: start; max-width: 44ch; }
+/* ---------- Bloque de colección: a sangre completa, copy centrado
+   (patrón tiffany.com: imagen a borde, texto centrado vertical y horizontal) ---------- */
+.feature-full { display: grid; }
+.feature-full .feature-media { background: var(--surface); }
+.feature-full .feature-media .art { aspect-ratio: 4 / 5; }
+.feature-full .feature-copy-wrap { display: flex; align-items: center; justify-content: center; padding: 40px var(--gutter); }
+.feature-full .feature-copy { display: grid; gap: 18px; justify-items: center; text-align: center; max-width: 40ch; }
 @media (min-width: 900px) {
-  .feature { grid-template-columns: 1.15fr 1fr; gap: clamp(40px, 7vw, 120px); }
-  .feature.reverse .feature-media { order: 2; }
-  .feature .art { aspect-ratio: 5 / 6; }
+  .feature-full { grid-template-columns: 1fr 1fr; }
+  .feature-full.reverse .feature-media { order: 2; }
+  .feature-full .feature-media .art { aspect-ratio: auto; height: 100%; }
 }
 
 /* ---------- Experiencia ---------- */
 .experience { background: var(--surface); padding-block: var(--section); margin-top: var(--section); }
 .exp-grid { display: grid; gap: 40px; }
 @media (min-width: 900px) { .exp-grid { grid-template-columns: repeat(3, 1fr); gap: 56px; } }
-.exp { display: grid; gap: 14px; justify-items: start; align-content: start; }
+.exp { display: grid; gap: 14px; justify-items: center; align-content: start; text-align: center; }
 .exp-icon { width: 36px; height: 36px; fill: none; stroke: var(--accent); stroke-width: 1.1; stroke-linecap: round; stroke-linejoin: round; transition: stroke .4s var(--ease); }
 .exp p { color: var(--ink-2); max-width: 36ch; }
 
@@ -322,7 +358,7 @@ p { margin: 0; }
 .newsletter form { display: flex; width: 100%; max-width: 460px; border-bottom: 1px solid var(--ink); }
 .newsletter input { flex: 1; min-width: 0; border: 0; background: transparent; padding: 14px 0; font-size: 16px; }
 .newsletter input:focus { outline: none; }
-.newsletter button { font-size: var(--t-label); letter-spacing: .16em; text-transform: uppercase; padding-inline: 8px; }
+.newsletter button { font-size: var(--t-label); letter-spacing: var(--label-track); text-transform: uppercase; padding-inline: 8px; }
 .form-note { font-size: var(--t-small); color: var(--muted); min-height: 1.5em; }
 
 /* ---------- Footer ---------- */
@@ -332,7 +368,7 @@ p { margin: 0; }
 .foot-brand { grid-column: 1 / -1; display: grid; gap: 14px; align-content: start; }
 @media (min-width: 900px) { .foot-brand { grid-column: auto; } }
 .foot-brand p { color: var(--muted); font-size: var(--t-small); max-width: 32ch; }
-.foot-col h4 { margin: 0 0 14px; font-size: var(--t-label); letter-spacing: .16em; text-transform: uppercase; font-weight: 500; }
+.foot-col h4 { margin: 0 0 14px; font-size: var(--t-label); letter-spacing: var(--label-track); text-transform: uppercase; font-weight: 500; }
 .foot-col ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 9px; font-size: var(--t-small); color: var(--ink-2); }
 .foot-bottom { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); padding-block: 20px 28px; font-size: .75rem; color: var(--muted); }
 .pay { display: flex; gap: 8px; }
@@ -347,11 +383,11 @@ p { margin: 0; }
 @media (min-width: 960px) { .plp { grid-template-columns: 240px minmax(0, 1fr); gap: 48px; } }
 .toolbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; border-block: 1px solid var(--line); padding-block: 10px; margin-bottom: 28px; }
 .toolbar select { border: 0; background: transparent; font-size: var(--t-small); padding: 6px 2px; cursor: pointer; }
-.filter-btn { font-size: var(--t-label); letter-spacing: .14em; text-transform: uppercase; display: inline-flex; gap: 8px; align-items: center; min-height: 40px; }
+.filter-btn { font-size: var(--t-label); letter-spacing: var(--label-track); text-transform: uppercase; display: inline-flex; gap: 8px; align-items: center; min-height: 40px; }
 .filter-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.2; }
 .filters { display: grid; gap: 0; align-content: start; }
 .filters details { border-bottom: 1px solid var(--line); }
-.filters summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; padding: 16px 0; font-size: var(--t-label); letter-spacing: .14em; text-transform: uppercase; font-weight: 500; }
+.filters summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; padding: 16px 0; font-size: var(--t-label); letter-spacing: var(--label-track); text-transform: uppercase; font-weight: 500; }
 .filters summary::-webkit-details-marker { display: none; }
 .filters summary::after { content: "+"; font-weight: 300; font-size: 1rem; line-height: 1; }
 .filters details[open] summary::after { content: "−"; }
@@ -390,7 +426,11 @@ p { margin: 0; }
   margin-inline: calc(var(--gutter) * -1);
 }
 .gallery-track::-webkit-scrollbar { display: none; }
-.gallery-track .art { aspect-ratio: 4 / 5; scroll-snap-align: start; }
+/* padding-top en vez de aspect-ratio: en algunos Chromium, aspect-ratio dentro de un
+   grid item no pinta la imagen hasta un reflow manual. Esta técnica clásica no lo sufre. */
+.gallery-track .art { position: relative; overflow: hidden; scroll-snap-align: start; }
+.gallery-track .art::before { content: ""; display: block; padding-top: 125%; }
+.gallery-track .art img { position: absolute; inset: 0; }
 .dots { display: flex; justify-content: center; gap: 8px; }
 .dots span { width: 6px; height: 6px; border-radius: 50%; background: var(--line); transition: background .3s; }
 .dots span[data-on="true"] { background: var(--ink); }
@@ -406,7 +446,7 @@ p { margin: 0; }
 .buy-head { display: grid; gap: 10px; }
 .buy-price { font-size: 1.05rem; font-variant-numeric: tabular-nums; }
 .buy-lead { color: var(--ink-2); max-width: 46ch; }
-.opt-label { display: flex; justify-content: space-between; font-size: var(--t-label); letter-spacing: .14em; text-transform: uppercase; margin-bottom: 10px; }
+.opt-label { display: flex; justify-content: space-between; font-size: var(--t-label); letter-spacing: var(--label-track); text-transform: uppercase; margin-bottom: 10px; }
 .opt-label b { font-weight: 400; letter-spacing: .04em; text-transform: none; color: var(--muted); font-size: var(--t-small); }
 .swatches, .sizes { display: flex; flex-wrap: wrap; gap: 10px; }
 .swatch { width: 34px; height: 34px; border-radius: 50%; padding: 3px; border: 1px solid transparent; }
@@ -426,7 +466,7 @@ p { margin: 0; }
 .perks svg { width: 18px; height: 18px; flex: none; fill: none; stroke: var(--ink); stroke-width: 1.1; }
 .acc details { border-top: 1px solid var(--line); }
 .acc details:last-child { border-bottom: 1px solid var(--line); }
-.acc summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; padding: 16px 0; font-size: var(--t-label); letter-spacing: .14em; text-transform: uppercase; }
+.acc summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; padding: 16px 0; font-size: var(--t-label); letter-spacing: var(--label-track); text-transform: uppercase; }
 .acc summary::-webkit-details-marker { display: none; }
 .acc summary::after { content: "+"; font-weight: 300; font-size: 1rem; line-height: 1; }
 .acc details[open] summary::after { content: "−"; }
@@ -470,8 +510,8 @@ p { margin: 0; }
 .level ul { list-style: none; margin: 0; padding: 0; }
 .level li > a, .level li > button { display: flex; width: 100%; justify-content: space-between; align-items: center; padding: 14px 0; font-family: var(--f-display); font-size: 1.45rem; text-align: left; }
 .level .sub li > a { font-family: var(--f-body); font-size: 1rem; padding: 11px 0; }
-.level h4 { margin: 18px 0 4px; font-size: var(--t-label); letter-spacing: .16em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
-.back { font-size: var(--t-label); letter-spacing: .14em; text-transform: uppercase; padding: 14px 0; display: inline-flex; gap: 8px; }
+.level h4 { margin: 18px 0 4px; font-size: var(--t-label); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--muted); font-weight: 500; }
+.back { font-size: var(--t-label); letter-spacing: var(--label-track); text-transform: uppercase; padding: 14px 0; display: inline-flex; gap: 8px; }
 .drawer-foot { margin-top: auto; padding-top: 24px; display: grid; gap: 14px; font-size: var(--t-small); border-top: 1px solid var(--line); }
 .drawer-foot .lang { display: flex; margin: 0; }
 .drawer-foot .art { aspect-ratio: 16 / 9; }
@@ -502,7 +542,7 @@ p { margin: 0; }
 .style-toggle {
   position: fixed; left: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 80;
   background: var(--white); border: 1px solid var(--ink); padding: 10px 14px;
-  font-size: .6875rem; letter-spacing: .14em; text-transform: uppercase;
+  font-size: .6875rem; letter-spacing: var(--label-track); text-transform: uppercase;
   display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 6px 24px rgba(27,26,24,.12);
 }
 .style-toggle i { width: 12px; height: 12px; border-radius: 50%; background: var(--accent); display: inline-block; }
@@ -516,7 +556,7 @@ body[data-pdp="true"] .style-toggle { bottom: calc(84px + env(safe-area-inset-bo
 }
 body[data-pdp="true"] .style-panel { bottom: calc(134px + env(safe-area-inset-bottom, 0px)); }
 @media (min-width: 960px) { body[data-pdp="true"] .style-panel { bottom: 66px; } }
-.style-panel h3 { font-family: var(--f-body); font-size: var(--t-label); letter-spacing: .16em; text-transform: uppercase; font-weight: 500; }
+.style-panel h3 { font-family: var(--f-body); font-size: var(--t-label); letter-spacing: var(--label-track); text-transform: uppercase; font-weight: 500; }
 .style-panel p { font-size: .8rem; color: var(--muted); line-height: 1.5; }
 .type-opts { display: grid; gap: 8px; }
 .type-opt { border: 1px solid var(--line); padding: 10px 12px; text-align: left; display: grid; gap: 2px; transition: border-color .2s; }
@@ -527,7 +567,7 @@ body[data-pdp="true"] .style-panel { bottom: calc(134px + env(safe-area-inset-bo
 .color-opt { display: grid; gap: 6px; justify-items: center; font-size: .68rem; color: var(--ink-2); padding: 6px 2px; border: 1px solid transparent; }
 .color-opt i { width: 32px; height: 32px; border-radius: 50%; display: block; }
 .color-opt[aria-pressed="true"] { border-color: var(--ink); }
-.panel-close { justify-self: end; font-size: var(--t-label); letter-spacing: .14em; text-transform: uppercase; }
+.panel-close { justify-self: end; font-size: var(--t-label); letter-spacing: var(--label-track); text-transform: uppercase; }
 
 /* ---------- Movimiento ---------- */
 .reveal { animation: rise .7s var(--ease) both; }

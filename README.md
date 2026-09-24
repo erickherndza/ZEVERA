@@ -13,7 +13,7 @@ Sirve para que la clienta apruebe estructura, tipografía, color y experiencia *
 
 ## Provisional
 - Logo: marca tipográfica "ZB CONCEP" hasta recibir el logo oficial.
-- Fotos: dibujos vectoriales en formato 4:5 que marcan dónde va cada foto real.
+- Fotos: banco de imágenes (magnific.com) en formato 4:5, solo para mostrar composición y tono. Se reemplazan por las fotos reales del catálogo — mismo lugar, mismo recorte.
 - Productos, precios y colecciones: contenido de ejemplo.
 
 ## Ver en local
@@ -24,6 +24,7 @@ Abrir `index.html` en el navegador. No necesita instalación ni servidor.
 index.html        estructura base
 css/styles.css    tokens de diseño y componentes
 js/data.js        productos, colecciones y textos ES/EN
-js/art.js         imágenes provisionales (SVG)
+js/art.js         imágenes provisionales (fotos de banco)
+assets/img/       fotos de banco usadas en el demo
 js/app.js         rutas, filtros, bolsa, menú y panel de estilo
 ```
