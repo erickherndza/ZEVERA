@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ZB Concep — imágenes del demo
+   ZEVERA — imágenes del demo
    Fotos de banco (magnific.com) usadas como marcador visual, en el mismo
    formato y la misma lógica de tomas que pide la guía de fotografía:
    main = producto solo · alt = puesta · detail = macro · scale = escala

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ZB Concep — contenido del demo
+   ZEVERA — contenido del demo
    Todos los productos, precios y colecciones son de EJEMPLO.
    Se reemplazan por el catálogo real cuando se monte en Shopify.
    ========================================================================== */
@@ -124,7 +124,7 @@ ZB.i18n = {
     viewAll: "Ver todo",
     catTitle: "Comprar por categoría",
     discoverColl: "Descubrir la colección",
-    expTitle: "La experiencia ZB",
+    expTitle: "La experiencia ZEVERA",
     exp: [
       { t: "Asesoría por cita", d: "Te atendemos en persona o por videollamada para elegir la pieza correcta, sin prisa." },
       { t: "Grabado personalizado", d: "Iniciales, una fecha o una palabra. Grabamos a mano en 48 horas, sin costo en piezas seleccionadas." },
@@ -141,7 +141,7 @@ ZB.i18n = {
     nlBtn: "Suscribirme",
     nlOk: "Listo. Te escribiremos cuando haya una nueva colección.",
     nlErr: "Escribe un correo válido, por ejemplo nombre@correo.com",
-    foot: { help: "Ayuda", services: "Servicios", about: "Nosotros", legal: "Legal", helpL: ["Envíos y entregas", "Cambios y devoluciones", "Guía de tallas", "Preguntas frecuentes"], servL: ["Agendar cita", "Grabado", "Limpieza y reparación", "Empaque de regalo"], aboutL: ["Nuestra historia", "El taller", "Cuidado de tus joyas", "Contacto"], legalL: ["Términos y condiciones", "Privacidad", "Política de envíos"], brand: "Joyería fina hecha en Santo Domingo. Oro, plata y ámbar dominicano.", rights: "© 2026 ZB Concep RD. Todos los derechos reservados." },
+    foot: { help: "Ayuda", services: "Servicios", about: "Nosotros", legal: "Legal", helpL: ["Envíos y entregas", "Cambios y devoluciones", "Guía de tallas", "Preguntas frecuentes"], servL: ["Agendar cita", "Grabado", "Limpieza y reparación", "Empaque de regalo"], aboutL: ["Nuestra historia", "El taller", "Cuidado de tus joyas", "Contacto"], legalL: ["Términos y condiciones", "Privacidad", "Política de envíos"], brand: "Joyería fina hecha en Santo Domingo. Oro, plata y ámbar dominicano.", rights: "© 2026 ZEVERA. Todos los derechos reservados." },
     home: "Inicio",
     jewelry: "Joyería",
     plpIntro: "Anillos, aretes, collares y pulseras en oro de 14 quilates, plata 925 y ámbar dominicano. Todas las piezas incluyen estuche y certificado.",
@@ -214,7 +214,7 @@ ZB.i18n = {
     viewAll: "View all",
     catTitle: "Shop by category",
     discoverColl: "Discover the collection",
-    expTitle: "The ZB experience",
+    expTitle: "The ZEVERA experience",
     exp: [
       { t: "Advice by appointment", d: "Meet us in person or by video call to choose the right piece, at your own pace." },
       { t: "Personal engraving", d: "Initials, a date or a word. Hand-engraved in 48 hours, free on selected pieces." },
@@ -231,7 +231,7 @@ ZB.i18n = {
     nlBtn: "Subscribe",
     nlOk: "Done. We'll write when a new collection arrives.",
     nlErr: "Enter a valid email, for example name@mail.com",
-    foot: { help: "Help", services: "Services", about: "About", legal: "Legal", helpL: ["Shipping & delivery", "Exchanges & returns", "Size guide", "FAQ"], servL: ["Book a visit", "Engraving", "Cleaning & repair", "Gift wrapping"], aboutL: ["Our story", "The workshop", "Jewelry care", "Contact"], legalL: ["Terms & conditions", "Privacy", "Shipping policy"], brand: "Fine jewelry made in Santo Domingo. Gold, silver and Dominican amber.", rights: "© 2026 ZB Concep RD. All rights reserved." },
+    foot: { help: "Help", services: "Services", about: "About", legal: "Legal", helpL: ["Shipping & delivery", "Exchanges & returns", "Size guide", "FAQ"], servL: ["Book a visit", "Engraving", "Cleaning & repair", "Gift wrapping"], aboutL: ["Our story", "The workshop", "Jewelry care", "Contact"], legalL: ["Terms & conditions", "Privacy", "Shipping policy"], brand: "Fine jewelry made in Santo Domingo. Gold, silver and Dominican amber.", rights: "© 2026 ZEVERA. All rights reserved." },
     home: "Home",
     jewelry: "Jewelry",
     plpIntro: "Rings, earrings, necklaces and bracelets in 14k gold, 925 silver and Dominican amber. Every piece comes with a case and certificate.",

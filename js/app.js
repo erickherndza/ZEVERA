@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ZB Concep — lógica del demo
+   ZEVERA — lógica del demo
    Rutas por hash: #inicio · #coleccion(-filtro) · #producto-<id>
    ========================================================================== */
 
@@ -134,7 +134,7 @@
       <div class="wrap">
         <div class="foot-grid">
           <div class="foot-brand">
-            <span class="logo-mark" style="font-size:1.35rem">ZB CONCEP</span>
+            <span class="logo-mark" style="font-size:1.35rem">ZEVERA</span>
             <p>${f.brand}</p>
             <p>WhatsApp · 829-763-4955</p>
           </div>
@@ -232,7 +232,7 @@
           <div class="exp-grid">
             ${t.exp.map((e, i) => `<div class="exp">${[ICON.cal, ICON.pen, ICON.gift][i]}<h3>${e.t}</h3><p>${e.d}</p></div>`).join("")}
           </div>
-          <div style="margin-top:44px;text-align:center"><a class="btn btn-primary" target="_blank" rel="noopener" href="${waLink(state.lang === "es" ? "Hola, quiero agendar una cita en ZB Concep." : "Hi, I'd like to book a visit at ZB Concep.")}">${t.book}</a></div>
+          <div style="margin-top:44px;text-align:center"><a class="btn btn-primary" target="_blank" rel="noopener" href="${waLink(state.lang === "es" ? "Hola, quiero agendar una cita en ZEVERA." : "Hi, I'd like to book a visit at ZEVERA.")}">${t.book}</a></div>
         </div>
       </section>
 
@@ -391,7 +391,7 @@
       p.spec.ct ? [t.specL.ct, p.spec.ct] : null,
       [t.specL.weight, p.spec.weight],
       [t.specL.size, p.spec.size],
-      [t.specL.ref, "ZB-" + p.id.toUpperCase().slice(0, 8)]
+      [t.specL.ref, "ZEVERA-" + p.id.toUpperCase().slice(0, 8)]
     ].filter(Boolean);
     const pairs = (ZB.pairs[p.id] || []).map(byId).filter(Boolean);
     const waMsg = state.lang === "es" ? `Hola, me interesa el ${p.es.name} (${money(p.price)}).` : `Hi, I'm interested in the ${p.en.name} (${money(p.price)}).`;
@@ -524,7 +524,7 @@
   function openMenu() {
     const t = T(), n = t.nav, m = t.mega;
     const html = `
-      <div class="drawer-top"><span class="logo-mark" style="font-size:1.1rem">ZB CONCEP</span><button class="icon-btn" data-close aria-label="${t.close}">${ICON.close}</button></div>
+      <div class="drawer-top"><span class="logo-mark" style="font-size:1.1rem">ZEVERA</span><button class="icon-btn" data-close aria-label="${t.close}">${ICON.close}</button></div>
       <div class="levels">
         <div class="level" data-level="1" data-pos="center">
           <ul>

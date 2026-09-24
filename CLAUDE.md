@@ -1,13 +1,13 @@
-# ZB Concep RD — Demo UX/UI
+# ZEVERA — Demo UX/UI
 
 Prototipo navegable (HTML/CSS/JS puro, sin build) de la futura tienda Shopify de
-**ZB Concep RD**, joyería en Santo Domingo. Es para que la clienta apruebe
+**ZEVERA**, joyería en Santo Domingo. Es para que la clienta apruebe
 estructura, tipografía, color y experiencia antes de programar el tema real.
 
 ## Dónde está
 
-- **Repo**: https://github.com/erickherndza/zbcocep (rama `main`)
-- **Demo en vivo (GitHub Pages)**: https://erickherndza.github.io/zbcocep/
+- **Repo**: https://github.com/erickherndza/ZEVERA (rama `main`)
+- **Demo en vivo (GitHub Pages)**: https://erickherndza.github.io/ZEVERA/
   Se despliega solo con cada `git push` a `main` (tarda 1–2 min).
 - **Local**: `python3 -m http.server 8743` desde esta carpeta y abrir
   `http://localhost:8743/index.html`. No sirve abrir el `file://` directo
@@ -119,7 +119,7 @@ assets/img/         fotos de banco (provisionales)
 3. Se le dio personalidad propia: logo y títulos en cursiva.
 4. Se subió el repo a GitHub y se activó GitHub Pages.
 5. Se agrandó el logo en escritorio a la escala de Tiffany.
-6. Se quitó la cinta superior "Demo de diseño para ZB Concep RD...".
+6. Se quitó la cinta superior "Demo de diseño para ZEVERA...".
 7. La clienta no aprobó el primer carrusel de "Novedades" (tenía
    encabezado propio, precio, favorito) → se rehizo como calco exacto del
    carrusel real de tiffany.com (ver sección de arriba).
