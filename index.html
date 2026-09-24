@@ -1,0 +1,63 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ZB Concep Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&family=Marcellus&family=Figtree:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="css/styles.css">
+
+<div class="demo-ribbon" id="demo-ribbon"></div>
+<div class="announce" id="announce"></div>
+
+<header class="site-header" id="site-header">
+  <div class="header-row">
+    <div class="header-left">
+      <button class="icon-btn only-mobile" id="menu-open" aria-label="Abrir menú">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+      </button>
+      <button class="icon-btn" id="search-btn" aria-label="Buscar">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
+      </button>
+      <div class="lang only-desktop" id="lang-desktop"></div>
+    </div>
+    <a class="logo" href="#inicio" aria-label="ZB Concep, inicio">
+      <span class="logo-mark">ZB CONCEP</span>
+      <span class="logo-sub" id="logo-sub">Joyería · Santo Domingo</span>
+    </a>
+    <div class="header-right">
+      <button class="icon-btn only-desktop" aria-label="Mi cuenta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20.5c1.2-4 4-5.8 7.5-5.8s6.3 1.8 7.5 5.8"/></svg>
+      </button>
+      <button class="icon-btn only-desktop" aria-label="Favoritos">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.3a4.3 4.3 0 0 1 7.5 2.5C19.5 15.4 12 20 12 20z"/></svg>
+      </button>
+      <button class="icon-btn bag-btn" id="bag-btn" aria-label="Bolsa de compras">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 12.5H6.2z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>
+        <span class="bag-count" id="bag-count">0</span>
+      </button>
+    </div>
+  </div>
+  <nav class="main-nav only-desktop" id="main-nav" aria-label="Principal"></nav>
+</header>
+
+<main id="app" tabindex="-1"></main>
+
+<footer class="site-footer" id="site-footer"></footer>
+
+<!-- Menú móvil por niveles -->
+<div class="drawer-backdrop" id="backdrop" hidden></div>
+<aside class="menu-drawer" id="menu-drawer" aria-label="Menú" hidden></aside>
+
+<!-- Bolsa -->
+<aside class="bag-drawer" id="bag-drawer" aria-label="Bolsa" hidden></aside>
+
+<!-- Barra fija de compra en móvil (ficha de producto) -->
+<div class="sticky-buy" id="sticky-buy" hidden></div>
+
+<!-- Panel de estilo del demo -->
+<button class="style-toggle" id="style-toggle" aria-expanded="false" aria-controls="style-panel"></button>
+<section class="style-panel" id="style-panel" hidden></section>
+
+<script src="js/data.js"></script>
+<script src="js/art.js"></script>
+<script src="js/app.js"></script>
