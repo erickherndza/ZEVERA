@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ZEVERA — lógica del demo
+   ZAVERA — lógica del demo
    Rutas por hash: #inicio · #coleccion(-filtro) · #producto-<id>
    ========================================================================== */
 
@@ -16,8 +16,6 @@
 
   const state = {
     lang: store.get("lang", "es"),
-    type: store.get("type", "a"),
-    accent: store.get("accent", "esmeralda"),
     bag: store.get("bag", []),
     favs: new Set(store.get("favs", [])),
     filters: { type: new Set(), metal: new Set(), stone: new Set(), coll: new Set(), price: new Set() },
@@ -46,11 +44,8 @@
     gift: '<svg viewBox="0 0 36 36" class="exp-icon" aria-hidden="true"><rect x="6" y="14" width="24" height="16"/><path d="M4 10h28v4H4zM18 10v20"/><path d="M18 10c-3-5-9-5-8-1 1 2 5 1 8 1zM18 10c3-5 9-5 8-1-1 2-5 1-8 1z"/></svg>'
   };
 
-  /* ---------- Estilo (tipografía + color de firma) ---------- */
+  /* ---------- Idioma del documento ---------- */
   function applyStyle() {
-    document.documentElement.dataset.type = state.type;
-    const a = ZB.accents.find(x => x.id === state.accent) || ZB.accents[0];
-    document.documentElement.style.setProperty("--accent", a.hex);
     document.documentElement.lang = state.lang;
   }
 
@@ -133,7 +128,7 @@
       <div class="wrap">
         <div class="foot-grid">
           <div class="foot-brand">
-            <span class="logo-mark" style="font-size:1.35rem">ZEVERA</span>
+            <svg class="logo-mark logo-foot" aria-hidden="true"><use href="#zv-logo-v"/></svg>
             <p>${f.brand}</p>
             <p>WhatsApp · 829-763-4955</p>
           </div>
@@ -146,29 +141,7 @@
         </div>
       </div>`;
 
-    renderStylePanel();
     updateBagCount();
-  }
-
-  function renderStylePanel() {
-    const s = T().style;
-    const a = ZB.accents.find(x => x.id === state.accent) || ZB.accents[0];
-    $("#style-toggle").innerHTML = `<i aria-hidden="true"></i>${s.btn}`;
-    $("#style-panel").innerHTML = `
-      <div><h3>${s.title}</h3><p style="margin-top:6px">${s.intro}</p></div>
-      <div class="type-opts" role="group" aria-label="${s.type}">
-        <span class="label muted">${s.type}</span>
-        ${ZB.typePairs.map(tp => `<button class="type-opt" data-type="${tp.id}" aria-pressed="${state.type === tp.id}">
-            <span class="sample" style="font-family:${tp.display};font-style:${tp.ital ? "italic" : "normal"}">Anillo Solitario Brisa</span>
-            <span class="names">${tp.label} · ${tp.names}</span></button>`).join("")}
-      </div>
-      <div role="group" aria-label="${s.color}">
-        <span class="label muted">${s.color} · ${L(a)} ${a.hex}</span>
-        <div class="color-opts" style="margin-top:10px">
-          ${ZB.accents.map(c => `<button class="color-opt" data-accent="${c.id}" aria-pressed="${state.accent === c.id}"><i style="background:${c.hex}"></i>${L(c)}</button>`).join("")}
-        </div>
-      </div>
-      <button class="panel-close link-line" id="style-close">${s.done}</button>`;
   }
 
   /* ---------- Portada ---------- */
@@ -177,16 +150,23 @@
     const news = ZB.products.filter(p => p.isNew);
     const ph = t.photo;
     return `
-      <section class="hero">
+      <section class="hero" id="hero" aria-roledescription="carousel" aria-label="${t.heroLabel}">
         <div class="hero-media">
-          ${ZB.art.scene("hero", true, "hero-d", ph)}
-          ${ZB.art.scene("hero", false, "hero-m", ph)}
+          ${t.heroSlides.map((s, i) => `
+          <div class="hero-slide" data-on="${i === 0}" role="group" aria-roledescription="slide" aria-label="${i + 1} / ${t.heroSlides.length}">
+            ${ZB.art.heroSlide(i, ph)}
+            <div class="hero-copy">
+              <span class="label">${s.eyebrow}</span>
+              <h1>${s.title}</h1>
+              <p>${s.text}</p>
+              <a class="btn btn-light" href="${s.href}">${t.shop}</a>
+            </div>
+          </div>`).join("")}
         </div>
-        <div class="hero-copy reveal">
-          <span class="label">${t.heroEyebrow}</span>
-          <h1>${t.heroTitle}</h1>
-          <p>${t.heroText}</p>
-          <a class="btn btn-light" href="#coleccion-esencial">${t.shop}</a>
+        <div class="hero-ctrl">
+          <button class="chev" data-hero="-1" aria-label="${t.back}">${ICON.left}</button>
+          <div class="hero-dots">${t.heroSlides.map((s, i) => `<button data-hero-go="${i}" data-on="${i === 0}" aria-label="${i + 1}"></button>`).join("")}</div>
+          <button class="chev" data-hero="1" aria-label="${t.next}">${ICON.right}</button>
         </div>
       </section>
 
@@ -225,20 +205,20 @@
         </div>
       </section>`).join("")}
 
-      <section class="experience">
+      <section class="experience type-classic">
         <div class="wrap">
           <div class="section-head center"><h2>${t.expTitle}</h2></div>
           <div class="exp-grid">
             ${t.exp.map((e, i) => `<div class="exp">${[ICON.cal, ICON.pen, ICON.gift][i]}<h3>${e.t}</h3><p>${e.d}</p></div>`).join("")}
           </div>
-          <div style="margin-top:44px;text-align:center"><a class="btn btn-primary" target="_blank" rel="noopener" href="${waLink(state.lang === "es" ? "Hola, quiero agendar una cita en ZEVERA." : "Hi, I'd like to book a visit at ZEVERA.")}">${t.book}</a></div>
+          <div style="margin-top:44px;text-align:center"><a class="btn btn-primary" target="_blank" rel="noopener" href="${waLink(state.lang === "es" ? "Hola, quiero agendar una cita en ZAVERA." : "Hi, I'd like to book a visit at ZAVERA.")}">${t.book}</a></div>
         </div>
       </section>
 
-      <section class="section wrap story" id="historia-sec">
+      <section class="section wrap story type-classic" id="historia-sec">
         <span class="label muted">${t.storyEyebrow}</span>
         <blockquote>${t.story}</blockquote>
-        <span class="rule" aria-hidden="true"></span>
+        <svg class="orn" aria-hidden="true"><use href="#zv-iso"/></svg>
         <p class="muted">${t.storyText}</p>
         <a class="link-line label" href="#inicio">${t.readMore}</a>
       </section>
@@ -390,7 +370,7 @@
       p.spec.ct ? [t.specL.ct, p.spec.ct] : null,
       [t.specL.weight, p.spec.weight],
       [t.specL.size, p.spec.size],
-      [t.specL.ref, "ZEVERA-" + p.id.toUpperCase().slice(0, 8)]
+      [t.specL.ref, "ZAVERA-" + p.id.toUpperCase().slice(0, 8)]
     ].filter(Boolean);
     const pairs = (ZB.pairs[p.id] || []).map(byId).filter(Boolean);
     const waMsg = state.lang === "es" ? `Hola, me interesa el ${p.es.name} (${money(p.price)}).` : `Hi, I'm interested in the ${p.en.name} (${money(p.price)}).`;
@@ -523,7 +503,7 @@
   function openMenu() {
     const t = T(), n = t.nav, m = t.mega;
     const html = `
-      <div class="drawer-top"><span class="logo-mark" style="font-size:1.1rem">ZEVERA</span><button class="icon-btn" data-close aria-label="${t.close}">${ICON.close}</button></div>
+      <div class="drawer-top"><svg class="logo-mark logo-drawer" aria-hidden="true"><use href="#zv-logo-h"/></svg><button class="icon-btn" data-close aria-label="${t.close}">${ICON.close}</button></div>
       <div class="levels">
         <div class="level" data-level="1" data-pos="center">
           <ul>
@@ -607,7 +587,21 @@
   }
 
   /* ---------- Rutas ---------- */
+  /* ---------- Slider de portada ---------- */
+  const hero = { i: 0, timer: null };
+  function heroGo(n) {
+    clearInterval(hero.timer); hero.timer = null;
+    const slides = $$(".hero-slide"); if (!slides.length) return;
+    hero.i = (n + slides.length) % slides.length;
+    slides.forEach((s, k) => s.dataset.on = String(k === hero.i));
+    $$(".hero-dots button").forEach((b, k) => b.dataset.on = String(k === hero.i));
+    if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      hero.timer = setInterval(() => { if (!document.hidden) heroGo(hero.i + 1); }, 6500);
+    }
+  }
+
   function route() {
+    clearInterval(hero.timer); hero.timer = null;
     const hash = (location.hash || "#inicio").slice(1);
     const app = $("#app");
     const sb = $("#sticky-buy"); sb.hidden = true; sb.dataset.show = "false";
@@ -647,6 +641,7 @@
     route.lastPlp = null;
     app.innerHTML = viewHome();
     bindRail();
+    heroGo(0);
     if (hash === "historia") requestAnimationFrame(() => $("#historia-sec")?.scrollIntoView({ behavior: "smooth" }));
   }
 
@@ -707,6 +702,9 @@
       return;
     }
 
+    if (el.dataset.hero) return heroGo(hero.i + Number(el.dataset.hero));
+    if (el.dataset.heroGo) return heroGo(Number(el.dataset.heroGo));
+
     if (el.dataset.rail) {
       const r = $("#rail"); r.scrollBy({ left: Number(el.dataset.rail) * r.clientWidth * .8, behavior: "smooth" });
       return;
@@ -738,16 +736,6 @@
     }
     if (el.matches("#checkout")) return toast(T().checkoutNote);
 
-    if (el.matches("#style-toggle")) {
-      const p = $("#style-panel"); p.hidden = !p.hidden; el.setAttribute("aria-expanded", String(!p.hidden)); return;
-    }
-    if (el.matches("#style-close")) { $("#style-panel").hidden = true; $("#style-toggle").setAttribute("aria-expanded", "false"); return; }
-    if (el.dataset.type && el.classList.contains("type-opt")) {
-      state.type = el.dataset.type; store.set("type", state.type); applyStyle(); renderStylePanel(); $("#style-panel").hidden = false; return;
-    }
-    if (el.dataset.accent) {
-      state.accent = el.dataset.accent; store.set("accent", state.accent); applyStyle(); renderStylePanel(); $("#style-panel").hidden = false; return;
-    }
 
     // Navegar a un enlace interno cierra los paneles
     if (el.tagName === "A" && el.getAttribute("href")?.startsWith("#")) {
@@ -799,7 +787,6 @@
   document.addEventListener("keydown", e => {
     if (e.key === "Escape") {
       closeDrawers();
-      $("#style-panel").hidden = true;
       $("#search-bar")?.remove();
     }
   });

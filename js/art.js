@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ZEVERA — imágenes del demo
+   ZAVERA — imágenes del demo
    Fotos de banco (magnific.com) usadas como marcador visual, en el mismo
    formato y la misma lógica de tomas que pide la guía de fotografía:
    main = producto solo · alt = puesta · detail = macro · scale = escala
@@ -46,6 +46,14 @@
     esencial: { file: "flatlay-chain.jpg",   pos: "center 42%" }
   };
 
+  // Slider de portada: las 3 fotos grandes del libro de marca (págs. 12, 13 y 14).
+  // pos = punto focal en escritorio (recorte 16:7) y en móvil (recorte 4:5).
+  const HERO = [
+    { file: "zavera-hero-1.jpg", pos: "center 62%", posM: "58% center" },
+    { file: "zavera-hero-2.jpg", pos: "center 40%", posM: "48% center" },
+    { file: "zavera-hero-3.jpg", pos: "center 35%", posM: "78% center" }
+  ];
+
   function typeIndex(p) {
     const ids = ZB.products.filter(x => x.type === p.type).map(x => x.id);
     const i = ids.indexOf(p.id);
@@ -72,6 +80,14 @@
   }
 
   ZB.art = {
+    heroSlide(i, label = "") {
+      const h = HERO[i];
+      return `<div class="art hero-art"><picture>
+        <source media="(max-width: 759px)" srcset="${BASE}${h.file}" sizes="100vw">
+        <img src="${BASE}${h.file}" alt="" decoding="async" style="--pos:${h.pos};--pos-m:${h.posM}">
+      </picture>${tag(label)}</div>`;
+    },
+    heroCount: HERO.length,
     product(p, variant = "main", cls = "", label = "") {
       const f = productFrame(p, variant);
       return `<div class="art ${cls}">${img(f.file, f.pos)}${tag(label)}</div>`;

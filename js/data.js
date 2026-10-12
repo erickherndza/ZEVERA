@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ZEVERA — contenido del demo
+   ZAVERA — contenido del demo
    Todos los productos, precios y colecciones son de EJEMPLO.
    Se reemplazan por el catálogo real cuando se monte en Shopify.
    ========================================================================== */
@@ -115,6 +115,11 @@ ZB.i18n = {
     announce: "Envío gratis en Santo Domingo · Grabado personalizado en 48 horas",
     nav: { joyeria: "Joyería", colecciones: "Colecciones", compromiso: "Compromiso", regalos: "Regalos", historia: "Nuestra historia", citas: "Agendar cita" },
     mega: { cat: "Por categoría", coll: "Por colección", feat: "Destacados", all: "Ver toda la joyería", nuevo: "Novedades", grabar: "Para personalizar", regalo: "Regalos bajo RD$ 15,000", featTitle: "Colección Ámbar", featText: "Ámbar dominicano en plata y oro.", discover: "Descubrir" },
+    heroSlides: [
+      { eyebrow: "Nueva colección", title: "Esenciales para todos los días", text: "Cadenas finas, perlas y diamantes pensados para acompañarte toda la vida.", href: "#coleccion-esencial" },
+      { eyebrow: "Joyas de generación", title: "Perlas que se heredan", text: "Piezas con historia, hechas para pasar de una generación a la siguiente.", href: "#coleccion-regalo" },
+      { eyebrow: "Colección Brisa", title: "Oro que atrapa la luz", text: "Líneas finas en oro de 14 quilates, diseñadas para usarse todos los días.", href: "#coleccion-brisa" }
+    ],
     heroEyebrow: "Nueva colección",
     heroTitle: "Perlas, la elegancia que no pasa de moda",
     heroText: "Perlas cultivadas engastadas a mano en plata y oro. Piezas esenciales para acompañarte toda la vida.",
@@ -124,7 +129,7 @@ ZB.i18n = {
     viewAll: "Ver todo",
     catTitle: "Comprar por categoría",
     discoverColl: "Descubrir la colección",
-    expTitle: "La experiencia ZEVERA",
+    expTitle: "La experiencia ZAVERA",
     exp: [
       { t: "Asesoría por cita", d: "Te atendemos en persona o por videollamada para elegir la pieza correcta, sin prisa." },
       { t: "Grabado personalizado", d: "Iniciales, una fecha o una palabra. Grabamos a mano en 48 horas, sin costo en piezas seleccionadas." },
@@ -141,7 +146,7 @@ ZB.i18n = {
     nlBtn: "Suscribirme",
     nlOk: "Listo. Te escribiremos cuando haya una nueva colección.",
     nlErr: "Escribe un correo válido, por ejemplo nombre@correo.com",
-    foot: { help: "Ayuda", services: "Servicios", about: "Nosotros", legal: "Legal", helpL: ["Envíos y entregas", "Cambios y devoluciones", "Guía de tallas", "Preguntas frecuentes"], servL: ["Agendar cita", "Grabado", "Limpieza y reparación", "Empaque de regalo"], aboutL: ["Nuestra historia", "El taller", "Cuidado de tus joyas", "Contacto"], legalL: ["Términos y condiciones", "Privacidad", "Política de envíos"], brand: "Joyería fina hecha en Santo Domingo. Oro, plata y ámbar dominicano.", rights: "© 2026 ZEVERA. Todos los derechos reservados." },
+    foot: { help: "Ayuda", services: "Servicios", about: "Nosotros", legal: "Legal", helpL: ["Envíos y entregas", "Cambios y devoluciones", "Guía de tallas", "Preguntas frecuentes"], servL: ["Agendar cita", "Grabado", "Limpieza y reparación", "Empaque de regalo"], aboutL: ["Nuestra historia", "El taller", "Cuidado de tus joyas", "Contacto"], legalL: ["Términos y condiciones", "Privacidad", "Política de envíos"], brand: "Joyería fina hecha en Santo Domingo. Oro, plata y ámbar dominicano.", rights: "© 2026 ZAVERA. Todos los derechos reservados." },
     home: "Inicio",
     jewelry: "Joyería",
     plpIntro: "Anillos, aretes, collares y pulseras en oro de 14 quilates, plata 925 y ámbar dominicano. Todas las piezas incluyen estuche y certificado.",
@@ -196,15 +201,20 @@ ZB.i18n = {
     account: "Mi cuenta",
     searchPh: "Buscar anillos, ámbar, oro rosa…",
     photo: "Foto provisional",
+    heroLabel: "Joyas destacadas",
     engravedWith: "Grabado",
     giftWrap: "Empaque de regalo",
-    remove: "Quitar",
-    style: { btn: "Estilo del demo", title: "Prueba el estilo", intro: "Cambia la tipografía y el color de firma para ver cómo se siente la tienda. La elección se aplica a todas las páginas.", type: "Tipografía", color: "Color de firma", done: "Listo" }
+    remove: "Quitar"
   },
   en: {
     announce: "Free delivery in Santo Domingo · Personalized engraving in 48 hours",
     nav: { joyeria: "Jewelry", colecciones: "Collections", compromiso: "Engagement", regalos: "Gifts", historia: "Our story", citas: "Book a visit" },
     mega: { cat: "By category", coll: "By collection", feat: "Featured", all: "Shop all jewelry", nuevo: "New arrivals", grabar: "To personalize", regalo: "Gifts under RD$ 15,000", featTitle: "Ámbar Collection", featText: "Dominican amber in silver and gold.", discover: "Discover" },
+    heroSlides: [
+      { eyebrow: "New collection", title: "Everyday essentials", text: "Fine chains, pearls and diamonds made to stay with you for life.", href: "#coleccion-esencial" },
+      { eyebrow: "Jewels for generations", title: "Pearls to be inherited", text: "Pieces with a story, made to pass from one generation to the next.", href: "#coleccion-regalo" },
+      { eyebrow: "Brisa Collection", title: "Gold that catches the light", text: "Fine 14k gold lines, designed to be worn every day.", href: "#coleccion-brisa" }
+    ],
     heroEyebrow: "New collection",
     heroTitle: "Pearls, elegance that never fades",
     heroText: "Hand-set cultured pearls in silver and gold. Essential pieces made to stay with you for life.",
@@ -214,7 +224,7 @@ ZB.i18n = {
     viewAll: "View all",
     catTitle: "Shop by category",
     discoverColl: "Discover the collection",
-    expTitle: "The ZEVERA experience",
+    expTitle: "The ZAVERA experience",
     exp: [
       { t: "Advice by appointment", d: "Meet us in person or by video call to choose the right piece, at your own pace." },
       { t: "Personal engraving", d: "Initials, a date or a word. Hand-engraved in 48 hours, free on selected pieces." },
@@ -231,7 +241,7 @@ ZB.i18n = {
     nlBtn: "Subscribe",
     nlOk: "Done. We'll write when a new collection arrives.",
     nlErr: "Enter a valid email, for example name@mail.com",
-    foot: { help: "Help", services: "Services", about: "About", legal: "Legal", helpL: ["Shipping & delivery", "Exchanges & returns", "Size guide", "FAQ"], servL: ["Book a visit", "Engraving", "Cleaning & repair", "Gift wrapping"], aboutL: ["Our story", "The workshop", "Jewelry care", "Contact"], legalL: ["Terms & conditions", "Privacy", "Shipping policy"], brand: "Fine jewelry made in Santo Domingo. Gold, silver and Dominican amber.", rights: "© 2026 ZEVERA. All rights reserved." },
+    foot: { help: "Help", services: "Services", about: "About", legal: "Legal", helpL: ["Shipping & delivery", "Exchanges & returns", "Size guide", "FAQ"], servL: ["Book a visit", "Engraving", "Cleaning & repair", "Gift wrapping"], aboutL: ["Our story", "The workshop", "Jewelry care", "Contact"], legalL: ["Terms & conditions", "Privacy", "Shipping policy"], brand: "Fine jewelry made in Santo Domingo. Gold, silver and Dominican amber.", rights: "© 2026 ZAVERA. All rights reserved." },
     home: "Home",
     jewelry: "Jewelry",
     plpIntro: "Rings, earrings, necklaces and bracelets in 14k gold, 925 silver and Dominican amber. Every piece comes with a case and certificate.",
@@ -286,22 +296,10 @@ ZB.i18n = {
     account: "My account",
     searchPh: "Search rings, amber, rose gold…",
     photo: "Placeholder photo",
+    heroLabel: "Featured jewelry",
     engravedWith: "Engraving",
     giftWrap: "Gift wrapping",
-    remove: "Remove",
-    style: { btn: "Demo style", title: "Try the style", intro: "Switch the typography and signature color to see how the store feels. Your choice applies to every page.", type: "Typography", color: "Signature color", done: "Done" }
+    remove: "Remove"
   }
 };
 
-ZB.typePairs = [
-  { id: "a", label: "A · Editorial clásica", names: "Cormorant Garamond + Jost", display: "'Cormorant Garamond', serif", ital: true },
-  { id: "b", label: "B · Grabado", names: "Marcellus + Figtree", display: "'Marcellus', serif", ital: false },
-  { id: "c", label: "C · Moderna sobria", names: "EB Garamond + Montserrat", display: "'EB Garamond', serif", ital: true }
-];
-
-ZB.accents = [
-  { id: "esmeralda", es: "Esmeralda", en: "Emerald", hex: "#1F3D36" },
-  { id: "champan",   es: "Champán",   en: "Champagne", hex: "#86683F" },
-  { id: "arena",     es: "Rosa arena", en: "Sand rose", hex: "#935F4E" },
-  { id: "noche",     es: "Azul noche", en: "Night blue", hex: "#1B2A41" }
-];

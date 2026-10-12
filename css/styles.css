@@ -1,39 +1,56 @@
 /* ==========================================================================
-   ZEVERA — Demo UX/UI
+   ZAVERA — Demo UX/UI
    Tokens de diseño. Todo el color y la tipografía salen de aquí.
    ========================================================================== */
 
+/* Paleta y tipografía del libro de marca ZAVERA (Koletta Studio).
+   Paleta: morado #311223 · crema #F9F3EA · rosa viejo #87646D · dorado del logo #99764B.
+   DECISIÓN: el tono burgundy del libro NO se usa en ninguna parte — compite con el
+   morado, que es el color principal. El morado se amplía solo con tonos de su propia
+   familia (matiz ~327°): #441B35 viene del patrón de marca del libro. */
 :root {
   color-scheme: light;
 
-  /* Neutros con un leve sesgo cálido */
-  --bg: #FBF9F6;
-  --surface: #F3EFE9;
-  --surface-2: #EAE4DB;
-  --ink: #1B1A18;
-  --ink-2: #3A3733;
-  --muted: #6F6A63;
-  --line: #E3DDD3;
-  --white: #FFFFFF;
+  /* Morado (principal) */
+  --plum: #311223;       /* fondos de marca, texto principal, botones */
+  --plum-2: #441B35;     /* tono del patrón de marca: superficies sobre morado, hover */
+  /* Crema */
+  --cream: #F9F3EA;
+  --cream-2: #F1E8DB;
+  --cream-3: #E7DAC8;
+  /* Dorado (logo) — ver contrastes en CLAUDE.md */
+  --gold: #99764B;       /* logo, filetes, iconos, ornamentos. 3.8:1 sobre crema → solo gráfico / texto grande */
+  --gold-ink: #7A5A32;   /* texto dorado sobre crema (5.7:1) */
+  --gold-soft: #C9A878;  /* texto dorado sobre morado (7.5:1) */
+  /* Rosa viejo */
+  --rose: #87646D;       /* acento suave: detalles, no texto pequeño sobre crema-2 */
 
-  /* Color de firma (se cambia desde el panel de estilo) */
-  --accent: #1F3D36;
-  --on-accent: #FFFFFF;
+  --bg: var(--cream);
+  --surface: var(--cream-2);
+  --surface-2: var(--cream-3);
+  --ink: var(--plum);
+  --ink-2: #4A2D3E;
+  --muted: #7A5761;      /* rosa viejo oscurecido para texto: 5.2:1 sobre crema */
+  --line: #E0D3BF;
+  --white: #FDFAF5;
 
-  /* Tipografía — combinación A por defecto
-     Trazado sobre tiffany.com [Observado, DevTools, 2026-09-24]: los titulares (Sterling)
-     usan tracking NEGATIVO (-1.28px en h1 de 40px ⇒ ~-0.03em), no positivo; el peso sube
-     con el tamaño (h1 500 / h2 325) en vez de bajar. Replicamos el patrón —tracking ajustado,
-     h1 más firme que h2— con tipografías propias (Sterling no tiene licencia pública). */
-  --f-display: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
-  --f-body: "Jost", "Helvetica Neue", Arial, sans-serif;
+  --accent: var(--gold);
+  --on-accent: var(--cream);
+
+  /* Tipografía de marca
+     Primaria  EARTHY       → serif de alto contraste, hairline. Sustituta web: Bodoni Moda.
+     Complementaria HIGH BILLION → sans geométrica extendida, solo mayúsculas. Sustituta web: Syncopate.
+     Párrafos: Raleway — es la tipografía con la que el propio libro de marca compone sus textos. */
+  --f-display: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+  --f-label: "Syncopate", "Raleway", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Raleway", "Helvetica Neue", Arial, sans-serif;
   --display-weight: 400;
-  --display-style: italic;
-  --display-track: -.015em;
-  --display-scale: 1.12;
+  --display-style: normal;   /* Earthy no tiene cursiva */
+  --display-track: 0;
+  --display-scale: 1;
   --w-h1: 400;
-  --w-h2: 300;
-  --label-track: .1em;
+  --w-h2: 400;
+  --label-track: .08em;
 
   /* Escala */
   --t-h1: calc(clamp(2rem, 1.2rem + 3.2vw, 3.5rem) * var(--display-scale));
@@ -41,7 +58,7 @@
   --t-h3: calc(clamp(1.3rem, 1.15rem + .6vw, 1.6rem) * var(--display-scale));
   --t-body: 1rem;
   --t-small: .875rem;
-  --t-label: .75rem;
+  --t-label: .6875rem;
 
   /* Espacio */
   --gutter: clamp(16px, 5vw, 72px);
@@ -49,27 +66,6 @@
   --maxw: 1360px;
 
   --ease: cubic-bezier(.22, .61, .36, 1);
-}
-
-html[data-type="b"] {
-  --f-display: "Marcellus", "Trajan Pro", Georgia, serif;
-  --f-body: "Figtree", "Helvetica Neue", Arial, sans-serif;
-  --display-weight: 400;
-  --display-style: normal; /* Marcellus no tiene corte cursivo: se queda recta, grabada */
-  --display-track: .006em;
-  --display-scale: .92;
-  --w-h1: 400;
-  --w-h2: 400; /* Marcellus es de un solo peso; el contraste viene del tamaño */
-}
-html[data-type="c"] {
-  --f-display: "EB Garamond", Garamond, Georgia, serif;
-  --f-body: "Montserrat", "Helvetica Neue", Arial, sans-serif;
-  --display-weight: 400;
-  --display-style: italic;
-  --display-track: -.018em;
-  --display-scale: 1;
-  --w-h1: 400; /* la cursiva de EB Garamond solo viene en 400 */
-  --w-h2: 400;
 }
 
 /* ---------- Base ---------- */
@@ -84,13 +80,14 @@ body {
   font-size: var(--t-body);
   font-weight: 400;
   line-height: 1.6;
+  font-variant-numeric: lining-nums;  /* Raleway trae cifras antiguas por defecto */
   -webkit-font-smoothing: antialiased;
 }
 img, svg { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
 input, select { font: inherit; color: inherit; }
-:focus-visible { outline: 1px solid var(--ink); outline-offset: 3px; }
+:focus-visible { outline: 1px solid var(--gold); outline-offset: 3px; }
 main:focus { outline: none; }
 
 h1, h2, h3, .display {
@@ -107,6 +104,11 @@ h2 { font-size: var(--t-h2); font-weight: var(--w-h2); }
 h3 { font-size: var(--t-h3); line-height: 1.2; }
 p { margin: 0; }
 
+/* Complementaria (High Billion → Syncopate): solo mayúsculas, etiquetas, menú y botones */
+.label, .btn, .announce, .lang, .nav-link, .mega h4, .cat-name, .card-coll, .opt-label,
+.filter-btn, .filters summary, .acc summary, .back, .newsletter button, .foot-col h4,
+.art-tag, .pay span, .level h4, .drawer-top .label { font-family: var(--f-label); }
+.opt-label b { font-family: var(--f-body); }
 .label {
   font-size: var(--t-label);
   letter-spacing: var(--label-track);
@@ -152,16 +154,16 @@ p { margin: 0; }
   transition: background-color .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease);
 }
 .btn-primary { background: var(--ink); color: var(--bg); }
-.btn-primary:hover { background: transparent; color: var(--ink); }
+.btn-primary:hover { background: transparent; color: var(--ink); border-color: var(--gold); }
 .btn-secondary { background: transparent; color: var(--ink); }
-.btn-secondary:hover { background: var(--ink); color: var(--bg); }
+.btn-secondary:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 .btn-light { border-color: var(--white); color: var(--white); background: transparent; }
-.btn-light:hover { background: var(--white); color: var(--ink); }
+.btn-light:hover { background: var(--white); color: var(--plum); }
 .btn-block { width: 100%; }
 
 /* ---------- Barra de anuncios ---------- */
 .announce {
-  background: var(--accent); color: var(--on-accent);
+  background: var(--plum); color: var(--cream); border-bottom: 1px solid var(--gold);
   text-align: center; padding: 10px 16px;
   font-size: var(--t-label); letter-spacing: var(--label-track); text-transform: uppercase;
   transition: background-color .4s var(--ease);
@@ -197,12 +199,10 @@ p { margin: 0; }
    Se reemplaza por el logo oficial cuando la clienta lo entregue.
    Cursiva a propósito: es la firma de personalidad frente a la caja recta de
    Sterling en tiffany.com — mismo espíritu editorial, gesto distinto. */
-.logo-mark {
-  font-family: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
-  font-style: italic; font-weight: 400; font-size: clamp(2.1rem, 1.3rem + 3.4vw, 3.75rem);
-  letter-spacing: .07em; margin-right: -.07em; white-space: nowrap;
-}
-.logo-mark .amp { font-style: italic; font-weight: 400; letter-spacing: .06em; font-size: .9em; }
+/* Logo oficial (vectorial, extraído del libro de marca) — sprite inline en index.html */
+.logo-mark { display: block; color: var(--gold); fill: currentColor; width: clamp(168px, 120px + 9vw, 252px); aspect-ratio: 642 / 184; height: auto; }
+.logo-mark.logo-foot { width: 190px; aspect-ratio: 488 / 369; }
+.logo-mark.logo-drawer { width: 150px; }
 
 .lang { gap: 2px; margin-left: 8px; font-size: var(--t-label); letter-spacing: .12em; }
 .lang button { padding: 6px 6px; color: var(--muted); }
@@ -216,7 +216,7 @@ p { margin: 0; }
   font-size: var(--t-label); letter-spacing: var(--label-track); text-transform: uppercase; font-weight: 400;
   border-bottom: 1px solid transparent; transition: border-color .3s var(--ease);
 }
-.nav-item:hover .nav-link, .nav-item:focus-within .nav-link, .nav-link[aria-current="page"] { border-color: var(--ink); }
+.nav-item:hover .nav-link, .nav-item:focus-within .nav-link, .nav-link[aria-current="page"] { border-color: var(--gold); }
 .mega {
   position: absolute; left: 0; right: 0; top: 100%;
   background: var(--bg); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
@@ -244,26 +244,47 @@ p { margin: 0; }
   font-size: .625rem; letter-spacing: var(--label-track); text-transform: uppercase; color: var(--muted);
 }
 
-/* ---------- Hero ---------- */
+/* ---------- Hero (slider con las 3 fotos del libro de marca, págs. 12–14) ---------- */
 .hero { position: relative; }
-.hero-media { aspect-ratio: 4 / 5; max-height: 78vh; width: 100%; background: #2A2622; }
-.hero-media .art { height: 100%; background: transparent; }
-/* Velo oscuro inferior: garantiza que el texto blanco se lea sin importar
-   qué tan clara sea la foto que se use (la pieza real la elige la clienta). */
-.hero::before {
+.hero-media { position: relative; overflow: hidden; aspect-ratio: 4 / 5; max-height: 78vh; width: 100%; background: var(--plum); }
+@media (min-width: 760px) { .hero-media { aspect-ratio: 16 / 7; max-height: 720px; } }
+.hero-slide {
+  position: absolute; inset: 0; opacity: 0; visibility: hidden;
+  transition: opacity .9s var(--ease), visibility 0s linear .9s;
+}
+.hero-slide[data-on="true"] { opacity: 1; visibility: visible; z-index: 1; transition-delay: 0s; }
+.hero-art { position: absolute; inset: 0; height: 100%; background: transparent; }
+.hero-art picture { display: block; height: 100%; }
+.hero-art img { object-position: var(--pos-m, center); }
+@media (min-width: 760px) { .hero-art img { object-position: var(--pos, center); } }
+/* Velo morado inferior: garantiza que el texto claro se lea sobre cualquier foto */
+.hero-slide::after {
   content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
-  background: linear-gradient(to top, rgba(15,13,11,.62) 0%, rgba(15,13,11,.2) 40%, rgba(15,13,11,0) 65%);
+  background: linear-gradient(to top, rgba(49,18,35,.78) 0%, rgba(49,18,35,.34) 42%, rgba(49,18,35,0) 70%);
 }
 .hero-copy {
   position: absolute; inset: auto 0 0 0; z-index: 2;
-  padding: 0 var(--gutter) clamp(32px, 6vw, 72px);
+  padding: 0 var(--gutter) clamp(64px, 8vw, 96px);
   color: var(--white); display: grid; gap: 16px; justify-items: start;
   max-width: calc(var(--maxw)); margin-inline: auto;
 }
-.hero-copy h1 { max-width: 14ch; }
-.hero-copy p { max-width: 40ch; opacity: .9; }
+.hero-copy h1 { max-width: 16ch; }
+.hero-copy p { max-width: 40ch; opacity: .92; }
 .hero .art-tag { color: rgba(255,255,255,.6); left: auto; right: var(--gutter); z-index: 2; }
-@media (min-width: 760px) { .hero-media { aspect-ratio: 16 / 7; max-height: 720px; } }
+.hero-ctrl {
+  position: absolute; inset: auto 0 clamp(16px, 2.6vw, 30px) 0; z-index: 5;
+  max-width: var(--maxw); margin-inline: auto; padding-inline: var(--gutter);
+  display: flex; align-items: center; gap: 18px; color: var(--cream);
+}
+.hero-ctrl .chev { color: var(--cream); }
+.hero-ctrl .chev:hover { color: var(--gold-soft); }
+.hero-dots { display: flex; gap: 8px; }
+.hero-dots button { width: 34px; height: 22px; position: relative; }
+.hero-dots button::after {
+  content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 2px; margin-top: -1px;
+  background: rgba(249,243,234,.4); transition: background .3s var(--ease);
+}
+.hero-dots button[data-on="true"]::after { background: var(--cream); }
 
 /* ---------- Tarjeta de producto ---------- */
 .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 10px; }
@@ -343,18 +364,34 @@ p { margin: 0; }
   .feature-full .feature-media .art { aspect-ratio: auto; height: 100%; }
 }
 
-/* ---------- Experiencia ---------- */
-.experience { background: var(--surface); padding-block: var(--section); margin-top: var(--section); }
+/* ---------- Experiencia ----------
+   Tipografía del primer demo (Cormorant Garamond cursiva + Jost) y estructura clara del primer
+   demo, pero en crema de marca con letras e iconos dorados. */
+.type-classic {
+  --f-display: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  --f-body: "Jost", "Helvetica Neue", Arial, sans-serif;
+  --f-label: "Jost", "Helvetica Neue", Arial, sans-serif;
+  --display-style: italic;
+  --display-track: -.015em;
+  --display-scale: 1.12;
+  --w-h2: 400;
+  --t-label: .78rem;
+  --label-track: .1em;
+  font-family: var(--f-body);
+}
+.experience { background: var(--cream-2); border-block: 1px solid var(--gold); padding-block: var(--section); margin-top: var(--section); }
+.experience h2 { color: var(--gold); }
 .exp-grid { display: grid; gap: 40px; }
 @media (min-width: 900px) { .exp-grid { grid-template-columns: repeat(3, 1fr); gap: 56px; } }
 .exp { display: grid; gap: 14px; justify-items: center; align-content: start; text-align: center; }
-.exp-icon { width: 36px; height: 36px; fill: none; stroke: var(--accent); stroke-width: 1.1; stroke-linecap: round; stroke-linejoin: round; transition: stroke .4s var(--ease); }
-.exp p { color: var(--ink-2); max-width: 36ch; }
+.exp-icon { width: 36px; height: 36px; fill: none; stroke: var(--gold); stroke-width: 1.1; stroke-linecap: round; stroke-linejoin: round; }
+.exp h3 { color: var(--gold); }
+.exp p { color: var(--gold-ink); max-width: 36ch; }
 
 /* ---------- Historia ---------- */
 .story { text-align: center; display: grid; justify-items: center; gap: 22px; }
-.story blockquote { margin: 0; font-family: var(--f-display); font-size: var(--t-h2); line-height: 1.25; max-width: 26ch; text-wrap: balance; font-style: italic; font-weight: var(--display-weight); }
-.story .rule { width: 48px; height: 1px; background: var(--accent); }
+.story blockquote { margin: 0; font-family: var(--f-display); font-size: var(--t-h2); line-height: 1.25; max-width: 26ch; text-wrap: balance; font-style: var(--display-style); font-weight: var(--display-weight); color: var(--gold); }
+.story .orn { fill: currentColor; width: 44px; height: 62px; color: var(--gold); }
 
 /* ---------- Boletín ---------- */
 .newsletter { display: grid; gap: 18px; justify-items: center; text-align: center; padding-block: var(--section); }
@@ -365,12 +402,18 @@ p { margin: 0; }
 .form-note { font-size: var(--t-small); color: var(--muted); min-height: 1.5em; }
 
 /* ---------- Footer ---------- */
-.site-footer { border-top: 1px solid var(--line); background: var(--bg); }
+.site-footer { background: var(--plum); color: var(--cream); border-top: 1px solid var(--gold); }
+.site-footer .muted, .site-footer .foot-brand p, .site-footer .foot-bottom { color: color-mix(in srgb, var(--cream) 72%, transparent); }
+.site-footer .foot-col ul { color: var(--cream); }
+.site-footer .foot-col h4 { color: var(--gold-soft); }
+.site-footer .lang button { color: color-mix(in srgb, var(--cream) 62%, transparent); }
+.site-footer .lang button[aria-pressed="true"] { color: var(--cream); }
+.site-footer .foot-bottom, .site-footer .pay span { border-color: color-mix(in srgb, var(--cream) 18%, transparent); }
 .foot-grid { display: grid; gap: 32px; padding-block: 56px 32px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 @media (min-width: 900px) { .foot-grid { grid-template-columns: 1.4fr repeat(4, 1fr); } }
 .foot-brand { grid-column: 1 / -1; display: grid; gap: 14px; align-content: start; }
 @media (min-width: 900px) { .foot-brand { grid-column: auto; } }
-.foot-brand p { color: var(--muted); font-size: var(--t-small); max-width: 32ch; }
+.foot-brand p { font-size: var(--t-small); max-width: 32ch; }
 .foot-col h4 { margin: 0 0 14px; font-size: var(--t-label); letter-spacing: var(--label-track); text-transform: uppercase; font-weight: 500; }
 .foot-col ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 9px; font-size: var(--t-small); color: var(--ink-2); }
 .foot-bottom { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); padding-block: 20px 28px; font-size: .75rem; color: var(--muted); }
@@ -460,7 +503,7 @@ p { margin: 0; }
 .size[aria-pressed="true"] { border-color: var(--ink); background: var(--ink); color: var(--bg); }
 .small-link { font-size: var(--t-small); justify-self: start; }
 .addon { border: 1px solid var(--line); padding: 14px 16px; display: grid; gap: 12px; }
-.engrave-input { width: 100%; border: 0; border-bottom: 1px solid var(--muted); background: transparent; padding: 8px 0; font-size: 16px; font-family: var(--f-display); font-style: italic; }
+.engrave-input { width: 100%; border: 0; border-bottom: 1px solid var(--muted); background: transparent; padding: 8px 0; font-size: 16px; font-family: var(--f-display); }
 .engrave-input:focus { outline: none; border-color: var(--ink); }
 .hint { font-size: .75rem; color: var(--muted); display: flex; justify-content: space-between; }
 .cta-stack { display: grid; gap: 10px; }
@@ -493,7 +536,7 @@ p { margin: 0; }
 @media (min-width: 960px) { .sticky-buy { display: none; } }
 
 /* ---------- Drawers ---------- */
-.drawer-backdrop { position: fixed; inset: 0; background: rgba(27, 26, 24, .32); z-index: 60; }
+.drawer-backdrop { position: fixed; inset: 0; background: rgba(49, 18, 35, .42); z-index: 60; }
 .menu-drawer, .bag-drawer {
   position: fixed; top: 0; bottom: 0; z-index: 70; background: var(--bg);
   width: min(420px, 100%); display: flex; flex-direction: column;
@@ -541,37 +584,6 @@ p { margin: 0; }
 }
 .toast[data-show="true"] { opacity: 1; transform: translate(-50%, 0); }
 
-/* ---------- Panel de estilo del demo ---------- */
-.style-toggle {
-  position: fixed; left: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 80;
-  background: var(--white); border: 1px solid var(--ink); padding: 10px 14px;
-  font-size: .6875rem; letter-spacing: var(--label-track); text-transform: uppercase;
-  display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 6px 24px rgba(27,26,24,.12);
-}
-.style-toggle i { width: 12px; height: 12px; border-radius: 50%; background: var(--accent); display: inline-block; }
-body[data-pdp="true"] .style-toggle { bottom: calc(84px + env(safe-area-inset-bottom, 0px)); }
-@media (min-width: 960px) { body[data-pdp="true"] .style-toggle { bottom: 16px; } }
-.style-panel {
-  position: fixed; left: 16px; bottom: calc(66px + env(safe-area-inset-bottom, 0px)); z-index: 81;
-  width: min(360px, calc(100% - 32px)); background: var(--white); border: 1px solid var(--ink);
-  padding: 20px; display: grid; gap: 18px; box-shadow: 0 12px 40px rgba(27,26,24,.16);
-  max-height: calc(100% - 120px); overflow-y: auto;
-}
-body[data-pdp="true"] .style-panel { bottom: calc(134px + env(safe-area-inset-bottom, 0px)); }
-@media (min-width: 960px) { body[data-pdp="true"] .style-panel { bottom: 66px; } }
-.style-panel h3 { font-family: var(--f-body); font-size: var(--t-label); letter-spacing: var(--label-track); text-transform: uppercase; font-weight: 500; }
-.style-panel p { font-size: .8rem; color: var(--muted); line-height: 1.5; }
-.type-opts { display: grid; gap: 8px; }
-.type-opt { border: 1px solid var(--line); padding: 10px 12px; text-align: left; display: grid; gap: 2px; transition: border-color .2s; }
-.type-opt[aria-pressed="true"] { border-color: var(--ink); }
-.type-opt .sample { font-size: 1.35rem; line-height: 1.2; }
-.type-opt .names { font-size: .72rem; color: var(--muted); }
-.color-opts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-.color-opt { display: grid; gap: 6px; justify-items: center; font-size: .68rem; color: var(--ink-2); padding: 6px 2px; border: 1px solid transparent; }
-.color-opt i { width: 32px; height: 32px; border-radius: 50%; display: block; }
-.color-opt[aria-pressed="true"] { border-color: var(--ink); }
-.panel-close { justify-self: end; font-size: var(--t-label); letter-spacing: var(--label-track); text-transform: uppercase; }
-
 /* ---------- Movimiento ---------- */
 .reveal { animation: rise .7s var(--ease) both; }
 @keyframes rise { from { opacity: .001; transform: translateY(12px); } to { opacity: 1; transform: none; } }
@@ -581,16 +593,8 @@ body[data-pdp="true"] .style-panel { bottom: calc(134px + env(safe-area-inset-bo
 
 /* ---------- Ajustes de componentes ---------- */
 .card-media > a { position: absolute; inset: 0; display: block; }
-.hero-media .hero-d { display: none; }
-.hero-media .hero-m { display: block; }
-@media (min-width: 760px) {
-  .hero-media .hero-d { display: block; }
-  .hero-media .hero-m { display: none; }
-}
 .editorial-tile { min-height: 340px; overflow: hidden; }
 .editorial-tile .art { height: 100%; }
 .editorial-tile .art svg { height: 100%; }
 .lang { align-items: center; }
-@media (max-width: 759px) {
-  .style-toggle { padding: 8px 12px; font-size: .625rem; }
-}
+

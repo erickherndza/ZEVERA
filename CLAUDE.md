@@ -1,8 +1,41 @@
-# ZEVERA — Demo UX/UI
+# ZAVERA — Demo UX/UI
 
 Prototipo navegable (HTML/CSS/JS puro, sin build) de la futura tienda Shopify de
 **ZEVERA**, joyería en Santo Domingo. Es para que la clienta apruebe
 estructura, tipografía, color y experiencia antes de programar el tema real.
+
+## Identidad vigente: libro de marca ZAVERA (2026-10-12) — LEE ESTO PRIMERO
+
+El demo se rehízo a partir de `../BRANDPRESENTATION-ZAVERA.pdf` (Koletta Studio).
+**Sustituye** lo que dicen más abajo sobre cursiva, combos tipográficos A/B/C,
+color de firma y panel "Estilo del demo" (el panel se eliminó: la marca ya decidió).
+
+- **Nombre**: el libro de marca escribe **ZAVERA** (Za-ret + Vera; ver "Estudio del isotipo").
+  Se cambió ZEVERA → ZAVERA en el sitio. Repo/carpeta siguen llamándose ZEVERA.
+  Si la clienta confirma que es ZEVERA, es un reemplazo global en `js/`, `index.html`, `css/`.
+- **Color** (tokens en `:root`): morado `#311223` (principal) · crema `#F9F3EA` ·
+  rosa viejo `#87646D` · dorado del logo `#99764B`. Morado secundario `#441B35`
+  (tono del patrón de marca, misma familia de matiz ~327°).
+  **PROHIBIDO usar el burgundy del libro (`#51142D` y vinos parecidos)**: compite
+  con el morado. No reintroducirlo.
+- **Dorado**: `#99764B` da 4.1:1 sobre morado y 3.8:1 sobre crema → solo logo,
+  filetes, iconos y texto grande. Texto dorado pequeño: `--gold-ink #7A5A32`
+  sobre crema (5.7:1) y `--gold-soft #C9A878` sobre morado (7.5:1).
+  Reparto: crema 60 · morado 30 · dorado/rosa 10.
+- **Tipografía**: primaria **Earthy** (serif hairline, solo display), complementaria
+  **High Billion** (sans extendida, solo mayúsculas). El PDF solo trae subconjuntos
+  de ambas (sin acentos ni ñ), así que el demo usa sustitutas de Google Fonts:
+  Earthy → **Bodoni Moda**, High Billion → **Syncopate**; párrafos en **Raleway**
+  (la que usa el propio libro en sus textos). Para producción hay que licenciar
+  las fuentes originales. Sin cursivas (Earthy no tiene).
+- **Logo**: vectorial, extraído del PDF → `assets/brand/` (`logo-horizontal`,
+  `logo-stacked`, `isotipo`, `pattern`). En el sitio va como sprite inline en
+  `index.html` (`#zv-logo-h`, `#zv-logo-v`, `#zv-iso`) y toma el color con `currentColor`.
+- **Hero = slider** (autoplay 6.5 s, flechas + barras) con las 3 fotos grandes del libro
+  (págs. 12–14) → `assets/img/zavera-hero-{1,2,3}.jpg`; textos en `t.heroSlides` (`js/data.js`),
+  focos de recorte en `HERO` (`js/art.js`). La foto 2 trae fondo vino: es la foto de la clienta, no un color del sistema.
+- **Secciones "La experiencia" e "Historia"** usan la tipografía del primer demo
+  (Cormorant Garamond cursiva + Jost, clase `.type-classic`), fondo crema y letras/iconos dorados.
 
 ## Dónde está
 
