@@ -36,9 +36,8 @@ color de firma y panel "Estilo del demo" (el panel se eliminó: la marca ya deci
   (`js/data.js`, ES y EN), focos de recorte en `HERO` (`js/art.js`). Son **2 slides**:
   se quitó la de la pág. 13 ("Perlas que se heredan", fondo vino) a pedido de la clienta.
   Las flechas/barras se ajustan solas al número de slides.
-- **Header morado** (`--plum`): logo en `--gold-soft` y más grande (2026-10-13: la clienta dijo que
-  el logo/lema "casi no se lee" con `--gold`, 4.1:1; el footer igual; en móvil además ocupa todo el ancho libre del header y el trazo se engrosa, `@media (max-width: 959px)` en `styles.css`), menú/idioma/iconos en `--gold-soft`, contador de bolsa dorado con
-  número morado, filete dorado abajo. El mega menú sigue en crema con tinta.
+- **Header morado** (`--plum`): logo en `--gold-soft` (también en el footer), menú/idioma/iconos
+  en `--gold-soft`, contador de bolsa dorado con número morado, filete dorado abajo. El mega menú sigue en crema con tinta.
   **Barra de anuncio** ("Envío gratis en Santo Domingo · Grabado personalizado en 48 horas")
   en **crema** con texto morado, encima del header (pedido de la clienta, 2026-10-12).
 - **Secciones "La experiencia" e "Historia"** usan la tipografía del primer demo
@@ -63,12 +62,30 @@ color de firma y panel "Estilo del demo" (el panel se eliminó: la marca ya deci
   sigue en `#coleccion-piedras`; `#coleccion-rubi|zafiro|diamante|esmeralda` filtra por piedra.
 - Nosotros: lead y valor "Calidad" mencionan oro de 18 quilates y piedras preciosas.
 
-## Pendientes abiertos (2026-10-12)
+## Observaciones de la clienta (2026-10-13, vía WhatsApp 829-763-4955)
+
+Las manda con capturas del sitio en vivo; la flecha verde marca el problema. Resueltas y publicadas
+(commit `57f3d29`):
+
+- **Logo/lema "casi no se lee"** (header morado). Causa: `--gold` (4.1:1) con trazo fino, 200 px.
+  Solución en `css/styles.css`, tras `.logo-mark.logo-drawer`: logo y lema en `--gold-soft`
+  (7.5:1) en header y footer; header de 76 px con logo de 200–300 px en escritorio.
+- **Móvil: el logo seguía difícil de leer.** A 390 px los iconos de los lados dejaban ~198 px.
+  En `@media (max-width: 959px)`: padding del header 8 px, iconos de 36 px, logo
+  `min(260px, 100vw - 16px - 144px)` y `stroke: currentColor; stroke-width: 1.6px` para engrosar
+  el lema. Verificado a 390 y 360 px.
+- **"Todo es oro 18k (nada 14 ni plata)"**: ver sección Materiales; el texto de Joyería que
+  citaba 14K/plata 925/ámbar ya no existe en el código (la captura era del sitio anterior).
+
+Cómo probar móvil: la ventana del navegador automatizado no cambia el viewport, así que se usa una
+página temporal con `<iframe style="width:390px">` apuntando a `index.html` (borrarla después).
+
+## Pendientes abiertos (2026-10-13)
 
 - Confirmar con la clienta **ZAVERA vs ZEVERA** (hoy el sitio dice ZAVERA).
 - Fotos de producto/colecciones siguen siendo de banco ("Foto provisional"); solo el slider usa fotos del libro.
 - Licenciar Earthy y High Billion completas antes de producción (hoy sustitutas de Google Fonts).
-- `assets/img/` tiene 5 JPG de banco sin usar ni versionar (`2148536086`, `2149836436`, `2150329661`, `2150347051`, `33812`).
+- `assets/img/` tiene JPG de banco sin usar ni versionar (`2148536086`, `2149836436`, `33812`).
 - GitHub Pages cachea 10 min: tras un push, recargar con cmd+shift+r antes de dar un cambio por no hecho.
 
 ## Dónde está
