@@ -240,27 +240,20 @@
   function viewAbout() {
     const t = T(), a = t.about;
     return `
-      <section class="about-hero">
-        <div class="art hero-art"><picture>
-          <source media="(max-width: 759px)" srcset="assets/img/zavera-hero-1.jpg" sizes="100vw">
-          <img src="assets/img/zavera-hero-1.jpg" alt="" decoding="async" style="--pos:center 55%;--pos-m:58% center">
-        </picture></div>
-        <div class="hero-copy">
-          <span class="label">${a.eyebrow}</span>
+      <section class="wrap about-intro">
+        <figure class="about-img about-img-l"><img src="assets/img/2150329661.jpg" alt="" decoding="async"></figure>
+        <div class="about-intro-copy">
+          <span class="label muted">${a.eyebrow}</span>
           <h1>${a.title}</h1>
-          <p>${a.lead}</p>
+          <p class="muted">${a.lead}</p>
         </div>
+        <figure class="about-img about-img-r"><img src="assets/img/2150347051.jpg" alt="" decoding="async"></figure>
       </section>
 
-      <section class="section">
-        <div class="feature-full">
-          <div class="feature-media"><div class="art"><img src="assets/img/zavera-hero-2.jpg" alt="" decoding="async" style="object-position:58% center"></div></div>
-          <div class="feature-copy-wrap"><div class="feature-copy">
-            <span class="label muted">${a.missionLabel}</span>
-            <h2>${a.mission}</h2>
-            <p class="muted">${a.missionText}</p>
-          </div></div>
-        </div>
+      <section class="wrap about-mission">
+        <span class="label muted">${a.missionLabel}</span>
+        <h2>${a.mission}</h2>
+        <p class="muted">${a.missionText}</p>
       </section>
 
       <section class="about-vision">

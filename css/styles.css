@@ -398,13 +398,23 @@ p { margin: 0; }
 .story .orn { fill: currentColor; width: 44px; height: 62px; color: var(--gold); }
 
 /* ---------- Nosotros ---------- */
-.about-hero { position: relative; overflow: hidden; background: var(--plum); aspect-ratio: 4 / 5; max-height: 78vh; }
-@media (min-width: 760px) { .about-hero { aspect-ratio: 16 / 7; max-height: 640px; } }
-.about-hero::after {
-  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
-  background: linear-gradient(to top, rgba(49,18,35,.78) 0%, rgba(49,18,35,.34) 42%, rgba(49,18,35,0) 70%);
+/* Apertura editorial: foto a cada lado y el texto al centro (no es el hero del home) */
+.about-intro { display: grid; gap: 28px; padding-block: clamp(40px, 6vw, 88px) 0; align-items: center; }
+.about-intro-copy { display: grid; gap: 18px; justify-items: center; text-align: center; max-width: 44ch; margin-inline: auto; order: -1; }
+.about-intro-copy h1 { max-width: 14ch; }
+.about-img { margin: 0; overflow: hidden; background: var(--surface); aspect-ratio: 4 / 5; }
+.about-img img { width: 100%; height: 100%; object-fit: cover; }
+.about-img-l { display: none; }
+@media (min-width: 900px) {
+  .about-intro { grid-template-columns: 1fr minmax(320px, 1.1fr) 1fr; gap: clamp(28px, 4vw, 64px); }
+  .about-intro-copy { order: 0; }
+  .about-img-l { display: block; }
+  .about-img-l { aspect-ratio: 3 / 4; }
+  .about-img-r { aspect-ratio: 3 / 4; margin-top: clamp(48px, 8vw, 120px); }
 }
-.feature-copy h2 { font-size: var(--t-h3); line-height: 1.35; }
+.about-mission { display: grid; justify-items: center; gap: 18px; text-align: center; padding-top: var(--section); }
+.about-mission h2 { max-width: 30ch; font-size: var(--t-h3); line-height: 1.4; }
+.about-mission p { max-width: 52ch; }
 .about-vision { position: relative; overflow: hidden; background: var(--plum); color: var(--cream); margin-top: var(--section); padding-block: var(--section); text-align: center; }
 .about-pattern { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .55; }
 .about-vision-in { position: relative; display: grid; justify-items: center; gap: 22px; }
