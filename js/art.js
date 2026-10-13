@@ -42,7 +42,7 @@
   const SCENES = {
     hero:     { file: "hero-pearl-necklace.jpg", pos: "56% 55%" },
     brisa:    { file: "necklace-worn.jpg",   pos: "center 22%" },
-    ambar:    { file: "ring-worn-rose.jpg",  pos: "center 38%" },
+    piedras:  { file: "ring-macro-dark.jpg", pos: "36% center" },
     esencial: { file: "flatlay-chain.jpg",   pos: "center 42%" }
   };
 

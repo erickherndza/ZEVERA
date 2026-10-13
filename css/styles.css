@@ -626,3 +626,23 @@ p { margin: 0; }
 .editorial-tile .art svg { height: 100%; }
 .lang { align-items: center; }
 
+
+/* ---------- Piedras preciosas ---------- */
+.gems { display: grid; gap: 40px 24px; padding-block: 8px clamp(40px, 5vw, 72px); }
+@media (min-width: 640px) { .gems { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1100px) { .gems { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.gem { display: flex; flex-direction: column; gap: 12px; }
+.gem .link-line { margin-top: auto; align-self: flex-start; }
+.gem-facts { flex: 1; align-content: start; }
+.gem h2 { font-size: var(--t-h3); line-height: 1.25; }
+.gem p { color: var(--ink-2); }
+.gem-stage { background: var(--cream-2); aspect-ratio: 1; display: grid; place-items: center; margin-bottom: 8px; }
+.gem-demo { width: 46%; aspect-ratio: 1; position: relative; transition: transform .8s var(--ease); }
+.gem-demo { clip-path: polygon(30% 0, 70% 0, 100% 32%, 50% 100%, 0 32%); background: conic-gradient(from 20deg at 50% 38%, var(--g1), var(--g2), var(--g3), var(--g2), var(--g1), var(--g3), var(--g2), var(--g1)); }
+.gem-demo span { position: absolute; inset: 0; clip-path: polygon(30% 0, 70% 0, 100% 32%, 0 32%); background: linear-gradient(135deg, color-mix(in srgb, var(--g1) 85%, #fff), transparent 70%); opacity: .75; }
+@media (hover: hover) { .gem:hover .gem-demo { transform: scale(1.06) rotate(-3deg); } }
+.gem-facts { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; margin: 4px 0 8px; padding-top: 14px; border-top: 1px solid var(--line); font-size: var(--t-small); }
+.gem-facts dt { color: var(--muted); }
+.gem-facts dd { margin: 0; }
+.gems-more { display: grid; justify-items: center; gap: 16px; text-align: center; padding-block: var(--section); }
+.gems-more p { max-width: 52ch; color: var(--ink-2); }

@@ -10,12 +10,12 @@ ZB.whatsapp = "18297634955"; // número de contacto de la clienta
 
 ZB.collections = {
   brisa: {
-    es: { name: "Brisa", lead: "Líneas finas que siguen el movimiento del mar Caribe. Oro de 14 quilates pensado para usar todos los días." },
-    en: { name: "Brisa", lead: "Fine lines that follow the movement of the Caribbean sea. 14k gold made to be worn every day." }
+    es: { name: "Brisa", lead: "Líneas finas que siguen el movimiento del mar Caribe. Oro de 18 quilates pensado para usar todos los días." },
+    en: { name: "Brisa", lead: "Fine lines that follow the movement of the Caribbean sea. 18k gold made to be worn every day." }
   },
-  ambar: {
-    es: { name: "Ámbar", lead: "Ámbar dominicano seleccionado a mano y engastado en plata 925 y oro. Cada piedra es única." },
-    en: { name: "Ámbar", lead: "Hand-selected Dominican amber set in 925 silver and gold. Every stone is one of a kind." }
+  piedras: {
+    es: { name: "Piedras preciosas", lead: "Diamante, rubí, zafiro y esmeralda engastados a mano en oro de 18 quilates, con la posibilidad de elegir otras gemas contigo." },
+    en: { name: "Precious stones", lead: "Diamond, ruby, sapphire and emerald hand-set in 18k gold, with the option to choose other gems together with you." }
   },
   esencial: {
     es: { name: "Esencial", lead: "Las piezas que se quedan contigo: argollas, cadenas y sellos para grabar." },
@@ -31,64 +31,95 @@ ZB.types = {
 };
 
 ZB.metals = {
-  amarillo: { es: "Oro amarillo 14k", en: "14k yellow gold", sw: "linear-gradient(135deg,#E9CF8E,#B98E3F)" },
-  blanco:   { es: "Oro blanco 14k",   en: "14k white gold",  sw: "linear-gradient(135deg,#F4F5F7,#B9BDC4)" },
-  rosa:     { es: "Oro rosa 14k",     en: "14k rose gold",   sw: "linear-gradient(135deg,#F1CDBD,#B9806B)" },
-  plata:    { es: "Plata 925",        en: "925 silver",      sw: "linear-gradient(135deg,#F2F2F2,#A9ADB3)" }
+  oro18: { es: "Oro 18K", en: "18k gold", sw: "linear-gradient(135deg,#E9CF8E,#B98E3F)" }
 };
 
 ZB.stones = {
-  diamante: { es: "Diamante", en: "Diamond" },
-  ambar:    { es: "Ámbar dominicano", en: "Dominican amber" },
-  ninguna:  { es: "Sin piedra", en: "No stone" }
+  diamante:  { es: "Diamante",  en: "Diamond" },
+  rubi:      { es: "Rubí",      en: "Ruby" },
+  zafiro:    { es: "Zafiro",    en: "Sapphire" },
+  esmeralda: { es: "Esmeralda", en: "Emerald" },
+  ninguna:   { es: "Sin piedra", en: "No stone" }
+};
+
+/* Ficha de cada piedra (página Piedras preciosas). c = colores de la faceta demo. */
+ZB.gems = {
+  diamante: {
+    c: ["#FFFFFF", "#DCE6F2", "#A9B8CC"],
+    es: { tag: "Brillo eterno", desc: "La piedra más dura que existe. Su claridad y su fuego la hicieron símbolo de compromiso y de promesas que no se rompen.",
+          facts: [["Dureza", "10 en la escala de Mohs"], ["Color", "Incoloro a casi incoloro"], ["Simboliza", "Compromiso y eternidad"]] },
+    en: { tag: "Eternal brilliance", desc: "The hardest stone there is. Its clarity and fire made it a symbol of commitment and of promises that don't break.",
+          facts: [["Hardness", "10 on the Mohs scale"], ["Color", "Colorless to near colorless"], ["Symbolizes", "Commitment and eternity"]] }
+  },
+  rubi: {
+    c: ["#FF7A92", "#C2123C", "#6E0A22"],
+    es: { tag: "Pasión y carácter", desc: "Un rojo profundo que no pasa inadvertido. Entre las gemas de color, es de las más buscadas y de las más duraderas.",
+          facts: [["Dureza", "9 en la escala de Mohs"], ["Color", "Rojo intenso, de rosado a sangre de paloma"], ["Simboliza", "Pasión, valentía y amor"]] },
+    en: { tag: "Passion and character", desc: "A deep red that never goes unnoticed. Among colored gems, it is one of the most sought-after and most durable.",
+          facts: [["Hardness", "9 on the Mohs scale"], ["Color", "Intense red, from pink to pigeon blood"], ["Symbolizes", "Passion, courage and love"]] }
+  },
+  zafiro: {
+    c: ["#8DB4FF", "#1F5AD6", "#0B2A6B"],
+    es: { tag: "Serenidad y lealtad", desc: "Del azul real al azul de medianoche. Resistente y luminoso, es la piedra de las promesas que se cumplen.",
+          facts: [["Dureza", "9 en la escala de Mohs"], ["Color", "Azul, también rosado, amarillo y blanco"], ["Simboliza", "Sabiduría, lealtad y fe"]] },
+    en: { tag: "Serenity and loyalty", desc: "From royal blue to midnight blue. Strong and luminous, it is the stone of promises kept.",
+          facts: [["Hardness", "9 on the Mohs scale"], ["Color", "Blue, also pink, yellow and white"], ["Symbolizes", "Wisdom, loyalty and faith"]] }
+  },
+  esmeralda: {
+    c: ["#8CE8B2", "#169B57", "#08512C"],
+    es: { tag: "Verde que renueva", desc: "Su verde vivo es inconfundible. Cada esmeralda guarda su propio jardín interior, y eso la hace única.",
+          facts: [["Dureza", "7.5 a 8 en la escala de Mohs"], ["Color", "Verde intenso"], ["Simboliza", "Renovación, esperanza y crecimiento"]] },
+    en: { tag: "A green that renews", desc: "Its vivid green is unmistakable. Every emerald holds its own inner garden, which makes it one of a kind.",
+          facts: [["Hardness", "7.5 to 8 on the Mohs scale"], ["Color", "Intense green"], ["Symbolizes", "Renewal, hope and growth"]] }
+  }
 };
 
 ZB.products = [
-  { id: "solitario-brisa", type: "anillo", coll: "brisa", metal: "amarillo", metals: ["amarillo","blanco","rosa"], stone: "diamante", price: 68500, sizes: [5,6,7,8,9], engrave: true, isNew: true,
+  { id: "solitario-brisa", type: "anillo", coll: "brisa", metal: "oro18", metals: ["oro18"], stone: "diamante", price: 68500, sizes: [5,6,7,8,9], engrave: true, isNew: true,
     es: { name: "Anillo Solitario Brisa", desc: "Un diamante de 0.25 ct sobre una banda fina que se abre como una ola. Hecho para comprometerse sin perder la sencillez." },
     en: { name: "Brisa Solitaire Ring",   desc: "A 0.25 ct diamond on a slim band that opens like a wave. Made for a promise that stays simple." },
     spec: { weight: "2.1 g", size: "Banda de 1.6 mm", ct: "0.25 ct, color G, pureza VS2" } },
-  { id: "aretes-ola", type: "aretes", coll: "brisa", metal: "blanco", metals: ["blanco","amarillo"], stone: "ninguna", price: 14900, isNew: true,
+  { id: "aretes-ola", type: "aretes", coll: "brisa", metal: "oro18", metals: ["oro18"], stone: "ninguna", price: 14900, isNew: true,
     es: { name: "Aretes Ola Brisa", desc: "Dos curvas pulidas que atrapan la luz al moverte." },
     en: { name: "Brisa Wave Earrings", desc: "Two polished curves that catch the light as you move." },
     spec: { weight: "1.8 g", size: "18 mm de alto" } },
-  { id: "collar-horizonte", type: "collar", coll: "brisa", metal: "amarillo", metals: ["amarillo","rosa"], stone: "diamante", price: 22800, sizes: ["40 cm","45 cm"], engrave: true, isNew: true,
+  { id: "collar-horizonte", type: "collar", coll: "brisa", metal: "oro18", metals: ["oro18"], stone: "diamante", price: 22800, sizes: ["40 cm","45 cm"], engrave: true, isNew: true,
     es: { name: "Collar Horizonte Brisa", desc: "Una barra fina con un diamante pequeño, como el sol sobre el mar a las seis de la tarde." },
     en: { name: "Brisa Horizon Necklace", desc: "A fine bar with a small diamond, like the sun over the sea at six in the evening." },
     spec: { weight: "2.4 g", size: "Barra de 22 mm", ct: "0.03 ct" } },
-  { id: "pulsera-marea", type: "pulsera", coll: "brisa", metal: "plata", metals: ["plata","amarillo"], stone: "ninguna", price: 9600, sizes: ["S","M","L"],
+  { id: "pulsera-marea", type: "pulsera", coll: "brisa", metal: "oro18", metals: ["oro18"], stone: "ninguna", price: 9600, sizes: ["S","M","L"],
     es: { name: "Pulsera Marea Brisa", desc: "Eslabones ovalados que se acomodan a la muñeca." },
     en: { name: "Brisa Tide Bracelet", desc: "Oval links that settle on the wrist." },
     spec: { weight: "6.2 g", size: "Eslabón de 5 mm" } },
-  { id: "anillo-gota-ambar", type: "anillo", coll: "ambar", metal: "plata", metals: ["plata","amarillo"], stone: "ambar", price: 12400, sizes: [5,6,7,8], isNew: true,
-    es: { name: "Anillo Gota de Ámbar", desc: "Un cabujón de ámbar dominicano en forma de gota, con engaste de bisel." },
-    en: { name: "Amber Drop Ring", desc: "A drop-shaped Dominican amber cabochon in a bezel setting." },
-    spec: { weight: "3.9 g", size: "Piedra de 10 × 7 mm" } },
-  { id: "colgante-sol", type: "collar", coll: "ambar", metal: "amarillo", metals: ["amarillo"], stone: "ambar", price: 18900, sizes: ["40 cm","45 cm","50 cm"], isNew: true,
-    es: { name: "Colgante Sol de Ámbar", desc: "Ámbar redondo rodeado de un halo de oro martillado." },
-    en: { name: "Amber Sun Pendant", desc: "Round amber framed by a halo of hammered gold." },
-    spec: { weight: "3.1 g", size: "Colgante de 14 mm" } },
-  { id: "aretes-miel", type: "aretes", coll: "ambar", metal: "plata", metals: ["plata"], stone: "ambar", price: 8700,
-    es: { name: "Aretes Ámbar Miel", desc: "Gotas de ámbar color miel que cuelgan de un gancho fino." },
-    en: { name: "Honey Amber Earrings", desc: "Honey-colored amber drops on a fine hook." },
-    spec: { weight: "2.6 g", size: "24 mm de alto" } },
-  { id: "pulsera-trenzada", type: "pulsera", coll: "ambar", metal: "rosa", metals: ["rosa","amarillo"], stone: "ambar", price: 16500, sizes: ["S","M","L"],
-    es: { name: "Pulsera Ámbar Trenzada", desc: "Cadena trenzada con tres cuentas de ámbar." },
-    en: { name: "Braided Amber Bracelet", desc: "A braided chain with three amber beads." },
-    spec: { weight: "5.4 g", size: "Cuentas de 6 mm" } },
-  { id: "eternidad", type: "anillo", coll: "esencial", metal: "blanco", metals: ["blanco","amarillo","rosa"], stone: "diamante", price: 54000, sizes: [5,6,7,8,9], engrave: true,
+  { id: "anillo-rubi", type: "anillo", coll: "piedras", metal: "oro18", metals: ["oro18"], stone: "rubi", price: 58000, sizes: [5,6,7,8], engrave: true, isNew: true,
+    es: { name: "Anillo Rubí Pasión", desc: "Un rubí ovalado de rojo profundo, engastado en garras sobre una banda fina de oro de 18 quilates." },
+    en: { name: "Passion Ruby Ring", desc: "An oval ruby of deep red, claw-set on a slim 18k gold band." },
+    spec: { weight: "3.4 g", size: "Banda de 1.8 mm", ct: "0.80 ct, rubí" } },
+  { id: "aretes-zafiro", type: "aretes", coll: "piedras", metal: "oro18", metals: ["oro18"], stone: "zafiro", price: 46500, isNew: true,
+    es: { name: "Aretes Zafiro Real", desc: "Dos zafiros azules con un pequeño halo de diamantes, para un brillo que se ve de lejos." },
+    en: { name: "Royal Sapphire Earrings", desc: "Two blue sapphires with a small halo of diamonds, for a sparkle seen from afar." },
+    spec: { weight: "2.9 g", size: "12 mm de alto", ct: "1.10 ct total, zafiro" } },
+  { id: "colgante-diamante", type: "collar", coll: "piedras", metal: "oro18", metals: ["oro18"], stone: "diamante", price: 39800, sizes: ["40 cm","45 cm"], engrave: true, isNew: true,
+    es: { name: "Colgante Lágrima de Diamante", desc: "Un diamante en forma de pera que cuelga de una cadena fina de oro de 18 quilates." },
+    en: { name: "Diamond Teardrop Pendant", desc: "A pear-shaped diamond hanging from a fine 18k gold chain." },
+    spec: { weight: "2.6 g", size: "Colgante de 11 mm", ct: "0.40 ct, color G, pureza VS2" } },
+  { id: "pulsera-esmeralda", type: "pulsera", coll: "piedras", metal: "oro18", metals: ["oro18"], stone: "esmeralda", price: 52000, sizes: ["S","M","L"],
+    es: { name: "Pulsera Esmeralda Jardín", desc: "Eslabones de oro de 18 quilates con una esmeralda cabujón al centro." },
+    en: { name: "Emerald Garden Bracelet", desc: "18k gold links with a cabochon emerald at the center." },
+    spec: { weight: "7.8 g", size: "Esmeralda de 8 mm", ct: "1.20 ct, esmeralda" } },
+  { id: "eternidad", type: "anillo", coll: "esencial", metal: "oro18", metals: ["oro18"], stone: "diamante", price: 54000, sizes: [5,6,7,8,9], engrave: true,
     es: { name: "Anillo Eternidad Esencial", desc: "Diamantes en engaste de canal alrededor de toda la banda." },
     en: { name: "Essential Eternity Ring", desc: "Channel-set diamonds all the way around the band." },
     spec: { weight: "2.8 g", size: "Banda de 2.2 mm", ct: "0.50 ct total" } },
-  { id: "argollas", type: "aretes", coll: "esencial", metal: "amarillo", metals: ["amarillo","blanco","rosa"], stone: "ninguna", price: 11200,
+  { id: "argollas", type: "aretes", coll: "esencial", metal: "oro18", metals: ["oro18"], stone: "ninguna", price: 11200,
     es: { name: "Argollas Esencial", desc: "Argollas medianas de tubo hueco, ligeras para todo el día." },
     en: { name: "Essential Hoops", desc: "Medium hollow-tube hoops, light enough for all day." },
     spec: { weight: "1.9 g", size: "20 mm de diámetro" } },
-  { id: "cadena-fina", type: "collar", coll: "esencial", metal: "amarillo", metals: ["amarillo","blanco"], stone: "ninguna", price: 13500, sizes: ["40 cm","45 cm","50 cm"],
+  { id: "cadena-fina", type: "collar", coll: "esencial", metal: "oro18", metals: ["oro18"], stone: "ninguna", price: 13500, sizes: ["40 cm","45 cm","50 cm"],
     es: { name: "Cadena Esencial Fina", desc: "Cadena forzada de 1 mm, la base para cualquier colgante." },
     en: { name: "Essential Fine Chain", desc: "A 1 mm cable chain, the base for any pendant." },
     spec: { weight: "2.2 g", size: "Eslabón de 1 mm" } },
-  { id: "sello", type: "anillo", coll: "esencial", metal: "rosa", metals: ["rosa","amarillo","blanco"], stone: "ninguna", price: 15800, sizes: [5,6,7,8,9,10], engrave: true,
+  { id: "sello", type: "anillo", coll: "esencial", metal: "oro18", metals: ["oro18"], stone: "ninguna", price: 15800, sizes: [5,6,7,8,9,10], engrave: true,
     es: { name: "Anillo Sello Esencial", desc: "Sello ovalado listo para grabar tus iniciales." },
     en: { name: "Essential Signet Ring", desc: "An oval signet ready for your initials." },
     spec: { weight: "4.6 g", size: "Cara de 11 × 9 mm" } }
@@ -100,10 +131,10 @@ ZB.pairs = {
   "aretes-ola": ["collar-horizonte", "pulsera-marea", "solitario-brisa"],
   "collar-horizonte": ["aretes-ola", "cadena-fina", "solitario-brisa"],
   "pulsera-marea": ["aretes-ola", "collar-horizonte", "argollas"],
-  "anillo-gota-ambar": ["aretes-miel", "colgante-sol", "pulsera-trenzada"],
-  "colgante-sol": ["aretes-miel", "anillo-gota-ambar", "cadena-fina"],
-  "aretes-miel": ["colgante-sol", "anillo-gota-ambar", "pulsera-trenzada"],
-  "pulsera-trenzada": ["anillo-gota-ambar", "aretes-miel", "colgante-sol"],
+  "anillo-rubi": ["aretes-zafiro", "colgante-diamante", "pulsera-esmeralda"],
+  "aretes-zafiro": ["colgante-diamante", "anillo-rubi", "pulsera-esmeralda"],
+  "colgante-diamante": ["aretes-zafiro", "anillo-rubi", "cadena-fina"],
+  "pulsera-esmeralda": ["anillo-rubi", "aretes-zafiro", "colgante-diamante"],
   "eternidad": ["solitario-brisa", "argollas", "cadena-fina"],
   "argollas": ["cadena-fina", "sello", "pulsera-marea"],
   "cadena-fina": ["argollas", "sello", "collar-horizonte"],
@@ -113,15 +144,15 @@ ZB.pairs = {
 ZB.i18n = {
   es: {
     announce: "Envío gratis en Santo Domingo · Grabado personalizado en 48 horas",
-    nav: { joyeria: "Joyería", colecciones: "Colecciones", compromiso: "Compromiso", regalos: "Regalos", historia: "Nosotros", citas: "Agendar cita" },
-    mega: { cat: "Por categoría", coll: "Por colección", feat: "Destacados", all: "Ver toda la joyería", nuevo: "Novedades", grabar: "Para personalizar", regalo: "Regalos bajo RD$ 15,000", featTitle: "Colección Ámbar", featText: "Ámbar dominicano en plata y oro.", discover: "Descubrir" },
+    nav: { joyeria: "Joyería", piedras: "Piedras preciosas", colecciones: "Colecciones", compromiso: "Compromiso", regalos: "Regalos", historia: "Nosotros", citas: "Agendar cita" },
+    mega: { cat: "Por categoría", coll: "Por colección", feat: "Destacados", all: "Ver toda la joyería", nuevo: "Novedades", grabar: "Para personalizar", regalo: "Regalos bajo RD$ 15,000", featTitle: "Piedras preciosas", featText: "Diamante, rubí, zafiro y esmeralda en oro de 18 quilates.", discover: "Descubrir" },
     heroSlides: [
-      { eyebrow: "Nueva colección", title: "Esenciales para todos los días", text: "Cadenas finas, perlas y diamantes pensados para acompañarte toda la vida.", href: "#coleccion-esencial" },
-      { eyebrow: "Colección Brisa", title: "Oro que atrapa la luz", text: "Líneas finas en oro de 14 quilates, diseñadas para usarse todos los días.", href: "#coleccion-brisa" }
+      { eyebrow: "Nueva colección", title: "Esenciales para todos los días", text: "Cadenas finas en oro de 18 quilates y piedras preciosas pensadas para acompañarte toda la vida.", href: "#coleccion-esencial" },
+      { eyebrow: "Colección Brisa", title: "Oro que atrapa la luz", text: "Líneas finas en oro de 18 quilates, diseñadas para usarse todos los días.", href: "#coleccion-brisa" }
     ],
     heroEyebrow: "Nueva colección",
-    heroTitle: "Perlas, la elegancia que no pasa de moda",
-    heroText: "Perlas cultivadas engastadas a mano en plata y oro. Piezas esenciales para acompañarte toda la vida.",
+    heroTitle: "Oro de 18 quilates, la elegancia que no pasa de moda",
+    heroText: "Piedras preciosas engastadas a mano en oro de 18 quilates. Piezas esenciales para acompañarte toda la vida.",
     shop: "Comprar ahora",
     newTitle: "Novedades",
     newText: "Lo último que salió del taller.",
@@ -138,7 +169,7 @@ ZB.i18n = {
     about: {
       eyebrow: "Nosotros",
       title: "Más que joyas, un legado",
-      lead: "Joyas únicas y atemporales, hechas para acompañar a la mujer a lo largo de su vida.",
+      lead: "Joyas únicas y atemporales en oro de 18 quilates y piedras preciosas, hechas para acompañar a la mujer a lo largo de su vida.",
       missionLabel: "Misión",
       mission: "Realzar la belleza y feminidad de la mujer a través de joyas únicas y atemporales, creadas para conservar y acrecentar su valor con el paso del tiempo.",
       missionText: "Cada pieza lleva consigo un mensaje de fe y crecimiento destinado a acompañar a quien la porta a lo largo de su vida.",
@@ -147,7 +178,7 @@ ZB.i18n = {
       valuesTitle: "Nuestros valores",
       values: [
         { t: "Fe", d: "La Palabra de Dios es nuestro fundamento y la guía que inspira nuestra identidad." },
-        { t: "Calidad", d: "Nos comprometemos con la excelencia en los materiales, los acabados y cada detalle de nuestras creaciones." },
+        { t: "Calidad", d: "Nos comprometemos con la excelencia en los materiales —oro de 18 quilates y piedras preciosas—, los acabados y cada detalle de nuestras creaciones." },
         { t: "Criterio", d: "Diseñamos con intención y sensibilidad estética, convencidos de que la verdadera elegancia reside en las decisiones cuidadosamente tomadas." }
       ],
       legacyLabel: "Lo que perseguimos",
@@ -164,10 +195,10 @@ ZB.i18n = {
     nlBtn: "Suscribirme",
     nlOk: "Listo. Te escribiremos cuando haya una nueva colección.",
     nlErr: "Escribe un correo válido, por ejemplo nombre@correo.com",
-    foot: { help: "Ayuda", services: "Servicios", about: "Nosotros", legal: "Legal", helpL: ["Envíos y entregas", "Cambios y devoluciones", "Guía de tallas", "Preguntas frecuentes"], servL: ["Agendar cita", "Grabado", "Limpieza y reparación", "Empaque de regalo"], aboutL: ["Nosotros", "El taller", "Cuidado de tus joyas", "Contacto"], legalL: ["Términos y condiciones", "Privacidad", "Política de envíos"], brand: "Joyería fina hecha en Santo Domingo. Oro, plata y ámbar dominicano.", rights: "© 2026 ZAVERA. Todos los derechos reservados." },
+    foot: { help: "Ayuda", services: "Servicios", about: "Nosotros", legal: "Legal", helpL: ["Envíos y entregas", "Cambios y devoluciones", "Guía de tallas", "Preguntas frecuentes"], servL: ["Agendar cita", "Grabado", "Limpieza y reparación", "Empaque de regalo"], aboutL: ["Nosotros", "El taller", "Cuidado de tus joyas", "Contacto"], legalL: ["Términos y condiciones", "Privacidad", "Política de envíos"], brand: "Joyería fina hecha en Santo Domingo. Oro de 18 quilates y piedras preciosas.", rights: "© 2026 ZAVERA. Todos los derechos reservados." },
     home: "Inicio",
     jewelry: "Joyería",
-    plpIntro: "Anillos, aretes, collares y pulseras en oro de 14 quilates, plata 925 y ámbar dominicano. Todas las piezas incluyen estuche y certificado.",
+    plpIntro: "Anillos, aretes, collares y pulseras en oro de 18 quilates y piedras preciosas: diamante, rubí, zafiro y esmeralda. Todas las piezas incluyen estuche y certificado.",
     pieces: n => `${n} ${n === 1 ? "pieza" : "piezas"}`,
     filter: "Filtrar",
     filterSort: "Filtrar y ordenar",
@@ -178,10 +209,23 @@ ZB.i18n = {
     clear: "Borrar filtros",
     apply: "Ver resultados",
     none: "No hay piezas con esos filtros. Prueba quitando alguno.",
-    editorialTitle: "El ámbar de nuestra isla",
+    editorialTitle: "Piedras preciosas en oro de 18 quilates",
+    gems: {
+      eyebrow: "Piedras preciosas",
+      title: "Piedras preciosas",
+      lead: "Diamante, rubí, zafiro y esmeralda, engastados a mano en oro de 18 quilates. Cada piedra se elige por su color, su claridad y su carácter.",
+      viewStone: n => `Ver piezas con ${n}`,
+      piecesTitle: "Piezas con piedras preciosas",
+      all: "Ver toda la colección",
+      moreTitle: "¿Buscas otra gema?",
+      moreText: "Además de estas cuatro, trabajamos otras piedras preciosas y de color. Cuéntanos qué imaginas y la elegimos contigo.",
+      moreCta: "Consultar por WhatsApp",
+      moreMsg: "Hola, me interesa una pieza con una piedra preciosa en ZAVERA."
+    },
     faqTitle: "Preguntas frecuentes",
     faqs: [
-      ["¿Las piezas son de oro sólido?", "Sí. Trabajamos oro de 14 quilates sólido y plata 925. Cada pieza lleva su sello y certificado."],
+      ["¿Las piezas son de oro sólido?", "Sí. Trabajamos únicamente oro sólido de 18 quilates. Cada pieza lleva su sello y certificado."],
+      ["¿Las piedras son naturales?", "Sí. Seleccionamos diamantes, rubíes, zafiros y esmeraldas naturales, y cada piedra se entrega con su certificado."],
       ["¿Cómo sé mi talla de anillo?", "Consulta la guía de tallas en cada ficha o agenda una cita y te medimos sin costo."],
       ["¿Hacen envíos fuera de Santo Domingo?", "Enviamos a todo el país en 2 a 4 días laborables. En Santo Domingo el envío es gratis."],
       ["¿Puedo cambiar una pieza?", "Tienes 15 días para cambiarla si no ha sido usada ni grabada."]
@@ -217,7 +261,7 @@ ZB.i18n = {
     next: "Siguiente",
     menu: "Menú",
     account: "Mi cuenta",
-    searchPh: "Buscar anillos, ámbar, oro rosa…",
+    searchPh: "Buscar anillos, rubí, diamante…",
     photo: "Foto provisional",
     heroLabel: "Joyas destacadas",
     engravedWith: "Grabado",
@@ -226,15 +270,15 @@ ZB.i18n = {
   },
   en: {
     announce: "Free delivery in Santo Domingo · Personalized engraving in 48 hours",
-    nav: { joyeria: "Jewelry", colecciones: "Collections", compromiso: "Engagement", regalos: "Gifts", historia: "About us", citas: "Book a visit" },
-    mega: { cat: "By category", coll: "By collection", feat: "Featured", all: "Shop all jewelry", nuevo: "New arrivals", grabar: "To personalize", regalo: "Gifts under RD$ 15,000", featTitle: "Ámbar Collection", featText: "Dominican amber in silver and gold.", discover: "Discover" },
+    nav: { joyeria: "Jewelry", piedras: "Gemstones", colecciones: "Collections", compromiso: "Engagement", regalos: "Gifts", historia: "About us", citas: "Book a visit" },
+    mega: { cat: "By category", coll: "By collection", feat: "Featured", all: "Shop all jewelry", nuevo: "New arrivals", grabar: "To personalize", regalo: "Gifts under RD$ 15,000", featTitle: "Precious stones", featText: "Diamond, ruby, sapphire and emerald in 18k gold.", discover: "Discover" },
     heroSlides: [
-      { eyebrow: "New collection", title: "Everyday essentials", text: "Fine chains, pearls and diamonds made to stay with you for life.", href: "#coleccion-esencial" },
-      { eyebrow: "Brisa Collection", title: "Gold that catches the light", text: "Fine 14k gold lines, designed to be worn every day.", href: "#coleccion-brisa" }
+      { eyebrow: "New collection", title: "Everyday essentials", text: "Fine 18k gold chains and precious stones made to stay with you for life.", href: "#coleccion-esencial" },
+      { eyebrow: "Brisa Collection", title: "Gold that catches the light", text: "Fine 18k gold lines, designed to be worn every day.", href: "#coleccion-brisa" }
     ],
     heroEyebrow: "New collection",
-    heroTitle: "Pearls, elegance that never fades",
-    heroText: "Hand-set cultured pearls in silver and gold. Essential pieces made to stay with you for life.",
+    heroTitle: "18k gold, elegance that never fades",
+    heroText: "Precious stones hand-set in 18k gold. Essential pieces made to stay with you for life.",
     shop: "Shop now",
     newTitle: "New arrivals",
     newText: "The latest from our workshop.",
@@ -251,7 +295,7 @@ ZB.i18n = {
     about: {
       eyebrow: "About us",
       title: "More than jewelry, a legacy",
-      lead: "Unique, timeless jewelry made to accompany women throughout their lives.",
+      lead: "Unique, timeless jewelry in 18k gold and precious stones, made to accompany women throughout their lives.",
       missionLabel: "Mission",
       mission: "To enhance a woman's beauty and femininity through unique, timeless jewelry, created to keep and grow its value over time.",
       missionText: "Every piece carries a message of faith and growth, meant to accompany the one who wears it throughout her life.",
@@ -260,7 +304,7 @@ ZB.i18n = {
       valuesTitle: "Our values",
       values: [
         { t: "Faith", d: "The Word of God is our foundation and the guide that inspires our identity." },
-        { t: "Quality", d: "We are committed to excellence in materials, finishes and every detail of our creations." },
+        { t: "Quality", d: "We are committed to excellence in materials —18k gold and precious stones—, finishes and every detail of our creations." },
         { t: "Judgment", d: "We design with intention and aesthetic sensitivity, convinced that true elegance lies in carefully made decisions." }
       ],
       legacyLabel: "What we strive for",
@@ -277,10 +321,10 @@ ZB.i18n = {
     nlBtn: "Subscribe",
     nlOk: "Done. We'll write when a new collection arrives.",
     nlErr: "Enter a valid email, for example name@mail.com",
-    foot: { help: "Help", services: "Services", about: "About", legal: "Legal", helpL: ["Shipping & delivery", "Exchanges & returns", "Size guide", "FAQ"], servL: ["Book a visit", "Engraving", "Cleaning & repair", "Gift wrapping"], aboutL: ["About us", "The workshop", "Jewelry care", "Contact"], legalL: ["Terms & conditions", "Privacy", "Shipping policy"], brand: "Fine jewelry made in Santo Domingo. Gold, silver and Dominican amber.", rights: "© 2026 ZAVERA. All rights reserved." },
+    foot: { help: "Help", services: "Services", about: "About", legal: "Legal", helpL: ["Shipping & delivery", "Exchanges & returns", "Size guide", "FAQ"], servL: ["Book a visit", "Engraving", "Cleaning & repair", "Gift wrapping"], aboutL: ["About us", "The workshop", "Jewelry care", "Contact"], legalL: ["Terms & conditions", "Privacy", "Shipping policy"], brand: "Fine jewelry made in Santo Domingo. 18k gold and precious stones.", rights: "© 2026 ZAVERA. All rights reserved." },
     home: "Home",
     jewelry: "Jewelry",
-    plpIntro: "Rings, earrings, necklaces and bracelets in 14k gold, 925 silver and Dominican amber. Every piece comes with a case and certificate.",
+    plpIntro: "Rings, earrings, necklaces and bracelets in 18k gold and precious stones: diamond, ruby, sapphire and emerald. Every piece comes with a case and certificate.",
     pieces: n => `${n} ${n === 1 ? "piece" : "pieces"}`,
     filter: "Filter",
     filterSort: "Filter & sort",
@@ -291,10 +335,23 @@ ZB.i18n = {
     clear: "Clear filters",
     apply: "Show results",
     none: "No pieces match those filters. Try removing one.",
-    editorialTitle: "The amber of our island",
+    editorialTitle: "Precious stones in 18k gold",
+    gems: {
+      eyebrow: "Precious stones",
+      title: "Precious stones",
+      lead: "Diamond, ruby, sapphire and emerald, hand-set in 18k gold. Each stone is chosen for its color, its clarity and its character.",
+      viewStone: n => `Shop ${n} pieces`,
+      piecesTitle: "Pieces with precious stones",
+      all: "View the whole collection",
+      moreTitle: "Looking for another gem?",
+      moreText: "Beyond these four, we work with other precious and colored stones. Tell us what you imagine and we'll choose it together.",
+      moreCta: "Ask on WhatsApp",
+      moreMsg: "Hi, I'm interested in a piece with a precious stone at ZAVERA."
+    },
     faqTitle: "Frequently asked questions",
     faqs: [
-      ["Are the pieces solid gold?", "Yes. We work in solid 14k gold and 925 silver. Every piece carries its hallmark and certificate."],
+      ["Are the pieces solid gold?", "Yes. We work only in solid 18k gold. Every piece carries its hallmark and certificate."],
+      ["Are the stones natural?", "Yes. We select natural diamonds, rubies, sapphires and emeralds, and every stone comes with its certificate."],
       ["How do I find my ring size?", "Check the size guide on each product or book a visit and we'll measure you for free."],
       ["Do you ship outside Santo Domingo?", "We ship nationwide in 2 to 4 business days. Delivery in Santo Domingo is free."],
       ["Can I exchange a piece?", "You have 15 days to exchange it if it hasn't been worn or engraved."]
@@ -330,7 +387,7 @@ ZB.i18n = {
     next: "Next",
     menu: "Menu",
     account: "My account",
-    searchPh: "Search rings, amber, rose gold…",
+    searchPh: "Search rings, ruby, diamond…",
     photo: "Placeholder photo",
     heroLabel: "Featured jewelry",
     engravedWith: "Engraving",

@@ -6,6 +6,7 @@
 (function () {
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => Array.from(el.querySelectorAll(s));
+  const norm = s => String(s).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
   /* ---------- Preferencias del visitante (solo conveniencia) ---------- */
@@ -88,7 +89,8 @@
     return ["es", "en"].map(l => `<button data-lang="${l}" aria-pressed="${state.lang === l}">${l.toUpperCase()}</button>`).join("<span aria-hidden=\"true\">/</span>");
   }
 
-  const TYPE_REP = { anillo: "solitario-brisa", aretes: "argollas", collar: "colgante-sol", pulsera: "pulsera-marea" };
+  const TYPE_REP = { anillo: "solitario-brisa", aretes: "argollas", collar: "colgante-diamante", pulsera: "pulsera-marea" };
+  const collHref = k => k === "piedras" ? "#piedras" : `#coleccion-${k}`;
 
   /* ---------- Chrome: cinta, anuncio, menú, pie, panel ---------- */
   function renderChrome() {
@@ -99,7 +101,7 @@
 
     const n = t.nav, m = t.mega;
     const typeLinks = Object.keys(ZB.types).map(k => `<li><a class="link-draw" href="#coleccion-${k}">${ZB.types[k][state.lang]}</a></li>`).join("");
-    const collLinks = Object.keys(ZB.collections).map(k => `<li><a class="link-draw" href="#coleccion-${k}">${L(ZB.collections[k]).name}</a></li>`).join("");
+    const collLinks = Object.keys(ZB.collections).map(k => `<li><a class="link-draw" href="${collHref(k)}">${L(ZB.collections[k]).name}</a></li>`).join("");
     $("#main-nav").innerHTML = `
       <div class="nav-item">
         <a class="nav-link" href="#coleccion">${n.joyeria}</a>
@@ -112,13 +114,13 @@
             <li><a class="link-draw" href="#coleccion-regalo">${m.regalo}</a></li>
           </ul></div>
           <div class="mega-feature">
-            ${ZB.art.scene("ambar")}
-            <div><h3>${m.featTitle}</h3><p>${m.featText}</p><a class="link-line label" href="#coleccion-ambar">${m.discover}</a></div>
+            ${ZB.art.scene("piedras")}
+            <div><h3>${m.featTitle}</h3><p>${m.featText}</p><a class="link-line label" href="#piedras">${m.discover}</a></div>
           </div>
         </div></div>
       </div>
       <div class="nav-item"><a class="nav-link" href="#coleccion-brisa">${L(ZB.collections.brisa).name}</a></div>
-      <div class="nav-item"><a class="nav-link" href="#coleccion-ambar">${L(ZB.collections.ambar).name}</a></div>
+      <div class="nav-item"><a class="nav-link" href="#piedras">${n.piedras}</a></div>
       <div class="nav-item"><a class="nav-link" href="#coleccion-anillo">${n.compromiso}</a></div>
       <div class="nav-item"><a class="nav-link" href="#coleccion-regalo">${n.regalos}</a></div>
       <div class="nav-item"><a class="nav-link" href="nosotros.html">${n.historia}</a></div>`;
@@ -193,7 +195,7 @@
         </div>
       </section>
 
-      ${["brisa", "ambar"].map((k, i) => `
+      ${["brisa", "piedras"].map((k, i) => `
       <section class="section">
         <div class="feature-full ${i ? "reverse" : ""}">
           <div class="feature-media">${ZB.art.scene(k, false, "", ph)}</div>
@@ -201,7 +203,7 @@
             <span class="label muted">${state.lang === "es" ? "Colección" : "Collection"}</span>
             <h2>${L(ZB.collections[k]).name}</h2>
             <p>${L(ZB.collections[k]).lead}</p>
-            <a class="link-line label" href="#coleccion-${k}">${t.discoverColl}</a>
+            <a class="link-line label" href="${collHref(k)}">${t.discoverColl}</a>
           </div></div>
         </div>
       </section>`).join("")}
@@ -279,6 +281,51 @@
       </section>`;
   }
 
+  /* ---------- Piedras preciosas ---------- */
+  function gemDemo(k) {
+    const [a, b, c] = ZB.gems[k].c;
+    return `<div class="gem-demo" role="img" aria-label="${esc(L(ZB.stones[k]))}" style="--g1:${a};--g2:${b};--g3:${c}"><span></span></div>`;
+  }
+
+  function viewGems() {
+    const t = T(), g = t.gems;
+    const pieces = ZB.products.filter(p => p.coll === "piedras");
+    return `
+      <div class="wrap">
+        <nav class="crumbs" aria-label="Migas"><a href="#inicio" class="link-draw">${t.home}</a><span>/</span><span>${g.eyebrow}</span></nav>
+        <header class="plp-head reveal">
+          <h1>${g.title}</h1>
+          <p>${g.lead}</p>
+        </header>
+
+        <div class="gems">
+          ${Object.keys(ZB.gems).map(k => {
+            const d = L(ZB.gems[k]), name = L(ZB.stones[k]);
+            return `<article class="gem">
+              <div class="gem-stage">${gemDemo(k)}</div>
+              <span class="label muted">${esc(name)}</span>
+              <h2>${d.tag}</h2>
+              <p>${d.desc}</p>
+              <dl class="gem-facts">${d.facts.map(([a, b]) => `<dt>${a}</dt><dd>${b}</dd>`).join("")}</dl>
+              <a class="link-line label" href="#coleccion-${k}">${g.viewStone(name.toLowerCase())}</a>
+            </article>`;
+          }).join("")}
+        </div>
+
+        <section class="section">
+          <div class="section-head"><h2>${g.piecesTitle}</h2></div>
+          <div class="grid grid-4">${pieces.map(card).join("")}</div>
+          <p style="margin-top:28px;text-align:center"><a class="link-line label" href="#coleccion-piedras">${g.all}</a></p>
+        </section>
+
+        <section class="gems-more">
+          <h2>${g.moreTitle}</h2>
+          <p>${g.moreText}</p>
+          <a class="btn btn-primary" target="_blank" rel="noopener" href="${waLink(g.moreMsg)}">${g.moreCta}</a>
+        </section>
+      </div>`;
+  }
+
   /* ---------- Colección (listado) ---------- */
   const PRESETS = {
     nuevo: { es: "Novedades", en: "New arrivals", fn: p => p.isNew },
@@ -297,7 +344,7 @@
       (!f.coll.size || f.coll.has(p.coll)) &&
       (!f.price.size || f.price.has(priceBand(p))) &&
       (!state.preset || !PRESETS[state.preset] || PRESETS[state.preset].fn(p)) &&
-      (!state.query || (p.es.name + " " + p.en.name + " " + p.stone + " " + p.metals.join(" ")).toLowerCase().includes(state.query.toLowerCase()))
+      (!state.query || norm(p.es.name + " " + p.en.name + " " + ZB.stones[p.stone].es + " " + ZB.stones[p.stone].en + " " + p.metals.map(m => ZB.metals[m].es + " " + ZB.metals[m].en).join(" ")).includes(norm(state.query)))
     );
     if (state.sort === "asc") list = list.slice().sort((a, b) => a.price - b.price);
     if (state.sort === "desc") list = list.slice().sort((a, b) => b.price - a.price);
@@ -310,7 +357,7 @@
     const count = (key, val) => ZB.products.filter(p => key === "metal" ? p.metals.includes(val) : key === "price" ? priceBand(p) === val : p[key] === val).length;
     const groups = [
       ["type", t.fType, Object.keys(ZB.types).map(k => [k, ZB.types[k][state.lang]])],
-      ["metal", t.fMetal, Object.keys(ZB.metals).map(k => [k, L(ZB.metals[k])])],
+      ...(Object.keys(ZB.metals).length > 1 ? [["metal", t.fMetal, Object.keys(ZB.metals).map(k => [k, L(ZB.metals[k])])]] : []),
       ["stone", t.fStone, Object.keys(ZB.stones).map(k => [k, L(ZB.stones[k])])],
       ["coll", t.fColl, Object.keys(ZB.collections).map(k => [k, L(ZB.collections[k]).name])],
       ["price", t.fPrice, t.prices]
@@ -331,9 +378,9 @@
     const cards = list.map(card);
     const noFilters = !Object.values(state.filters).some(s => s.size) && !state.preset && !state.query;
     if (noFilters && cards.length >= 6) {
-      cards.splice(4, 0, `<a class="editorial-tile" href="#coleccion-ambar">
-        ${ZB.art.scene("ambar")}
-        <div class="copy"><span class="label">${state.lang === "es" ? "Colección Ámbar" : "Ámbar Collection"}</span><h3>${t.editorialTitle}</h3></div>
+      cards.splice(4, 0, `<a class="editorial-tile" href="#piedras">
+        ${ZB.art.scene("piedras")}
+        <div class="copy"><span class="label">${L(ZB.collections.piedras).name}</span><h3>${t.editorialTitle}</h3></div>
       </a>`);
     }
     return `<div class="grid">${cards.join("")}</div>`;
@@ -345,6 +392,7 @@
     if (state.preset && PRESETS[state.preset]) return L(PRESETS[state.preset]);
     const f = state.filters;
     if (f.type.size === 1 && !f.coll.size) return ZB.types[[...f.type][0]][state.lang];
+    if (f.stone.size === 1 && !f.type.size && !f.coll.size) return L(ZB.stones[[...f.stone][0]]);
     if (f.coll.size === 1 && !f.type.size) return (state.lang === "es" ? "Colección " : "") + L(ZB.collections[[...f.coll][0]]).name + (state.lang === "en" ? " Collection" : "");
     return t.jewelry;
   }
@@ -352,7 +400,8 @@
   function viewPlp() {
     const t = T();
     const f = state.filters;
-    const collLead = f.coll.size === 1 && !f.type.size ? L(ZB.collections[[...f.coll][0]]).lead : t.plpIntro;
+    const oneStone = f.stone.size === 1 && !f.type.size && !f.coll.size ? [...f.stone][0] : null;
+    const collLead = oneStone && ZB.gems[oneStone] ? L(ZB.gems[oneStone]).desc : f.coll.size === 1 && !f.type.size ? L(ZB.collections[[...f.coll][0]]).lead : t.plpIntro;
     return `
       <div class="wrap">
         <nav class="crumbs" aria-label="Migas"><a href="#inicio" class="link-draw">${t.home}</a><span>/</span><a href="#coleccion" class="link-draw">${t.jewelry}</a></nav>
@@ -439,9 +488,9 @@
 
             <div>
               <div class="opt-label"><span>${t.material}</span><b id="metal-name">${L(ZB.metals[pdp.metal])}</b></div>
-              <div class="swatches">
+              ${p.metals.length > 1 ? `<div class="swatches">
                 ${p.metals.map(m => `<button class="swatch" data-metal="${m}" aria-pressed="${pdp.metal === m}" aria-label="${L(ZB.metals[m])}"><span style="background:${ZB.metals[m].sw}"></span></button>`).join("")}
-              </div>
+              </div>` : ""}
             </div>
 
             ${p.sizes ? `<div>
@@ -553,13 +602,13 @@
           <ul>
             <li><button data-go="2">${n.joyeria}<span aria-hidden="true">›</span></button></li>
             <li><a href="#coleccion-brisa">${L(ZB.collections.brisa).name}</a></li>
-            <li><a href="#coleccion-ambar">${L(ZB.collections.ambar).name}</a></li>
+            <li><a href="#piedras">${n.piedras}</a></li>
             <li><a href="#coleccion-anillo">${n.compromiso}</a></li>
             <li><a href="#coleccion-regalo">${n.regalos}</a></li>
             <li><a href="nosotros.html">${n.historia}</a></li>
           </ul>
           <div class="drawer-foot">
-            ${ZB.art.scene("ambar", true)}
+            ${ZB.art.scene("piedras", true)}
             <a class="link-line" style="justify-self:start" target="_blank" rel="noopener" href="${waLink(state.lang === "es" ? "Hola, quiero agendar una cita." : "Hi, I'd like to book a visit.")}">${n.citas} · WhatsApp 829-763-4955</a>
             <span>${t.account}</span>
             <div class="lang">${langToggle()}</div>
@@ -570,7 +619,7 @@
           <h4>${m.cat}</h4>
           <ul class="sub">${Object.keys(ZB.types).map(k => `<li><a href="#coleccion-${k}">${ZB.types[k][state.lang]}</a></li>`).join("")}<li><a href="#coleccion">${m.all}</a></li></ul>
           <h4>${m.coll}</h4>
-          <ul class="sub">${Object.keys(ZB.collections).map(k => `<li><a href="#coleccion-${k}">${L(ZB.collections[k]).name}</a></li>`).join("")}</ul>
+          <ul class="sub">${Object.keys(ZB.collections).map(k => `<li><a href="${collHref(k)}">${L(ZB.collections[k]).name}</a></li>`).join("")}</ul>
           <h4>${m.feat}</h4>
           <ul class="sub"><li><a href="#coleccion-nuevo">${m.nuevo}</a></li><li><a href="#coleccion-grabado">${m.grabar}</a></li><li><a href="#coleccion-regalo">${m.regalo}</a></li></ul>
         </div>
@@ -674,6 +723,13 @@
       }
     }
 
+    if (hash === "piedras") {
+      route.lastPlp = null;
+      app.innerHTML = viewGems();
+      const cur = $('.nav-link[href="#piedras"]'); if (cur) cur.setAttribute("aria-current", "page");
+      return;
+    }
+
     if (hash.startsWith("coleccion")) {
       const key = hash.slice(10);
       if (route.lastPlp !== hash) {
@@ -681,6 +737,7 @@
         state.preset = ""; state.query = route.pendingQuery || "";
         if (ZB.types[key]) state.filters.type.add(key);
         else if (ZB.collections[key]) state.filters.coll.add(key);
+        else if (ZB.gems[key]) state.filters.stone.add(key);
         else if (PRESETS[key]) state.preset = key;
       }
       route.pendingQuery = "";

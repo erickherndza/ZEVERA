@@ -5,7 +5,7 @@ Sirve para que la clienta apruebe estructura, tipografía, color y experiencia *
 
 ## Qué incluye
 - **Portada**: anuncio de servicio, header con logo centrado, mega menú, hero, novedades, categorías, colecciones, "La experiencia ZAVERA", historia, boletín y pie.
-- **Colección** (`#coleccion`, `#coleccion-anillo`, `#coleccion-ambar`, `#coleccion-regalo`…): filtros por categoría, material, piedra, colección y precio; orden; pieza editorial en la cuadrícula; preguntas frecuentes.
+- **Colección** (`#coleccion`, `#coleccion-anillo`, `#piedras`, `#coleccion-regalo`…): filtros por categoría, material, piedra, colección y precio; orden; pieza editorial en la cuadrícula; preguntas frecuentes.
 - **Ficha de producto** (`#producto-<id>`): galería de 4 tomas (producto solo, puesto, macro, escala), material que cambia la imagen, tallas, grabado (12 caracteres), empaque de regalo, WhatsApp, acordeones y "Completa el look" elegido a mano.
 - **Móvil**: menú lateral por niveles, filtros en panel, galería deslizable, barra fija de "Añadir a la bolsa".
 - **ES / EN** en todo el sitio.

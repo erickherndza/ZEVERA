@@ -50,6 +50,19 @@ color de firma y panel "Estilo del demo" (el panel se eliminó: la marca ya deci
   `index.html#...`. `index.html#nosotros` redirige a `nosotros.html`. Enlazada desde menú (desktop y
   móvil), footer y "Conocer más". Es un ecommerce: no agregar contenido nuevo al home.
 
+## Materiales (2026-10-12) — pedido de la clienta
+
+- **Solo oro de 18K y piedras preciosas** (diamante, rubí, zafiro, esmeralda; el copy deja
+  entrever "otras gemas contigo"). Se eliminó **todo** el ámbar, la plata 925, el oro de 14K y
+  los tonos blanco/rosa: `ZB.metals` tiene una sola entrada (`oro18`), así que la ficha no
+  muestra selector de tonos y el filtro Material se oculta. Si la clienta quiere volver a
+  ofrecer tonos (amarillo/blanco/rosa en 18K), basta añadirlos a `ZB.metals` y a `metals` de cada pieza.
+- La colección **Ámbar** pasó a **Piedras preciosas** (`ZB.collections.piedras`). Su enlace del
+  menú/home/mega menú va a `#piedras` (`viewGems()` en `js/app.js`: ficha informativa y demo
+  CSS de cada piedra, `ZB.gems` en `js/data.js`, + cuadrícula de piezas). El listado clásico
+  sigue en `#coleccion-piedras`; `#coleccion-rubi|zafiro|diamante|esmeralda` filtra por piedra.
+- Nosotros: lead y valor "Calidad" mencionan oro de 18 quilates y piedras preciosas.
+
 ## Pendientes abiertos (2026-10-12)
 
 - Confirmar con la clienta **ZAVERA vs ZEVERA** (hoy el sitio dice ZAVERA).
@@ -208,12 +221,7 @@ assets/img/         fotos de banco (provisionales)
 
 ## Pendiente / para la próxima sesión
 
-- **Confirmar con la clienta** si la línea del footer "Joyería fina hecha
-  en Santo Domingo. Oro, plata y ámbar dominicano." (`f.brand` en
-  `js/data.js`, ES y EN) también debe cambiarse o quitarse — es copy
-  descriptivo del negocio (no repite el nombre viejo de marca), distinto
-  del subtítulo que ya se quitó del header, así que se dejó tal cual hasta
-  que ella confirme.
+- (Resuelto) La línea del footer ahora dice "Oro de 18 quilates y piedras preciosas".
 - Esperando más feedback de la clienta sobre el resto del sitio (ficha de
   producto, página de colección, menú móvil, footer) — todavía no se ha
   revisado con ella en detalle más allá del home.
