@@ -9,6 +9,7 @@
   const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
   /* ---------- Preferencias del visitante (solo conveniencia) ---------- */
+  const IS_ABOUT = window.ZV_PAGE === "about";
   const store = {
     get(k, d) { try { const v = localStorage.getItem("zb." + k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } },
     set(k, v) { try { localStorage.setItem("zb." + k, JSON.stringify(v)); } catch (e) { /* sin almacenamiento */ } }
@@ -120,7 +121,7 @@
       <div class="nav-item"><a class="nav-link" href="#coleccion-ambar">${L(ZB.collections.ambar).name}</a></div>
       <div class="nav-item"><a class="nav-link" href="#coleccion-anillo">${n.compromiso}</a></div>
       <div class="nav-item"><a class="nav-link" href="#coleccion-regalo">${n.regalos}</a></div>
-      <div class="nav-item"><a class="nav-link" href="#nosotros">${n.historia}</a></div>`;
+      <div class="nav-item"><a class="nav-link" href="nosotros.html">${n.historia}</a></div>`;
 
     const f = t.foot;
     const col = (h, items, hrefs = []) => `<div class="foot-col"><h4>${h}</h4><ul>${items.map((i, k) => `<li><a class="link-draw" href="${hrefs[k] || "#inicio"}">${i}</a></li>`).join("")}</ul></div>`;
@@ -132,7 +133,7 @@
             <p>${f.brand}</p>
             <p>WhatsApp · 829-763-4955</p>
           </div>
-          ${col(f.help, f.helpL)}${col(f.services, f.servL)}${col(f.about, f.aboutL, ["#nosotros"])}${col(f.legal, f.legalL)}
+          ${col(f.help, f.helpL)}${col(f.services, f.servL)}${col(f.about, f.aboutL, ["nosotros.html"])}${col(f.legal, f.legalL)}
         </div>
         <div class="foot-bottom">
           <span>${f.rights}</span>
@@ -220,7 +221,7 @@
         <blockquote>${t.story}</blockquote>
         <svg class="orn" aria-hidden="true"><use href="#zv-iso"/></svg>
         <p class="muted">${t.storyText}</p>
-        <a class="link-line label" href="#nosotros">${t.readMore}</a>
+        <a class="link-line label" href="nosotros.html">${t.readMore}</a>
       </section>
 
       <section class="wrap newsletter">
@@ -283,7 +284,7 @@
       <section class="section wrap story type-classic about-legacy">
         <span class="label muted">${a.legacyLabel}</span>
         <blockquote>${a.legacy}</blockquote>
-        <a class="btn btn-primary" href="#coleccion">${a.cta}</a>
+        <a class="btn btn-primary" href="index.html#coleccion">${a.cta}</a>
       </section>`;
   }
 
@@ -564,7 +565,7 @@
             <li><a href="#coleccion-ambar">${L(ZB.collections.ambar).name}</a></li>
             <li><a href="#coleccion-anillo">${n.compromiso}</a></li>
             <li><a href="#coleccion-regalo">${n.regalos}</a></li>
-            <li><a href="#nosotros">${n.historia}</a></li>
+            <li><a href="nosotros.html">${n.historia}</a></li>
           </ul>
           <div class="drawer-foot">
             ${ZB.art.scene("ambar", true)}
@@ -656,6 +657,14 @@
     clearInterval(hero.timer); hero.timer = null;
     const hash = (location.hash || "#inicio").slice(1);
     const app = $("#app");
+    if (IS_ABOUT) {
+      app.innerHTML = viewAbout();
+      document.title = (state.lang === "es" ? "Nosotros" : "About us") + " — ZAVERA";
+      $$(".nav-link").forEach(a => a.removeAttribute("aria-current"));
+      const cur = $('.nav-link[href="nosotros.html"]'); if (cur) cur.setAttribute("aria-current", "page");
+      return;
+    }
+    if (hash === "nosotros") { location.replace("nosotros.html"); return; }
     const sb = $("#sticky-buy"); sb.hidden = true; sb.dataset.show = "false";
     if (stickyBuy.io) { stickyBuy.io.disconnect(); stickyBuy.io = null; }
     document.body.dataset.pdp = "false";
@@ -691,11 +700,6 @@
     }
 
     route.lastPlp = null;
-    if (hash === "nosotros") {
-      app.innerHTML = viewAbout();
-      const cur = $('.nav-link[href="#nosotros"]'); if (cur) cur.setAttribute("aria-current", "page");
-      return;
-    }
     app.innerHTML = viewHome();
     bindRail();
     heroGo(0);
@@ -729,6 +733,9 @@
   /* ---------- Eventos (delegados) ---------- */
   document.addEventListener("click", e => {
     const el = e.target.closest("button, a");
+    if (IS_ABOUT && el && el.matches("a") && (el.getAttribute("href") || "").startsWith("#")) {
+      e.preventDefault(); location.href = "index.html" + el.getAttribute("href"); return;
+    }
     if (!el) { if (e.target.id === "backdrop") closeDrawers(); return; }
 
     if (el.matches("#menu-open")) return openMenu();
@@ -837,6 +844,7 @@
       route.pendingQuery = q;
       route.lastPlp = null;
       $("#search-bar")?.remove();
+      if (IS_ABOUT) { store.set("pendingQuery", q); location.href = "index.html#coleccion"; return; }
       if (location.hash === "#coleccion") route(); else location.hash = "coleccion";
     }
   });
@@ -856,5 +864,9 @@
   /* ---------- Inicio ---------- */
   applyStyle();
   renderChrome();
+  if (!IS_ABOUT) {
+    const pq = store.get("pendingQuery", "");
+    if (pq) { route.pendingQuery = pq; store.set("pendingQuery", ""); }
+  }
   route();
 })();

@@ -44,9 +44,11 @@ color de firma y panel "Estilo del demo" (el panel se eliminó: la marca ya deci
 - **Secciones "La experiencia" e "Historia"** usan la tipografía del primer demo
   (Cormorant Garamond cursiva + Jost, clase `.type-classic`), fondo crema y letras/iconos dorados.
 
-- **Página Nosotros** (`#nosotros`, `viewAbout()` en `js/app.js`, textos `t.about` en `js/data.js`):
-  hero con foto del libro, misión, visión (morado + patrón de marca), 3 valores (Fe, Calidad, Criterio)
-  y cierre "legado". Enlazada desde el menú (desktop y móvil), el footer (Nosotros) y "Conocer más" del home.
+- **Página Nosotros** = archivo propio `nosotros.html` (no es una ruta del home; el home no se tocó).
+  Comparte header/footer/CSS/JS con `index.html`; `window.ZV_PAGE = "about"` hace que `js/app.js`
+  pinte `viewAbout()` (textos `t.about` en `js/data.js`). Desde esa página los enlaces `#...` van a
+  `index.html#...`. `index.html#nosotros` redirige a `nosotros.html`. Enlazada desde menú (desktop y
+  móvil), footer y "Conocer más". Es un ecommerce: no agregar contenido nuevo al home.
 
 ## Pendientes abiertos (2026-10-12)
 
