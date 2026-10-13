@@ -31,9 +31,9 @@ color de firma y panel "Estilo del demo" (el panel se eliminó: la marca ya deci
 - **Logo**: vectorial, extraído del PDF → `assets/brand/` (`logo-horizontal`,
   `logo-stacked`, `isotipo`, `pattern`). En el sitio va como sprite inline en
   `index.html` (`#zv-logo-h`, `#zv-logo-v`, `#zv-iso`) y toma el color con `currentColor`.
-- **Hero = slider** (autoplay 6.5 s, flechas + barras) con las 3 fotos grandes del libro
-  (págs. 12–14) → `assets/img/zavera-hero-{1,2,3}.jpg`; textos en `t.heroSlides` (`js/data.js`),
-  focos de recorte en `HERO` (`js/art.js`). La foto 2 trae fondo vino: es la foto de la clienta, no un color del sistema.
+- **Hero = slider** (autoplay 6.5 s, flechas + barras) con 2 fotos grandes del libro
+  (págs. 12 y 14; se quitó la de la pág. 13, "Perlas que se heredan") → `assets/img/zavera-hero-{1,2}.jpg`; textos en `t.heroSlides` (`js/data.js`),
+  focos de recorte en `HERO` (`js/art.js`).
 - **Secciones "La experiencia" e "Historia"** usan la tipografía del primer demo
   (Cormorant Garamond cursiva + Jost, clase `.type-classic`), fondo crema y letras/iconos dorados.
 

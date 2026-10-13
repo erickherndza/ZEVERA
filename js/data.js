@@ -117,7 +117,6 @@ ZB.i18n = {
     mega: { cat: "Por categoría", coll: "Por colección", feat: "Destacados", all: "Ver toda la joyería", nuevo: "Novedades", grabar: "Para personalizar", regalo: "Regalos bajo RD$ 15,000", featTitle: "Colección Ámbar", featText: "Ámbar dominicano en plata y oro.", discover: "Descubrir" },
     heroSlides: [
       { eyebrow: "Nueva colección", title: "Esenciales para todos los días", text: "Cadenas finas, perlas y diamantes pensados para acompañarte toda la vida.", href: "#coleccion-esencial" },
-      { eyebrow: "Joyas de generación", title: "Perlas que se heredan", text: "Piezas con historia, hechas para pasar de una generación a la siguiente.", href: "#coleccion-regalo" },
       { eyebrow: "Colección Brisa", title: "Oro que atrapa la luz", text: "Líneas finas en oro de 14 quilates, diseñadas para usarse todos los días.", href: "#coleccion-brisa" }
     ],
     heroEyebrow: "Nueva colección",
@@ -212,7 +211,6 @@ ZB.i18n = {
     mega: { cat: "By category", coll: "By collection", feat: "Featured", all: "Shop all jewelry", nuevo: "New arrivals", grabar: "To personalize", regalo: "Gifts under RD$ 15,000", featTitle: "Ámbar Collection", featText: "Dominican amber in silver and gold.", discover: "Discover" },
     heroSlides: [
       { eyebrow: "New collection", title: "Everyday essentials", text: "Fine chains, pearls and diamonds made to stay with you for life.", href: "#coleccion-esencial" },
-      { eyebrow: "Jewels for generations", title: "Pearls to be inherited", text: "Pieces with a story, made to pass from one generation to the next.", href: "#coleccion-regalo" },
       { eyebrow: "Brisa Collection", title: "Gold that catches the light", text: "Fine 14k gold lines, designed to be worn every day.", href: "#coleccion-brisa" }
     ],
     heroEyebrow: "New collection",

@@ -50,8 +50,7 @@
   // pos = punto focal en escritorio (recorte 16:7) y en móvil (recorte 4:5).
   const HERO = [
     { file: "zavera-hero-1.jpg", pos: "center 62%", posM: "58% center" },
-    { file: "zavera-hero-2.jpg", pos: "center 40%", posM: "48% center" },
-    { file: "zavera-hero-3.jpg", pos: "center 35%", posM: "78% center" }
+    { file: "zavera-hero-2.jpg", pos: "center 35%", posM: "78% center" }
   ];
 
   function typeIndex(p) {
