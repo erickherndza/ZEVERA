@@ -32,10 +32,25 @@ color de firma y panel "Estilo del demo" (el panel se eliminó: la marca ya deci
   `logo-stacked`, `isotipo`, `pattern`). En el sitio va como sprite inline en
   `index.html` (`#zv-logo-h`, `#zv-logo-v`, `#zv-iso`) y toma el color con `currentColor`.
 - **Hero = slider** (autoplay 6.5 s, flechas + barras) con 2 fotos grandes del libro
-  (págs. 12 y 14; se quitó la de la pág. 13, "Perlas que se heredan") → `assets/img/zavera-hero-{1,2}.jpg`; textos en `t.heroSlides` (`js/data.js`),
-  focos de recorte en `HERO` (`js/art.js`).
+  (págs. 12 y 14) → `assets/img/zavera-hero-{1,2}.jpg`; textos en `t.heroSlides`
+  (`js/data.js`, ES y EN), focos de recorte en `HERO` (`js/art.js`). Son **2 slides**:
+  se quitó la de la pág. 13 ("Perlas que se heredan", fondo vino) a pedido de la clienta.
+  Las flechas/barras se ajustan solas al número de slides.
+- **Header morado** (`--plum`): logo dorado `--gold`, menú/idioma/iconos en `--gold-soft`
+  (más legible: el dorado del logo da 4.1:1 sobre morado), contador de bolsa dorado con
+  número morado, filete dorado abajo. El mega menú sigue en crema con tinta.
+  **Barra de anuncio** ("Envío gratis en Santo Domingo · Grabado personalizado en 48 horas")
+  en **crema** con texto morado, encima del header (pedido de la clienta, 2026-10-12).
 - **Secciones "La experiencia" e "Historia"** usan la tipografía del primer demo
   (Cormorant Garamond cursiva + Jost, clase `.type-classic`), fondo crema y letras/iconos dorados.
+
+## Pendientes abiertos (2026-10-12)
+
+- Confirmar con la clienta **ZAVERA vs ZEVERA** (hoy el sitio dice ZAVERA).
+- Fotos de producto/colecciones siguen siendo de banco ("Foto provisional"); solo el slider usa fotos del libro.
+- Licenciar Earthy y High Billion completas antes de producción (hoy sustitutas de Google Fonts).
+- `assets/img/` tiene 5 JPG de banco sin usar ni versionar (`2148536086`, `2149836436`, `2150329661`, `2150347051`, `33812`).
+- GitHub Pages cachea 10 min: tras un push, recargar con cmd+shift+r antes de dar un cambio por no hecho.
 
 ## Dónde está
 
