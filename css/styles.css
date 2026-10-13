@@ -207,6 +207,19 @@ p { margin: 0; }
 .logo-mark { display: block; color: var(--gold); fill: currentColor; width: clamp(168px, 120px + 9vw, 252px); aspect-ratio: 642 / 184; height: auto; }
 .logo-mark.logo-foot { width: 190px; aspect-ratio: 488 / 369; }
 .logo-mark.logo-drawer { width: 150px; }
+/* Sobre morado el logo usa el dorado claro (7.5:1) y más tamaño: con --gold (4.1:1) el trazo fino
+   y el lema "Joyas de generación" casi no se leían (observación de la clienta). */
+.site-header .logo-mark, .site-footer .logo-mark { color: var(--gold-soft); }
+.site-header .logo-mark { width: clamp(200px, 150px + 10vw, 300px); }
+.site-header .header-row { min-height: 76px; }
+/* Móvil: el logo ocupa todo el ancho que dejan los iconos (iconos y márgenes más compactos) y
+   se engrosa el trazo fino del lema; a 200px el wordmark y "Joyas de generación" no se leían. */
+@media (max-width: 959px) {
+  .site-header .header-row { padding-inline: 8px; min-height: 68px; }
+  .site-header .icon-btn { width: 36px; }
+  .site-header .header-left, .site-header .header-right { gap: 0; }
+  .site-header .logo-mark { width: min(260px, calc(100vw - 16px - 2 * 72px)); stroke: currentColor; stroke-width: 1.6px; paint-order: stroke; }
+}
 
 .lang { gap: 2px; margin-left: 8px; font-size: var(--t-label); letter-spacing: .12em; }
 .lang button { padding: 6px 6px; color: var(--muted); }

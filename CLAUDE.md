@@ -36,8 +36,8 @@ color de firma y panel "Estilo del demo" (el panel se eliminó: la marca ya deci
   (`js/data.js`, ES y EN), focos de recorte en `HERO` (`js/art.js`). Son **2 slides**:
   se quitó la de la pág. 13 ("Perlas que se heredan", fondo vino) a pedido de la clienta.
   Las flechas/barras se ajustan solas al número de slides.
-- **Header morado** (`--plum`): logo dorado `--gold`, menú/idioma/iconos en `--gold-soft`
-  (más legible: el dorado del logo da 4.1:1 sobre morado), contador de bolsa dorado con
+- **Header morado** (`--plum`): logo en `--gold-soft` y más grande (2026-10-13: la clienta dijo que
+  el logo/lema "casi no se lee" con `--gold`, 4.1:1; el footer igual; en móvil además ocupa todo el ancho libre del header y el trazo se engrosa, `@media (max-width: 959px)` en `styles.css`), menú/idioma/iconos en `--gold-soft`, contador de bolsa dorado con
   número morado, filete dorado abajo. El mega menú sigue en crema con tinta.
   **Barra de anuncio** ("Envío gratis en Santo Domingo · Grabado personalizado en 48 horas")
   en **crema** con texto morado, encima del header (pedido de la clienta, 2026-10-12).
