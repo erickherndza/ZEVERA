@@ -398,32 +398,28 @@ p { margin: 0; }
 .story .orn { fill: currentColor; width: 44px; height: 62px; color: var(--gold); }
 
 /* ---------- Nosotros ---------- */
-/* Apertura editorial: foto a cada lado y el texto al centro (no es el hero del home) */
-.about-intro { display: grid; gap: 28px; padding-block: clamp(40px, 6vw, 88px) 0; align-items: center; }
-.about-intro-copy { display: grid; gap: 18px; justify-items: center; text-align: center; max-width: 44ch; margin-inline: auto; order: -1; }
-.about-intro-copy h1 { max-width: 14ch; }
-.about-img { margin: 0; overflow: hidden; background: var(--surface); aspect-ratio: 4 / 5; }
-.about-img img { width: 100%; height: 100%; object-fit: cover; }
-.about-img-l { display: none; }
+/* Página interior: mismo patrón que la colección (migas + título a la izquierda) y la
+   misma tipografía de marca; sin hero ni bloques a sangre como el home. */
+.about-body { display: grid; gap: 32px; padding-block: 8px clamp(48px, 6vw, 88px); }
+.about-photo { margin: 0; background: var(--surface); aspect-ratio: 4 / 5; overflow: hidden; }
+.about-photo img { width: 100%; height: 100%; object-fit: cover; }
+.about-text { display: grid; gap: clamp(32px, 4vw, 56px); align-content: center; }
+.about-text article { display: grid; gap: 14px; }
+.about-text h2 { font-size: var(--t-h3); line-height: 1.4; }
+.about-text p { color: var(--ink-2); max-width: 52ch; }
 @media (min-width: 900px) {
-  .about-intro { grid-template-columns: 1fr minmax(320px, 1.1fr) 1fr; gap: clamp(28px, 4vw, 64px); }
-  .about-intro-copy { order: 0; }
-  .about-img-l { display: block; }
-  .about-img-l { aspect-ratio: 3 / 4; }
-  .about-img-r { aspect-ratio: 3 / 4; margin-top: clamp(48px, 8vw, 120px); }
+  .about-body { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(40px, 6vw, 96px); }
+  .about-photo { aspect-ratio: 4 / 5; max-height: 640px; }
 }
-.about-mission { display: grid; justify-items: center; gap: 18px; text-align: center; padding-top: var(--section); }
-.about-mission h2 { max-width: 30ch; font-size: var(--t-h3); line-height: 1.4; }
-.about-mission p { max-width: 52ch; }
-.about-vision { position: relative; overflow: hidden; background: var(--plum); color: var(--cream); margin-top: var(--section); padding-block: var(--section); text-align: center; }
-.about-pattern { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .55; }
-.about-vision-in { position: relative; display: grid; justify-items: center; gap: 22px; }
-.about-vision .label { color: var(--gold-soft); }
-.about-vision .orn { fill: currentColor; width: 36px; height: 50px; color: var(--gold); }
-.about-vision .display { font-size: var(--t-h2); line-height: 1.3; max-width: 34ch; text-wrap: balance; }
-.about-values { margin-top: 0; border-top: 0; }
-.about-legacy { padding-bottom: var(--section); }
-.about-legacy blockquote { max-width: 32ch; }
+.about-values { border-top: 1px solid var(--line); padding-block: clamp(40px, 5vw, 64px) var(--section); display: grid; gap: 32px; }
+.about-values-grid { display: grid; gap: 32px; }
+.about-values-grid > div { display: grid; gap: 10px; align-content: start; }
+.about-values-grid p { color: var(--ink-2); max-width: 40ch; }
+@media (min-width: 900px) { .about-values-grid { grid-template-columns: repeat(3, 1fr); gap: 56px; } }
+.about-legacy { background: var(--plum); color: var(--cream); padding-block: var(--section); text-align: center; }
+.about-legacy .wrap { display: grid; justify-items: center; gap: 24px; }
+.about-legacy .label { color: var(--gold-soft); }
+.about-legacy .display { font-size: var(--t-h2); line-height: 1.3; max-width: 30ch; text-wrap: balance; }
 
 /* ---------- Boletín ---------- */
 .newsletter { display: grid; gap: 18px; justify-items: center; text-align: center; padding-block: var(--section); }

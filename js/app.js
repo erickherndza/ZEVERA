@@ -240,44 +240,42 @@
   function viewAbout() {
     const t = T(), a = t.about;
     return `
-      <section class="wrap about-intro">
-        <figure class="about-img about-img-l"><img src="assets/img/2150329661.jpg" alt="" decoding="async"></figure>
-        <div class="about-intro-copy">
-          <span class="label muted">${a.eyebrow}</span>
+      <div class="wrap">
+        <nav class="crumbs" aria-label="Migas"><a href="index.html#inicio" class="link-draw">${t.home}</a><span>/</span><span>${a.eyebrow}</span></nav>
+        <header class="plp-head">
           <h1>${a.title}</h1>
-          <p class="muted">${a.lead}</p>
-        </div>
-        <figure class="about-img about-img-r"><img src="assets/img/2150347051.jpg" alt="" decoding="async"></figure>
-      </section>
+          <p>${a.lead}</p>
+        </header>
 
-      <section class="wrap about-mission">
-        <span class="label muted">${a.missionLabel}</span>
-        <h2>${a.mission}</h2>
-        <p class="muted">${a.missionText}</p>
-      </section>
-
-      <section class="about-vision">
-        <img class="about-pattern" src="assets/brand/pattern.svg" alt="" aria-hidden="true">
-        <div class="wrap about-vision-in">
-          <span class="label">${a.visionLabel}</span>
-          <svg class="orn" aria-hidden="true"><use href="#zv-iso"/></svg>
-          <p class="display">${a.vision}</p>
-        </div>
-      </section>
-
-      <section class="experience type-classic about-values">
-        <div class="wrap">
-          <div class="section-head center"><h2>${a.valuesTitle}</h2></div>
-          <div class="exp-grid">
-            ${a.values.map(v => `<div class="exp"><svg class="exp-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3l2.2 6.3L21 12l-6.8 2.7L12 21l-2.2-6.3L3 12l6.8-2.7z"/></svg><h3>${v.t}</h3><p>${v.d}</p></div>`).join("")}
+        <div class="about-body">
+          <figure class="about-photo"><img src="assets/img/2150329661.jpg" alt="" decoding="async"></figure>
+          <div class="about-text">
+            <article>
+              <span class="label muted">${a.missionLabel}</span>
+              <h2>${a.mission}</h2>
+              <p>${a.missionText}</p>
+            </article>
+            <article>
+              <span class="label muted">${a.visionLabel}</span>
+              <h2>${a.vision}</h2>
+            </article>
           </div>
         </div>
-      </section>
 
-      <section class="section wrap story type-classic about-legacy">
-        <span class="label muted">${a.legacyLabel}</span>
-        <blockquote>${a.legacy}</blockquote>
-        <a class="btn btn-primary" href="index.html#coleccion">${a.cta}</a>
+        <section class="about-values">
+          <h2 class="label">${a.valuesTitle}</h2>
+          <div class="about-values-grid">
+            ${a.values.map((v, k) => `<div><span class="label muted">0${k + 1}</span><h3>${v.t}</h3><p>${v.d}</p></div>`).join("")}
+          </div>
+        </section>
+      </div>
+
+      <section class="about-legacy">
+        <div class="wrap">
+          <span class="label">${a.legacyLabel}</span>
+          <p class="display">${a.legacy}</p>
+          <a class="btn btn-light" href="index.html#coleccion">${a.cta}</a>
+        </div>
       </section>`;
   }
 
