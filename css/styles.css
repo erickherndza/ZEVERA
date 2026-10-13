@@ -397,6 +397,24 @@ p { margin: 0; }
 .story blockquote { margin: 0; font-family: var(--f-display); font-size: var(--t-h2); line-height: 1.25; max-width: 26ch; text-wrap: balance; font-style: var(--display-style); font-weight: var(--display-weight); color: var(--gold); }
 .story .orn { fill: currentColor; width: 44px; height: 62px; color: var(--gold); }
 
+/* ---------- Nosotros ---------- */
+.about-hero { position: relative; overflow: hidden; background: var(--plum); aspect-ratio: 4 / 5; max-height: 78vh; }
+@media (min-width: 760px) { .about-hero { aspect-ratio: 16 / 7; max-height: 640px; } }
+.about-hero::after {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(to top, rgba(49,18,35,.78) 0%, rgba(49,18,35,.34) 42%, rgba(49,18,35,0) 70%);
+}
+.feature-copy h2 { font-size: var(--t-h3); line-height: 1.35; }
+.about-vision { position: relative; overflow: hidden; background: var(--plum); color: var(--cream); margin-top: var(--section); padding-block: var(--section); text-align: center; }
+.about-pattern { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .55; }
+.about-vision-in { position: relative; display: grid; justify-items: center; gap: 22px; }
+.about-vision .label { color: var(--gold-soft); }
+.about-vision .orn { fill: currentColor; width: 36px; height: 50px; color: var(--gold); }
+.about-vision .display { font-size: var(--t-h2); line-height: 1.3; max-width: 34ch; text-wrap: balance; }
+.about-values { margin-top: 0; border-top: 0; }
+.about-legacy { padding-bottom: var(--section); }
+.about-legacy blockquote { max-width: 32ch; }
+
 /* ---------- Boletín ---------- */
 .newsletter { display: grid; gap: 18px; justify-items: center; text-align: center; padding-block: var(--section); }
 .newsletter form { display: flex; width: 100%; max-width: 460px; border-bottom: 1px solid var(--ink); }

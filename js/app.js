@@ -120,10 +120,10 @@
       <div class="nav-item"><a class="nav-link" href="#coleccion-ambar">${L(ZB.collections.ambar).name}</a></div>
       <div class="nav-item"><a class="nav-link" href="#coleccion-anillo">${n.compromiso}</a></div>
       <div class="nav-item"><a class="nav-link" href="#coleccion-regalo">${n.regalos}</a></div>
-      <div class="nav-item"><a class="nav-link" href="#historia">${n.historia}</a></div>`;
+      <div class="nav-item"><a class="nav-link" href="#nosotros">${n.historia}</a></div>`;
 
     const f = t.foot;
-    const col = (h, items) => `<div class="foot-col"><h4>${h}</h4><ul>${items.map(i => `<li><a class="link-draw" href="#inicio">${i}</a></li>`).join("")}</ul></div>`;
+    const col = (h, items, hrefs = []) => `<div class="foot-col"><h4>${h}</h4><ul>${items.map((i, k) => `<li><a class="link-draw" href="${hrefs[k] || "#inicio"}">${i}</a></li>`).join("")}</ul></div>`;
     $("#site-footer").innerHTML = `
       <div class="wrap">
         <div class="foot-grid">
@@ -132,7 +132,7 @@
             <p>${f.brand}</p>
             <p>WhatsApp · 829-763-4955</p>
           </div>
-          ${col(f.help, f.helpL)}${col(f.services, f.servL)}${col(f.about, f.aboutL)}${col(f.legal, f.legalL)}
+          ${col(f.help, f.helpL)}${col(f.services, f.servL)}${col(f.about, f.aboutL, ["#nosotros"])}${col(f.legal, f.legalL)}
         </div>
         <div class="foot-bottom">
           <span>${f.rights}</span>
@@ -220,7 +220,7 @@
         <blockquote>${t.story}</blockquote>
         <svg class="orn" aria-hidden="true"><use href="#zv-iso"/></svg>
         <p class="muted">${t.storyText}</p>
-        <a class="link-line label" href="#inicio">${t.readMore}</a>
+        <a class="link-line label" href="#nosotros">${t.readMore}</a>
       </section>
 
       <section class="wrap newsletter">
@@ -232,6 +232,58 @@
           <button type="submit">${t.nlBtn}</button>
         </form>
         <p class="form-note" id="nl-note" aria-live="polite"></p>
+      </section>`;
+  }
+
+  /* ---------- Nosotros ---------- */
+  function viewAbout() {
+    const t = T(), a = t.about;
+    return `
+      <section class="about-hero">
+        <div class="art hero-art"><picture>
+          <source media="(max-width: 759px)" srcset="assets/img/zavera-hero-1.jpg" sizes="100vw">
+          <img src="assets/img/zavera-hero-1.jpg" alt="" decoding="async" style="--pos:center 55%;--pos-m:58% center">
+        </picture></div>
+        <div class="hero-copy">
+          <span class="label">${a.eyebrow}</span>
+          <h1>${a.title}</h1>
+          <p>${a.lead}</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="feature-full">
+          <div class="feature-media"><div class="art"><img src="assets/img/zavera-hero-2.jpg" alt="" decoding="async" style="object-position:58% center"></div></div>
+          <div class="feature-copy-wrap"><div class="feature-copy">
+            <span class="label muted">${a.missionLabel}</span>
+            <h2>${a.mission}</h2>
+            <p class="muted">${a.missionText}</p>
+          </div></div>
+        </div>
+      </section>
+
+      <section class="about-vision">
+        <img class="about-pattern" src="assets/brand/pattern.svg" alt="" aria-hidden="true">
+        <div class="wrap about-vision-in">
+          <span class="label">${a.visionLabel}</span>
+          <svg class="orn" aria-hidden="true"><use href="#zv-iso"/></svg>
+          <p class="display">${a.vision}</p>
+        </div>
+      </section>
+
+      <section class="experience type-classic about-values">
+        <div class="wrap">
+          <div class="section-head center"><h2>${a.valuesTitle}</h2></div>
+          <div class="exp-grid">
+            ${a.values.map(v => `<div class="exp"><svg class="exp-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3l2.2 6.3L21 12l-6.8 2.7L12 21l-2.2-6.3L3 12l6.8-2.7z"/></svg><h3>${v.t}</h3><p>${v.d}</p></div>`).join("")}
+          </div>
+        </div>
+      </section>
+
+      <section class="section wrap story type-classic about-legacy">
+        <span class="label muted">${a.legacyLabel}</span>
+        <blockquote>${a.legacy}</blockquote>
+        <a class="btn btn-primary" href="#coleccion">${a.cta}</a>
       </section>`;
   }
 
@@ -512,7 +564,7 @@
             <li><a href="#coleccion-ambar">${L(ZB.collections.ambar).name}</a></li>
             <li><a href="#coleccion-anillo">${n.compromiso}</a></li>
             <li><a href="#coleccion-regalo">${n.regalos}</a></li>
-            <li><a href="#historia">${n.historia}</a></li>
+            <li><a href="#nosotros">${n.historia}</a></li>
           </ul>
           <div class="drawer-foot">
             ${ZB.art.scene("ambar", true)}
@@ -639,6 +691,11 @@
     }
 
     route.lastPlp = null;
+    if (hash === "nosotros") {
+      app.innerHTML = viewAbout();
+      const cur = $('.nav-link[href="#nosotros"]'); if (cur) cur.setAttribute("aria-current", "page");
+      return;
+    }
     app.innerHTML = viewHome();
     bindRail();
     heroGo(0);

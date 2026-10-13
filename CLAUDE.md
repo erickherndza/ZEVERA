@@ -44,6 +44,10 @@ color de firma y panel "Estilo del demo" (el panel se eliminó: la marca ya deci
 - **Secciones "La experiencia" e "Historia"** usan la tipografía del primer demo
   (Cormorant Garamond cursiva + Jost, clase `.type-classic`), fondo crema y letras/iconos dorados.
 
+- **Página Nosotros** (`#nosotros`, `viewAbout()` en `js/app.js`, textos `t.about` en `js/data.js`):
+  hero con foto del libro, misión, visión (morado + patrón de marca), 3 valores (Fe, Calidad, Criterio)
+  y cierre "legado". Enlazada desde el menú (desktop y móvil), el footer (Nosotros) y "Conocer más" del home.
+
 ## Pendientes abiertos (2026-10-12)
 
 - Confirmar con la clienta **ZAVERA vs ZEVERA** (hoy el sitio dice ZAVERA).

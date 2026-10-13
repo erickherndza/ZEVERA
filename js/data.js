@@ -113,7 +113,7 @@ ZB.pairs = {
 ZB.i18n = {
   es: {
     announce: "Envío gratis en Santo Domingo · Grabado personalizado en 48 horas",
-    nav: { joyeria: "Joyería", colecciones: "Colecciones", compromiso: "Compromiso", regalos: "Regalos", historia: "Nuestra historia", citas: "Agendar cita" },
+    nav: { joyeria: "Joyería", colecciones: "Colecciones", compromiso: "Compromiso", regalos: "Regalos", historia: "Nosotros", citas: "Agendar cita" },
     mega: { cat: "Por categoría", coll: "Por colección", feat: "Destacados", all: "Ver toda la joyería", nuevo: "Novedades", grabar: "Para personalizar", regalo: "Regalos bajo RD$ 15,000", featTitle: "Colección Ámbar", featText: "Ámbar dominicano en plata y oro.", discover: "Descubrir" },
     heroSlides: [
       { eyebrow: "Nueva colección", title: "Esenciales para todos los días", text: "Cadenas finas, perlas y diamantes pensados para acompañarte toda la vida.", href: "#coleccion-esencial" },
@@ -135,6 +135,25 @@ ZB.i18n = {
       { t: "Empaque de regalo", d: "Cada pieza sale en su estuche con cinta y tarjeta escrita a mano." }
     ],
     book: "Agendar por WhatsApp",
+    about: {
+      eyebrow: "Nosotros",
+      title: "Más que joyas, un legado",
+      lead: "Joyas únicas y atemporales, hechas para acompañar a la mujer a lo largo de su vida.",
+      missionLabel: "Misión",
+      mission: "Realzar la belleza y feminidad de la mujer a través de joyas únicas y atemporales, creadas para conservar y acrecentar su valor con el paso del tiempo.",
+      missionText: "Cada pieza lleva consigo un mensaje de fe y crecimiento destinado a acompañar a quien la porta a lo largo de su vida.",
+      visionLabel: "Visión",
+      vision: "Convertirnos en la firma de joyería predilecta de las mujeres que desean honrar su valor, celebrar su feminidad y expresar su esencia a través de piezas extraordinarias y llenas de significado.",
+      valuesTitle: "Nuestros valores",
+      values: [
+        { t: "Fe", d: "La Palabra de Dios es nuestro fundamento y la guía que inspira nuestra identidad." },
+        { t: "Calidad", d: "Nos comprometemos con la excelencia en los materiales, los acabados y cada detalle de nuestras creaciones." },
+        { t: "Criterio", d: "Diseñamos con intención y sensibilidad estética, convencidos de que la verdadera elegancia reside en las decisiones cuidadosamente tomadas." }
+      ],
+      legacyLabel: "Lo que perseguimos",
+      legacy: "Causar un impacto positivo en la imagen y el crecimiento espiritual de la mujer que use ZAVERA. Ser algo más que joyas: un legado en la vida de nuestras clientas.",
+      cta: "Descubrir la joyería"
+    },
     storyEyebrow: "Nuestra historia",
     story: "Diseñamos joyas para los momentos que merecen quedarse.",
     storyText: "Taller y atelier en Santo Domingo.",
@@ -207,7 +226,7 @@ ZB.i18n = {
   },
   en: {
     announce: "Free delivery in Santo Domingo · Personalized engraving in 48 hours",
-    nav: { joyeria: "Jewelry", colecciones: "Collections", compromiso: "Engagement", regalos: "Gifts", historia: "Our story", citas: "Book a visit" },
+    nav: { joyeria: "Jewelry", colecciones: "Collections", compromiso: "Engagement", regalos: "Gifts", historia: "About us", citas: "Book a visit" },
     mega: { cat: "By category", coll: "By collection", feat: "Featured", all: "Shop all jewelry", nuevo: "New arrivals", grabar: "To personalize", regalo: "Gifts under RD$ 15,000", featTitle: "Ámbar Collection", featText: "Dominican amber in silver and gold.", discover: "Discover" },
     heroSlides: [
       { eyebrow: "New collection", title: "Everyday essentials", text: "Fine chains, pearls and diamonds made to stay with you for life.", href: "#coleccion-esencial" },
@@ -229,6 +248,25 @@ ZB.i18n = {
       { t: "Gift wrapping", d: "Every piece leaves in its case with a ribbon and a handwritten card." }
     ],
     book: "Book on WhatsApp",
+    about: {
+      eyebrow: "About us",
+      title: "More than jewelry, a legacy",
+      lead: "Unique, timeless jewelry made to accompany women throughout their lives.",
+      missionLabel: "Mission",
+      mission: "To enhance a woman's beauty and femininity through unique, timeless jewelry, created to keep and grow its value over time.",
+      missionText: "Every piece carries a message of faith and growth, meant to accompany the one who wears it throughout her life.",
+      visionLabel: "Vision",
+      vision: "To become the jewelry house of choice for women who want to honor their worth, celebrate their femininity and express their essence through extraordinary pieces full of meaning.",
+      valuesTitle: "Our values",
+      values: [
+        { t: "Faith", d: "The Word of God is our foundation and the guide that inspires our identity." },
+        { t: "Quality", d: "We are committed to excellence in materials, finishes and every detail of our creations." },
+        { t: "Judgment", d: "We design with intention and aesthetic sensitivity, convinced that true elegance lies in carefully made decisions." }
+      ],
+      legacyLabel: "What we strive for",
+      legacy: "To make a positive impact on the image and spiritual growth of every woman who wears ZAVERA. To be more than jewelry: a legacy in our clients' lives.",
+      cta: "Discover the jewelry"
+    },
     storyEyebrow: "Our story",
     story: "We design jewelry for the moments that deserve to stay.",
     storyText: "Workshop and atelier in Santo Domingo.",
